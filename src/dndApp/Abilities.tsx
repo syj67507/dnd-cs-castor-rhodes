@@ -3,7 +3,7 @@ import characterSheet from "./character-sheet.json";
 
 interface AbilityProps {
     name: string;
-    modifier: number;
+    modifier: string;
     value: number;
 }
 
@@ -14,9 +14,12 @@ export function Ability({ name, modifier, value }: AbilityProps) {
             flex: 1, 
             flexDirection: "column",
             alignItems: "center",
+            bgcolor: "#FFF8F6",
             borderRadius: 1,
-            border: "1px solid black",
-            bgcolor: "white",
+            border: "1px solid rgba(0, 0, 0, 0.26)",
+            "&:hover": {
+                border: "1px solid black",
+            }
         }}>
             <Typography variant="h6" textAlign="center">{name}</Typography>
             <Typography variant="h4" textAlign="center">{modifier}</Typography>
@@ -37,6 +40,7 @@ export function Abilities() {
                 gridColumnEnd: "span 3",
                 gridRowStart: "1",
                 gridRowEnd: "span 1",
+                bgcolor: "#FFE8E1",
             }}
         >
             <Stack
@@ -46,11 +50,15 @@ export function Abilities() {
                 height="100%"
             >
                 {statNames.map(stat => {
+                    let sign = "";
+                    if (character.abilities_bonuses[0].bonuses[stat] > 0) {
+                        sign = "+"
+                    }
                     return (
                         <Ability
                             name={stat.toUpperCase()}
+                            modifier={`${sign}${character.abilities_bonuses[0].bonuses[stat]}`}
                             value={character.abilities_bonuses[0].abilities[stat]}
-                            modifier={character.abilities_bonuses[0].bonuses[stat]}
                         />
                     );
                 })}

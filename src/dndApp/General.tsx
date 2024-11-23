@@ -17,6 +17,7 @@ function StatField({ value, interactive, onChange }: StatProps) {
             sx={{
                 input: {
                     textAlign: "center",
+                    bgcolor: "#FFF8F6" 
                 },
             }}
         />
@@ -43,6 +44,7 @@ function Charges({ name, total, amountUsed = 0 }: ChargesProps) {
                     "&:hover": {
                         border: "1px solid black"
                     },
+                    bgcolor: "#FFF8F6",
                 }}
             >
                 {Array.from({length: total}, (_, i) => i + 1).map((index) => {
@@ -242,7 +244,8 @@ export function General() {
                 gridColumnStart: "2",
                 gridColumnEnd: "span 2",
                 gridRowStart: "2",
-                gridRowEnd: "span 3"
+                gridRowEnd: "span 3",
+                bgcolor: "#FFE8E1",
             }}
         >
             <Stack

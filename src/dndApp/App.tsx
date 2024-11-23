@@ -18,7 +18,7 @@ export default function App() {
                 gap: 2,
                 gridTemplateColumns: "repeat(4, 1fr)",
                 gridTemplateRows: "repeat(4, 1fr)",
-                bgcolor: "whitesmoke",
+                bgcolor: "#624A38",
             }}
         >
             <Skills />

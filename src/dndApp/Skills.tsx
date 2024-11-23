@@ -1,4 +1,4 @@
-import { Box, Paper } from "@mui/material";
+import { Box, Paper, Typography } from "@mui/material";
 import characterSheet from "./character-sheet.json";
 export function Skills() {
     const character = characterSheet.character[0];
@@ -12,6 +12,7 @@ export function Skills() {
                 gridRowStart: "1",
                 gridRowEnd: "span 4",
                 overflow: "auto",
+                bgcolor: "#FFE8E1"
             }}
         >
             <Box sx={{
@@ -41,17 +42,20 @@ export function Skills() {
                                 flexDirection: "row",
                                 justifyContent: "space-between",
                                 width: "100%",
-                                border: "1px solid rgba(0, 0, 0, 0.26)",
                                 borderRadius: 1,
                                 padding: 1,
-                                bgcolor: "white",
+                                bgcolor: "#FFF8F6",
+                                border: "1px solid rgba(0, 0, 0, 0.26)",
+                                "&:hover": {
+                                    border: "1px solid black",
+                                }
                             }}>
-                                <Box>
+                                <Typography variant="body1">
                                     {`${skillName.slice(0,1).toUpperCase()}${skillName.slice(1)}`}
-                                </Box>
-                                <Box>
+                                </Typography>
+                                <Typography variant="body1">
                                     {statValue}
-                                </Box>
+                                </Typography>
                             </Box>
                         );
                     })
