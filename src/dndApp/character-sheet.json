@@ -1,0 +1,217 @@
+{
+  "schema_version": 1,
+  "player_name": null,
+  "character": [
+    {
+      "passive_perception": 11,
+      "immunities": [],
+      "subrace": "Calishite",
+      "ac": 15,
+      "saving_throw_advantages": null,
+      "proficiency_bonus": "3",
+      "race": "Human",
+      "alignment": "Chaotic Good",
+      "experience": 6500,
+      "background": null,
+      "equipment": [
+        {
+          "equipment": {
+            "explorers-pack": {
+              "id": 17592343403806,
+              "quantity": 1,
+              "equipped?": true,
+              "class-starting-equipment?": true
+            },
+            "fishing-tackle": {
+              "id": 17592343403808,
+              "quantity": 1,
+              "equipped?": true,
+              "background-starting-equipment?": true
+            },
+            "pouch": {
+              "id": 17592343403810,
+              "quantity": 1,
+              "equipped?": true,
+              "background-starting-equipment?": true
+            },
+            "clothes-traveler-s": {
+              "id": 17592343403812,
+              "quantity": 1,
+              "equipped?": true,
+              "background-starting-equipment?": true
+            }
+          },
+          "armor": null,
+          "magic-armor": null,
+          "magic-items": null,
+          "weapons": [
+            [
+              "greataxe",
+              {
+                "quantity": 1,
+                "equipped?": true
+              }
+            ],
+            [
+              "handaxe",
+              {
+                "quantity": 2,
+                "equipped?": true
+              }
+            ],
+            [
+              "javelin",
+              {
+                "id": 17592343403788,
+                "quantity": 4,
+                "equipped?": true,
+                "class-starting-equipment?": true
+              }
+            ]
+          ],
+          "magic-weapons": []
+        }
+      ],
+      "spells": [
+        {
+          "spellcasting_fields": "TO-DO Spells. um yah... it's a nightmare to pull spells and details"
+        }
+      ],
+      "damage_resistances": [],
+      "treasure": {
+        "gp": 10,
+        "treasure": ""
+      },
+      "abilities_bonuses": [
+        {
+          "abilities": {
+            "str": 18,
+            "dex": 14,
+            "con": 16,
+            "int": 9,
+            "wis": 12,
+            "cha": 10
+          },
+          "bonuses": {
+            "str": 4,
+            "dex": 2,
+            "con": 3,
+            "int": -1,
+            "wis": 1,
+            "cha": 0
+          }
+        }
+      ],
+      "image_url": null,
+      "damage_vulnerabilities": null,
+      "proficiencies": [
+        {
+          "all": "Weapon Proficiencies: Martial; Simple\n\nArmor Proficiencies: Light; Medium; Shields\n\nLanguage Proficiencies: Common; Grung",
+          "tool": null,
+          "weapon": "Martial; Simple",
+          "armor": "Light; Medium; Shields",
+          "language": "Common; Grung"
+        }
+      ],
+      "skills": {
+        "religion": "-1",
+        "animal-handling-check": true,
+        "persuasion": "0",
+        "sleight-of-hand-check": false,
+        "religion-check": false,
+        "nature-check": false,
+        "investigation": "-1",
+        "performance-check": false,
+        "acrobatics": "+2",
+        "performance": "0",
+        "perception": "+1",
+        "sleight-of-hand": "+2",
+        "medicine-check": false,
+        "investigation-check": false,
+        "survival": "+1",
+        "history": "-1",
+        "history-check": false,
+        "animal-handling": "+4",
+        "nature": "-1",
+        "deception": "0",
+        "intimidation": "+3",
+        "arcana": "-1",
+        "athletics": "+4",
+        "perception-check": false,
+        "intimidation-check": true,
+        "survival-check": false,
+        "insight-check": false,
+        "stealth-check": false,
+        "deception-check": false,
+        "athletics-check": false,
+        "persuasion-check": false,
+        "arcana-check": false,
+        "acrobatics-check": false,
+        "insight": "+1",
+        "medicine": "+1",
+        "stealth": "+2"
+      },
+      "characteristics": [
+        {
+          "factions_and_organizations": null,
+          "faction_image_url": null,
+          "eyes": "Brown",
+          "age": "24",
+          "sex": "Male",
+          "ideals": null,
+          "speed": "40/30",
+          "personality-trait-2": "",
+          "bonds": null,
+          "personality_trait_1": "",
+          "weight": "180",
+          "hair": "Black",
+          "skin": "Brown",
+          "height": "5'10\"",
+          "character_backstory": null,
+          "flaws": null
+        }
+      ],
+      "save_bonuses": {
+        "str": 7,
+        "dex": 2,
+        "con": 6,
+        "int": -1,
+        "wis": 1,
+        "cha": 0
+      },
+      "character_name": "Castor Rhodes",
+      "attacks": {
+        "weapon-name-2": "Greataxe",
+        "weapon-attack-bonus-2": "+7",
+        "weapon-damage-1": "1d6+4 piercing",
+        "weapon-damage-3": "1d6+4 slashing",
+        "weapon-name-1": "Javelin",
+        "weapon-attack-bonus-3": "+7",
+        "attacks-and-spellcasting": "Number of Attacks: 2\n",
+        "weapon-name-3": "Handaxe",
+        "weapon-damage-2": "1d12+4 slashing",
+        "weapon-attack-bonus-1": "+7"
+      },
+      "hp": [
+        {
+          "hp_current": null,
+          "hp_max": 64
+        }
+      ],
+      "initiative_bonus": 2,
+      "classes": {
+        "barbarian": {
+          "class-name": "Barbarian",
+          "class-level": 5,
+          "hit-die": 12,
+          "subclass": "path-of-the-storm-herald",
+          "subclass-name": "Path of the Storm Herald"
+        }
+      },
+      "condition_immunities": [],
+      "traits": {
+        "features-and-traits-2": "\n\n----------Bonus Actions----------\nRage. Advantage on Strength checks and saves; melee damage bonus +2; resistance to bludgeoning, piercing, and slashing damage (lasts 1 minute, use 3 times/long rest).\n\n-----------Other Traits------------\nDanger Sense. Advantage on DEX saves against effects you can see.\n\nExtra Attack. Attack twice when taking Attack action.\n\nFast Movement. Your speed increases to 40 when not heavily armored.\n\nGreat Weapon Master . You've learned to put the weight of a weapon to your advantage, letting its momentum empower your strikes. You gain the following benefits:\n\nOn your turn, when you score a critical hit with a melee weapon or reduce a creature to 0 hit points with one, you can make one melee weapon attack as a bonus action.\n\nBefore you make a melee attack with a heavy weapon that you are proficient with, you can choose to take a -5 penalty to the attack roll. If the attack hits, you add +10 to the attack's damage.\n\nReckless Attack. Advantage on attacks using Strength, attacks against you have advantage as well.\n\nStorm Aura. Starting at 3rd level, you emanate a stormy, magical aura while you rage. The aura extends 10 feet from you in every direction, but not through total cover.\nYour aura has an effect that activates when you enter your rage, and you can activate the effect again on each of your turns as a bonus action. Choose desert, sea, or tundra. Your aura's effect depends on that chosen environment, as detailed below. You can change your environment choice whenever you gain a level in this class.\nIf Your aura's effects require a saving throw, the DC equals 8 + your proficiency bonus + your Constitution modifier.\n\nDesert: When this effect is activated, all other creatures in your aura take 2 fire damage each. The damage increases when you reach certain levels in this class, increasing to 3 at 5th level, 4 at 10th level, 5 at 15th level, and 6 at 20th level.\n\nSea: When this effect is activated, you can choose one other creature you can see in your aura. The target must make a Dexterity saving throw. The target takes 1d6 lightning damage on a failed save, or half as much damage on a successful one. The damage increases when you reach certain levels in this class, increasing to 2d6 at 10th level, 3d6 at 15th level, and 4d6 at 20th level.\n\nTundra: When this effect is activated, each creature of your choice in your aura gains 2 temporary hit points, as icy spirits inure it to suffering. The temporary hit points increase when you reach certain levels in this class, increasing to 3 at 5th level, 4 at 10th level, 5 at 15th level, and 6 at 20th level."
+      }
+    }
+  ]
+}
