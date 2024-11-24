@@ -1,7 +1,7 @@
 import { Paper, Stack, Typography } from "@mui/material";
 import characterSheet from "./character-sheet.json";
 
-export function Proficiencies() {
+export function Details() {
     const character = characterSheet.character[0];
 
     return (
@@ -12,7 +12,7 @@ export function Proficiencies() {
                 gridColumnStart: "4",
                 gridColumnEnd: "span 1",
                 gridRowStart: "3",
-                gridRowEnd: "span 3",
+                gridRowEnd: "span 6",
             }}>
             <Stack
                 direction="column"
@@ -21,6 +21,34 @@ export function Proficiencies() {
                 height="100%"
                 overflow="auto"
             >
+                <Stack
+                    direction="column"
+                    border="1px solid rgba(0, 0, 0, 0.26)"
+                    borderRadius={1}
+                    padding={1}
+                    width="100%"
+                    flex={1}
+                    bgcolor="#FFF8F6"
+                >
+                    <Typography variant="body1" sx={{ textDecoration: "underline" }}>Feats and Traits</Typography>
+                    <Typography variant="body1">Rage</Typography>
+                    <Typography variant="body1">Danger Sense</Typography>
+                    <Typography variant="body1">Extra Attack</Typography>
+                    <Typography variant="body1">Fast Movement</Typography>
+                    <Typography variant="body1">Great Weapon Master</Typography>
+                    <Typography variant="body1">Reckless Attack</Typography>
+                    <Typography variant="body1">Storm Aura: Sea</Typography>
+                    <Typography variant="body1">Harpoon</Typography>
+                    <Typography variant="body1">Clothes, traveler’s</Typography>
+                    <Typography variant="body1">Explorer's Pack</Typography>
+                    <Typography variant="body1">Fishing tackle</Typography>
+                    <Typography variant="body1">Pouch</Typography>
+                    <Typography variant="body1">Greater Healing Potion</Typography>
+                    <Typography variant="body1">Soulgaze Monacle</Typography>
+                    <Typography variant="body1">Bottle of Boundless Coffee</Typography>
+                    <Typography variant="body1">Heward's Spice Pouch</Typography>
+                    <Typography variant="body1">Pole of Angling</Typography>
+                </Stack>
                 <Stack
                     direction="column"
                     border="1px solid rgba(0, 0, 0, 0.26)"
@@ -68,34 +96,6 @@ export function Proficiencies() {
                             <Typography variant="body1">{prof}</Typography>
                         );
                     })}
-                </Stack>
-                <Stack
-                    direction="column"
-                    border="1px solid rgba(0, 0, 0, 0.26)"
-                    borderRadius={1}
-                    padding={1}
-                    width="100%"
-                    flex={1}
-                    bgcolor="#FFF8F6"
-                >
-                    <Typography variant="body1" sx={{ textDecoration: "underline" }}>Feats and Traits</Typography>
-                    <Typography variant="body1">Rage</Typography>
-                    <Typography variant="body1">Danger Sense</Typography>
-                    <Typography variant="body1">Extra Attack</Typography>
-                    <Typography variant="body1">Fast Movement</Typography>
-                    <Typography variant="body1">Great Weapon Master</Typography>
-                    <Typography variant="body1">Reckless Attack</Typography>
-                    <Typography variant="body1">Storm Aura: Sea</Typography>
-                    <Typography variant="body1">Harpoon</Typography>
-                    <Typography variant="body1">Clothes, traveler’s</Typography>
-                    <Typography variant="body1">Explorer's Pack</Typography>
-                    <Typography variant="body1">Fishing tackle</Typography>
-                    <Typography variant="body1">Pouch</Typography>
-                    <Typography variant="body1">Greater Healing Potion</Typography>
-                    <Typography variant="body1">Soulgaze Monacle</Typography>
-                    <Typography variant="body1">Bottle of Boundless Coffee</Typography>
-                    <Typography variant="body1">Heward's Spice Pouch</Typography>
-                    <Typography variant="body1">Pole of Angling</Typography>
                 </Stack>
             </Stack>
         </Paper>

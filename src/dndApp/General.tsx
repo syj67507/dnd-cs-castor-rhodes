@@ -1,6 +1,7 @@
-import { Checkbox, Paper, Stack, TextField, Typography } from "@mui/material";
+import { Paper, Stack, TextField, Typography } from "@mui/material";
 import characterSheet from "./character-sheet.json";
 import useLocalStorage from "./useLocalStorage";
+import { Charges } from "./Charges";
 
 interface StatProps extends React.ComponentProps<typeof TextField> {
     value?: string | number;
@@ -22,40 +23,6 @@ function StatField({ value, interactive, onChange }: StatProps) {
             }}
         />
     );
-}
-
-interface ChargesProps {
-    name: string;
-    total: number;
-    amountUsed?: number;
-}
-function Charges({ name, total, amountUsed = 0 }: ChargesProps) {
-    return (
-        <Stack flex={1}>
-            <Typography textAlign="center">{name}</Typography>
-            <Stack
-                direction="row"
-                border="1px solid rgba(0, 0, 0, 0.26)"
-                borderRadius={1}
-                padding={1}
-                justifyContent="center"
-                sx={{
-                    "&:hover": {
-                        border: "1px solid black"
-                    },
-                    bgcolor: "#FFF8F6",
-                }}
-                overflow="auto"
-            >
-                {Array.from({length: total}, (_, i) => i + 1).map((index) => {
-                    const used = index <= amountUsed;
-                    return (
-                        <Checkbox defaultChecked={used} sx={{ padding: 1}} />
-                    )
-                })}
-            </Stack>
-        </Stack>
-    )
 }
 
 function Gold() {
@@ -146,7 +113,7 @@ function ProficiencyBonus() {
             alignItems="center"
             flex={1}
         >
-            <Typography>Proficiency Bonus</Typography>
+            <Typography>Prof Bonus</Typography>
             <StatField value={`+${character.proficiency_bonus}`} />
         </Stack>
     );
@@ -234,9 +201,36 @@ function Inspiration() {
     );
 }
 
-export function General() {
+function HitDiceCharges() {
     const character = characterSheet.character[0];
 
+    return (
+        <Stack flex={1}>
+            <Typography textAlign="center">{`Hit Dice [d${character.classes.barbarian["hit-die"]} + ${character.abilities_bonuses[0].bonuses.con}]`}</Typography>  
+            <Charges id="hitdice" total={5} />
+        </Stack>
+    );
+}
+
+function RageCharges() {
+    return (
+        <Stack flex={1}>
+            <Typography textAlign="center">Rage</Typography>  
+            <Charges id="rage" total={3} />
+        </Stack>
+    );
+}
+
+function DeathSaves() {
+    return (
+        <Stack flex={1}>
+            <Typography textAlign="center">Death Saves</Typography>  
+            <Charges id="deathsaves" total={6} />
+        </Stack>
+    );
+}
+
+export function General() {
     return (
         <Paper
             sx={{
@@ -244,8 +238,9 @@ export function General() {
                 gridColumnStart: "2",
                 gridColumnEnd: "span 2",
                 gridRowStart: "3",
-                gridRowEnd: "span 3",
+                gridRowEnd: "span 6",
                 bgcolor: "#FFE8E1",
+                overflow: "auto",
             }}
         >
             <Stack
@@ -260,21 +255,27 @@ export function General() {
                     <Initiative />
                     <Speed />
                     <Inspiration />
-                </Stack>
-                <Stack
-                    flexDirection="row"
-                    gap={1}
-                >
                     <ProficiencyBonus />
-                    <TempHP />
-                    <Charges name={`Hit Dice [d${character.classes.barbarian["hit-die"]} + ${character.abilities_bonuses[0].bonuses.con}]`} total={5} />
                 </Stack>
                 <Stack
                     flexDirection="row"
                     gap={1}
                 >
-                    <Charges name="Rage" total={3} amountUsed={0} />
+                    <TempHP />
+                    <CurrentHP />
                     <MaxHP />
+                </Stack>
+                <Stack
+                    flexDirection="row"
+                    gap={1}
+                >
+                    <HitDiceCharges />
+                </Stack>
+                <Stack
+                    flexDirection="row"
+                    gap={1}
+                >
+                    <RageCharges />
                     <BardicInspiration />
                 </Stack>
                 <Stack
@@ -282,8 +283,7 @@ export function General() {
                     gap={1}
                 >
                     <Gold />
-                    <CurrentHP />
-                    <Charges name="Death Saves" total={3} />
+                    <DeathSaves />
                 </Stack>
             </Stack>
         </Paper>

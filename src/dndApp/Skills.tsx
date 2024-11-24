@@ -10,7 +10,7 @@ export function Skills() {
                 padding: 1,
                 gridColumn: "1",
                 gridRowStart: "2",
-                gridRowEnd: "span 4",
+                gridRowEnd: "span 7",
                 overflow: "auto",
                 bgcolor: "#FFE8E1"
             }}
