@@ -39,13 +39,13 @@ function Charges({ name, total, amountUsed = 0 }: ChargesProps) {
                 borderRadius={1}
                 padding={1}
                 justifyContent="center"
-                height="56px"
                 sx={{
                     "&:hover": {
                         border: "1px solid black"
                     },
                     bgcolor: "#FFF8F6",
                 }}
+                overflow="auto"
             >
                 {Array.from({length: total}, (_, i) => i + 1).map((index) => {
                     const used = index <= amountUsed;
@@ -243,7 +243,7 @@ export function General() {
                 padding: 1,
                 gridColumnStart: "2",
                 gridColumnEnd: "span 2",
-                gridRowStart: "2",
+                gridRowStart: "3",
                 gridRowEnd: "span 3",
                 bgcolor: "#FFE8E1",
             }}

@@ -9,7 +9,7 @@ export function Skills() {
             sx={{
                 padding: 1,
                 gridColumn: "1",
-                gridRowStart: "1",
+                gridRowStart: "2",
                 gridRowEnd: "span 4",
                 overflow: "auto",
                 bgcolor: "#FFE8E1"

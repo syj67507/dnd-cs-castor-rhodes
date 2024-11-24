@@ -38,7 +38,7 @@ export function Abilities() {
                 padding: 2,
                 gridColumnStart: "2",
                 gridColumnEnd: "span 3",
-                gridRowStart: "1",
+                gridRowStart: "2",
                 gridRowEnd: "span 1",
                 bgcolor: "#FFE8E1",
             }}

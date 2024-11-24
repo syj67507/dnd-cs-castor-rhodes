@@ -11,8 +11,8 @@ export function Proficiencies() {
                 padding: 1,
                 gridColumnStart: "4",
                 gridColumnEnd: "span 1",
-                gridRowStart: "2",
-                gridRowEnd: "span 3"
+                gridRowStart: "3",
+                gridRowEnd: "span 3",
             }}>
             <Stack
                 direction="column"
@@ -86,7 +86,7 @@ export function Proficiencies() {
                     <Typography variant="body1">Great Weapon Master</Typography>
                     <Typography variant="body1">Reckless Attack</Typography>
                     <Typography variant="body1">Storm Aura: Sea</Typography>
-                    <Typography variant="body1">Harpoon - https://the-griffons-saddlebag.tumblr.com/post/641935355983151104/%F0%9D%97%A1%F0%9D%97%B2%F0%9D%98%84-%F0%9D%97%B6%F0%9D%98%81%F0%9D%97%B2%F0%9D%97%BA-steam-harpoon-weapon-spear-rare</Typography>
+                    <Typography variant="body1">Harpoon</Typography>
                     <Typography variant="body1">Clothes, traveler’s</Typography>
                     <Typography variant="body1">Explorer's Pack</Typography>
                     <Typography variant="body1">Fishing tackle</Typography>

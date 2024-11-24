@@ -1,4 +1,4 @@
-import { Box, Grid2 as Grid } from "@mui/material";
+import { Box, Grid2 as Grid, Paper, Stack, Typography } from "@mui/material";
 import characterSheet from "./character-sheet.json"
 import { Skills } from "./Skills";
 import { Abilities } from "./Abilities";
@@ -15,12 +15,25 @@ export default function App() {
                 padding: 1,
                 height: "100vh",
                 display: "grid",
-                gap: 2,
+                gap: 1,
                 gridTemplateColumns: "repeat(4, 1fr)",
-                gridTemplateRows: "repeat(4, 1fr)",
+                gridTemplateRows: "repeat(5, 1fr)",
                 bgcolor: "#624A38",
             }}
         >
+            <Box
+                sx={{
+                    gridColumnStart: "2",
+                    gridColumnEnd: "span 2",
+                    bgcolor: "#FFE8E1",
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "center",
+                    alignItems: "center",
+                }}
+            >
+                <Typography variant="h3">Castor Rhodes</Typography>
+            </Box>
             <Skills />
             <Abilities />
             <General />
