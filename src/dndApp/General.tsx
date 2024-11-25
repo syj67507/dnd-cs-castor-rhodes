@@ -1,24 +1,24 @@
-import { Paper, Stack, TextField, Typography } from "@mui/material";
+import { Grid2 as Grid, OutlinedInput, Paper, Stack, Typography } from "@mui/material";
 import characterSheet from "./character-sheet.json";
 import useLocalStorage from "./useLocalStorage";
 import { Charges } from "./Charges";
 
-interface StatProps extends React.ComponentProps<typeof TextField> {
+interface StatProps extends React.ComponentProps<typeof OutlinedInput> {
     value?: string | number;
     interactive?: boolean;
 }
 function StatField({ value, interactive, onChange }: StatProps) {
     return (
-        <TextField
+        <OutlinedInput
             fullWidth
-            hiddenLabel
             disabled={!interactive}
             value={value}
             onChange={onChange}
             sx={{
+                height: "100%",
+                bgcolor: "#FFF8F6",
                 input: {
                     textAlign: "center",
-                    bgcolor: "#FFF8F6" ,
                 },
             }}
         />
@@ -32,7 +32,7 @@ function Gold() {
     return (
         <Stack
             alignItems="center"
-            flex={1}
+            height="100%"
             onContextMenu={(e) => {
                 e.preventDefault()
                 setGold(character.treasure.gp);
@@ -57,7 +57,7 @@ function CurrentHP() {
     return (
         <Stack
             alignItems="center"
-            flex={1}
+            height="100%"
         >
             <Typography>Current HP</Typography>
             <StatField
@@ -77,7 +77,7 @@ function TempHP() {
     return (
         <Stack
             alignItems="center"
-            flex={1}
+            height="100%"
         >
             <Typography>Temp HP</Typography>
             <StatField
@@ -97,7 +97,7 @@ function MaxHP() {
     return (
         <Stack
             alignItems="center"
-            flex={1}
+            height="100%"
         >
             <Typography>Max HP</Typography>
             <StatField value={character.hp[0].hp_max} />
@@ -111,7 +111,7 @@ function ProficiencyBonus() {
     return (
         <Stack
             alignItems="center"
-            flex={1}
+            height="100%"
         >
             <Typography>Prof Bonus</Typography>
             <StatField value={`+${character.proficiency_bonus}`} />
@@ -125,7 +125,7 @@ function BardicInspiration() {
     return (
         <Stack
             alignItems="center"
-            flex={1}
+            height="100%"
         >
             <Typography>Bardic Inspiration</Typography>
             <StatField
@@ -145,7 +145,7 @@ function ArmorClass() {
     return (
         <Stack
             alignItems="center"
-            flex={1}
+            height="100%"
         >
             <Typography>Armor Class</Typography>
             <StatField value={character.ac} />
@@ -159,7 +159,7 @@ function Initiative() {
     return (
         <Stack
             alignItems="center"
-            flex={1}
+            height="100%"
         >
             <Typography>Initiative</Typography>
             <StatField value={character.initiative_bonus} />
@@ -173,7 +173,7 @@ function Speed() {
     return (
         <Stack
             alignItems="center"
-            flex={1}
+            height="100%"
         >
             <Typography>Speed</Typography>
             <StatField value={character.characteristics[0].speed} />
@@ -187,7 +187,7 @@ function Inspiration() {
     return (
         <Stack
             alignItems="center"
-            flex={1}
+            height="100%"
         >
             <Typography>Inspiration</Typography>
             <StatField
@@ -205,7 +205,7 @@ function HitDiceCharges() {
     const character = characterSheet.character[0];
 
     return (
-        <Stack flex={1}>
+        <Stack height="100%">
             <Typography textAlign="center">{`Hit Dice [d${character.classes.barbarian["hit-die"]} + ${character.abilities_bonuses[0].bonuses.con}]`}</Typography>  
             <Charges id="hitdice" total={5} />
         </Stack>
@@ -214,7 +214,7 @@ function HitDiceCharges() {
 
 function RageCharges() {
     return (
-        <Stack flex={1}>
+        <Stack height="100%">
             <Typography textAlign="center">Rage</Typography>  
             <Charges id="rage" total={3} />
         </Stack>
@@ -223,9 +223,18 @@ function RageCharges() {
 
 function DeathSaves() {
     return (
-        <Stack flex={1}>
+        <Stack height="100%">
             <Typography textAlign="center">Death Saves</Typography>  
-            <Charges id="deathsaves" total={6} />
+            <Charges id="deathsaves" total={3} />
+        </Stack>
+    );
+}
+
+function DeathFails() {
+    return (
+        <Stack height="100%">
+            <Typography textAlign="center">Death Fails</Typography>  
+            <Charges id="deathfails" total={3} />
         </Stack>
     );
 }
@@ -253,49 +262,56 @@ export function General({
                 overflow: "auto",
             }}
         >
-            <Stack
-                justifyContent="space-evenly"
-                height="100%"
+            <Grid
+                container
+                spacing={1}
+                sx={{
+                    height: "100%"
+                }}
             >
-                <Stack
-                    flexDirection="row"
-                    gap={1}
-                >
+                <Grid size={{ xs: 6, md: 3}}>
                     <ArmorClass />
+                </Grid>
+                <Grid size={{ xs: 6, md: 3}}>
                     <Initiative />
+                </Grid>
+                <Grid size={{ xs: 6, md: 3}}>
                     <Speed />
-                    <Inspiration />
+                </Grid>
+                <Grid size={{ xs: 6, md: 3}}>
                     <ProficiencyBonus />
-                </Stack>
-                <Stack
-                    flexDirection="row"
-                    gap={1}
-                >
-                    <TempHP />
-                    <CurrentHP />
-                    <MaxHP />
-                </Stack>
-                <Stack
-                    flexDirection="row"
-                    gap={1}
-                >
+                </Grid>
+                <Grid size={{ xs: 12, md: 12 }}>
                     <HitDiceCharges />
-                </Stack>
-                <Stack
-                    flexDirection="row"
-                    gap={1}
-                >
-                    <RageCharges />
-                    <BardicInspiration />
-                </Stack>
-                <Stack
-                    flexDirection="row"
-                    gap={1}
-                >
+                </Grid>
+                <Grid size={{ xs: 4, md: 4}}>
+                    <TempHP />
+                </Grid>
+                <Grid size={{ xs: 4, md: 4}}>
+                    <CurrentHP />
+                </Grid>
+                <Grid size={{ xs: 4, md: 4}}>
+                    <MaxHP />
+                </Grid>
+                <Grid size={{ xs: 6, md: 4}}>
                     <Gold />
+                </Grid>
+                <Grid size={{ xs: 6, md: 4}}>
+                    <RageCharges />
+                </Grid>
+                <Grid size={{ xs: 6, md: 4}}>
+                    <BardicInspiration />
+                </Grid>
+                <Grid size={{ xs: 6, md: 4}}>
                     <DeathSaves />
-                </Stack>
-            </Stack>
+                </Grid>
+                <Grid size={{ xs: 6, md: 4}}>
+                    <Inspiration />
+                </Grid>
+                <Grid size={{ xs: 6, md: 4}}>
+                    <DeathFails />
+                </Grid>
+            </Grid>
         </Paper>
     );
 }
