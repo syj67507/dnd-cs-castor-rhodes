@@ -1,7 +1,18 @@
 import { Paper, Stack, Typography } from "@mui/material";
 import characterSheet from "./character-sheet.json";
 
-export function Details() {
+interface DetailsProps {
+    gridColumnStart?: string;
+    gridColumnEnd?: string;
+    gridRowStart?: string;
+    gridRowEnd?: string;
+}
+export function Details({
+    gridColumnStart,
+    gridColumnEnd,
+    gridRowStart,
+    gridRowEnd,
+}: DetailsProps) {
     const character = characterSheet.character[0];
 
     return (
@@ -9,10 +20,10 @@ export function Details() {
             sx={{
                 bgcolor: "#FFE8E1",
                 padding: 1,
-                gridColumnStart: "4",
-                gridColumnEnd: "span 1",
-                gridRowStart: "3",
-                gridRowEnd: "span 6",
+                gridColumnStart: gridColumnStart,
+                gridColumnEnd: gridColumnEnd,
+                gridRowStart: gridRowStart,
+                gridRowEnd: gridRowEnd,
             }}>
             <Stack
                 direction="column"

@@ -1,4 +1,4 @@
-import { Box, Paper, Stack, Typography } from "@mui/material";
+import { Grid2, Paper, Stack, Typography } from "@mui/material";
 import characterSheet from "./character-sheet.json";
 
 interface AbilityProps {
@@ -9,60 +9,69 @@ interface AbilityProps {
 
 export function Ability({ name, modifier, value }: AbilityProps) {
     return (
-        <Box sx={{
-            display: "flex",
-            flex: 1, 
-            flexDirection: "column",
-            alignItems: "center",
-            bgcolor: "#FFF8F6",
-            borderRadius: 1,
-            border: "1px solid rgba(0, 0, 0, 0.26)",
-            "&:hover": {
-                border: "1px solid black",
-            }
-        }}>
-            <Typography variant="h6" textAlign="center">{name}</Typography>
-            <Typography variant="h4" textAlign="center">{modifier}</Typography>
-            <Typography variant="h6" textAlign="center">{value}</Typography>
-        </Box>
+        <Stack
+            bgcolor="#FFF8F6"
+            borderRadius={1}
+            border="1px solid rgba(0, 0, 0, 0.26)"
+            sx={{
+                "&:hover": {
+                    border: "1px solid black",
+                }
+            }}
+            flex={1}
+            alignItems="center"
+        >
+            <Typography>{name}</Typography>
+            <Typography variant="h5">{modifier}</Typography>
+            <Typography>{value}</Typography>
+        </Stack>
     );
 }
 
-export function Abilities() {
+interface AbilitiesProps {
+    gridColumnStart?: string;
+    gridColumnEnd?: string;
+    gridRowStart?: string;
+    gridRowEnd?: string;
+}
+
+export function Abilities({
+    gridColumnStart,
+    gridColumnEnd,
+    gridRowStart,
+    gridRowEnd,
+}: AbilitiesProps) {
     const character = characterSheet.character[0];
-    const statNames = ["cha","con","dex","int","str","wis"] as const;
+    const statNames = ["str", "dex", "con", "int", "wis", "cha"] as const;
 
     return (
         <Paper
             sx={{
-                padding: 2,
-                gridColumnStart: "2",
-                gridColumnEnd: "span 3",
-                gridRowStart: "2",
-                gridRowEnd: "span 1",
                 bgcolor: "#FFE8E1",
+                padding: 1,
+                gridColumnStart: gridColumnStart,
+                gridColumnEnd: gridColumnEnd,
+                gridRowStart: gridRowStart,
+                gridRowEnd: gridRowEnd,
             }}
         >
-            <Stack
-                direction="row"
-                gap={2}
-                alignItems="center"
-                height="100%"
-            >
+            <Grid2 container spacing={1}>
                 {statNames.map(stat => {
                     let sign = "";
                     if (character.abilities_bonuses[0].bonuses[stat] > 0) {
                         sign = "+"
                     }
                     return (
-                        <Ability
-                            name={stat.toUpperCase()}
-                            modifier={`${sign}${character.abilities_bonuses[0].bonuses[stat]}`}
-                            value={character.abilities_bonuses[0].abilities[stat]}
-                        />
+                        <Grid2 size={{ xs: 4, sm: 2 }}>
+                            <Ability 
+                                name={stat.toUpperCase()}
+                                modifier={`${sign}${character.abilities_bonuses[0].bonuses[stat]}`}
+                                value={character.abilities_bonuses[0].abilities[stat]}
+                            />
+                        </Grid2>
                     );
                 })}
-            </Stack>
+            </Grid2>
         </Paper>
     );
 }

@@ -1,6 +1,17 @@
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { Box, Paper, Typography } from "@mui/material";
 import characterSheet from "./character-sheet.json";
-export function Skills() {
+
+interface SkillsProps {
+    gridColumn?: string;
+    gridRowStart?: string;
+    gridRowEnd?: string;
+}
+export function Skills({
+    gridColumn,
+    gridRowStart,
+    gridRowEnd,
+}: SkillsProps) {
     const character = characterSheet.character[0];
 
     return (
@@ -8,9 +19,9 @@ export function Skills() {
             square={false}
             sx={{
                 padding: 1,
-                gridColumn: "1",
-                gridRowStart: "2",
-                gridRowEnd: "span 7",
+                gridColumn: gridColumn,
+                gridRowStart: gridRowStart,
+                gridRowEnd: gridRowEnd,
                 overflow: "auto",
                 bgcolor: "#FFE8E1"
             }}

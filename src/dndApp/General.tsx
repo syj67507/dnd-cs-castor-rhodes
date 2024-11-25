@@ -18,7 +18,7 @@ function StatField({ value, interactive, onChange }: StatProps) {
             sx={{
                 input: {
                     textAlign: "center",
-                    bgcolor: "#FFF8F6" 
+                    bgcolor: "#FFF8F6" ,
                 },
             }}
         />
@@ -229,16 +229,26 @@ function DeathSaves() {
         </Stack>
     );
 }
-
-export function General() {
+interface GeneralProps {
+    gridColumnStart?: string;
+    gridColumnEnd?: string;
+    gridRowStart?: string;
+    gridRowEnd?: string;
+}
+export function General({
+    gridColumnStart,
+    gridColumnEnd,
+    gridRowStart,
+    gridRowEnd,
+}: GeneralProps) {
     return (
         <Paper
             sx={{
                 padding: 1,
-                gridColumnStart: "2",
-                gridColumnEnd: "span 2",
-                gridRowStart: "3",
-                gridRowEnd: "span 6",
+                gridColumnStart: gridColumnStart,
+                gridColumnEnd: gridColumnEnd,
+                gridRowStart: gridRowStart,
+                gridRowEnd: gridRowEnd,
                 bgcolor: "#FFE8E1",
                 overflow: "auto",
             }}
