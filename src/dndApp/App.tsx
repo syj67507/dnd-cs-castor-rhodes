@@ -1,69 +1,40 @@
-import { Box, Paper, Typography, useMediaQuery } from "@mui/material";
-import characterSheet from "./character-sheet.json"
-import { Skills } from "./Skills";
+import { Box, Grid2 } from "@mui/material";
 import { Abilities } from "./Abilities";
-import { Details } from "./Proficiencies";
+import { Details } from "./Details";
 import { General } from "./General";
-import { PhoneApp } from "./PhoneApp";
+import { Name } from "./Name";
+import { Skills } from "./Skills";
 
 export default function App() {
-    const isPortrait = useMediaQuery('(orientation: portrait)');
-    const isLandscape = useMediaQuery('(orientation: landscape)');
-    
-    const character = characterSheet.character[0];
 
     return (
-        <>
-        {isLandscape && <Box
+        <Box
             sx={{
-                padding: 1,
-                height: "100vh",
-                display: "grid",
+                paddingX: 1,
+                paddingY: 1,
                 gap: 1,
-                gridTemplateColumns: "repeat(4, 1fr)",
-                gridTemplateRows: "repeat(8, 1fr)",
                 bgcolor: "#624A38",
+                color: "white"
             }}
         >
-            <Paper
-                sx={{
-                    gridColumnStart: "2",
-                    gridColumnEnd: "span 2",
-                    bgcolor: "#FFE8E1",
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "center",
-                    alignItems: "center",
-                }}
-            >
-                <Typography variant="h3">{character.character_name}</Typography>
-            </Paper>
-            <Skills
-                gridColumn="1"
-                gridRowStart="2"
-                gridRowEnd="span 7"
-            />
-            <Abilities
-                gridColumnStart="2"
-                gridColumnEnd="span 3"
-                gridRowStart="2"
-                gridRowEnd="span 1"
-            />
-            <General
-                gridColumnStart="2"
-                gridColumnEnd="span 2"
-                gridRowStart="3"
-                gridRowEnd="span 6"
-            />
-            <Details
-                gridColumnStart="4"
-                gridColumnEnd="span 1"
-                gridRowStart="3"
-                gridRowEnd="span 6"
-            />
-        </Box>}
-        {isPortrait && <PhoneApp />}
-        </>
+            <Grid2 container spacing={1}>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 12 }}>
+                    <Name />
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 12 }}>
+                    <Abilities />
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
+                    <General />
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 6, lg: 3 }}>
+                    <Skills />
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 6, lg: 3 }}>
+                    <Details />
+                </Grid2>
+            </Grid2>
+        </Box>
     );
 }
 

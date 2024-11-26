@@ -2,28 +2,16 @@
 import { Box, Paper, Typography } from "@mui/material";
 import characterSheet from "./character-sheet.json";
 
-interface SkillsProps {
-    gridColumn?: string;
-    gridRowStart?: string;
-    gridRowEnd?: string;
-}
-export function Skills({
-    gridColumn,
-    gridRowStart,
-    gridRowEnd,
-}: SkillsProps) {
+export function Skills() {
     const character = characterSheet.character[0];
 
     return (
         <Paper
-            square={false}
             sx={{
                 padding: 1,
-                gridColumn: gridColumn,
-                gridRowStart: gridRowStart,
-                gridRowEnd: gridRowEnd,
                 overflow: "auto",
-                bgcolor: "#FFE8E1"
+                bgcolor: "#FFE8E1",
+                height: "100%",
             }}
         >
             <Box sx={{
@@ -33,7 +21,7 @@ export function Skills({
                 alignItems: "center",
                 gap: 1
             }}>
-                Skills
+                <Typography variant="body1" sx={{ fontWeight: "bold" }}>Feats and Traits</Typography>
                 {Object.entries(character.skills)
                     .filter(([skillName]) => !skillName.includes("check"))
                     .sort((a, b) => {

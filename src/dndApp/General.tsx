@@ -1,4 +1,4 @@
-import { Grid2 as Grid, OutlinedInput, Paper, Stack, Typography } from "@mui/material";
+import { Grid2 as Grid, OutlinedInput, Paper, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import characterSheet from "./character-sheet.json";
 import useLocalStorage from "./useLocalStorage";
 import { Charges } from "./Charges";
@@ -8,6 +8,9 @@ interface StatProps extends React.ComponentProps<typeof OutlinedInput> {
     interactive?: boolean;
 }
 function StatField({ value, interactive, onChange }: StatProps) {
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.up('lg'));
+
     return (
         <OutlinedInput
             fullWidth
@@ -19,6 +22,7 @@ function StatField({ value, interactive, onChange }: StatProps) {
                 bgcolor: "#FFF8F6",
                 input: {
                     textAlign: "center",
+                    fontSize: matches ? "2rem" : "1rem",
                 },
             }}
         />
@@ -238,28 +242,14 @@ function DeathFails() {
         </Stack>
     );
 }
-interface GeneralProps {
-    gridColumnStart?: string;
-    gridColumnEnd?: string;
-    gridRowStart?: string;
-    gridRowEnd?: string;
-}
-export function General({
-    gridColumnStart,
-    gridColumnEnd,
-    gridRowStart,
-    gridRowEnd,
-}: GeneralProps) {
+export function General() {
     return (
         <Paper
             sx={{
                 padding: 1,
-                gridColumnStart: gridColumnStart,
-                gridColumnEnd: gridColumnEnd,
-                gridRowStart: gridRowStart,
-                gridRowEnd: gridRowEnd,
                 bgcolor: "#FFE8E1",
                 overflow: "auto",
+                height: "100%",
             }}
         >
             <Grid
@@ -281,9 +271,6 @@ export function General({
                 <Grid size={{ xs: 6, md: 3}}>
                     <ProficiencyBonus />
                 </Grid>
-                <Grid size={{ xs: 12, md: 12 }}>
-                    <HitDiceCharges />
-                </Grid>
                 <Grid size={{ xs: 4, md: 4}}>
                     <TempHP />
                 </Grid>
@@ -292,6 +279,9 @@ export function General({
                 </Grid>
                 <Grid size={{ xs: 4, md: 4}}>
                     <MaxHP />
+                </Grid>
+                <Grid size={{ xs: 12, md: 12 }}>
+                    <HitDiceCharges />
                 </Grid>
                 <Grid size={{ xs: 6, md: 4}}>
                     <Gold />
