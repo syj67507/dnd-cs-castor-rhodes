@@ -6,7 +6,6 @@ import { Name } from "./Name";
 import { Skills } from "./Skills";
 
 export default function App() {
-
     return (
         <Box
             sx={{
