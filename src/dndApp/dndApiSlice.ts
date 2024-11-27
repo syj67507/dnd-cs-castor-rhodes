@@ -12,6 +12,19 @@ export interface SkillDetails {
   url: string
 }
 
+export interface AbilityScoreDetails {
+  index: string
+  name: string
+  full_name: string
+  desc: string[]
+  skills: {
+    name: string
+    index: string
+    url: string
+  }[]
+  url: string
+}
+
 export const dndApiSlice = createApi({
   reducerPath: "dndApi",
   baseQuery: fetchBaseQuery({
@@ -21,7 +34,13 @@ export const dndApiSlice = createApi({
     getSkillsDescription: builder.query<SkillDetails, string>({
       query: skill => `skills/${skill}`,
     }),
+    getAbilityScoreDescription: builder.query<AbilityScoreDetails, string>({
+      query: abilityScore => `ability-scores/${abilityScore}`,
+    }),
   }),
 })
 
-export const { useGetSkillsDescriptionQuery } = dndApiSlice
+export const {
+  useGetSkillsDescriptionQuery,
+  useGetAbilityScoreDescriptionQuery,
+} = dndApiSlice

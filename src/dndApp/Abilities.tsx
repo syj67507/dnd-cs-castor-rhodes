@@ -1,5 +1,7 @@
-import { Grid2, Paper, Stack, Typography } from "@mui/material";
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid2, Paper, Stack, Typography } from "@mui/material";
 import characterSheet from "./character-sheet.json";
+import { useGetAbilityScoreDescriptionQuery } from "./dndApiSlice";
+import { useState } from "react";
 
 interface AbilityProps {
     name: string;
@@ -8,23 +10,44 @@ interface AbilityProps {
 }
 
 export function Ability({ name, modifier, value }: AbilityProps) {
+    const [open, setOpen] = useState(false);
+    const { data } = useGetAbilityScoreDescriptionQuery(name);
+    console.log(data);
+
     return (
-        <Stack
-            bgcolor="#FFF8F6"
-            borderRadius={1}
-            border="1px solid rgba(0, 0, 0, 0.26)"
-            sx={{
-                "&:hover": {
-                    border: "1px solid black",
-                }
-            }}
-            flex={1}
-            alignItems="center"
-        >
-            <Typography>{name}</Typography>
-            <Typography variant="h5">{modifier}</Typography>
-            <Typography>{value}</Typography>
-        </Stack>
+        <>
+            <Stack
+                onClick={() => setOpen(true)}
+                bgcolor="#FFF8F6"
+                borderRadius={1}
+                border="1px solid rgba(0, 0, 0, 0.26)"
+                sx={{
+                    "&:hover": {
+                        border: "1px solid black",
+                    }
+                }}
+                flex={1}
+                alignItems="center"
+            >
+                <Typography>{name.toUpperCase()}</Typography>
+                <Typography variant="h5">{modifier}</Typography>
+                <Typography>{value}</Typography>
+            </Stack>
+            <Dialog
+                open={open}
+                onClose={() => {
+                    setOpen(false)
+                }}
+            >
+                <DialogTitle>{data?.full_name}</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>{data?.desc.join("\n")}</DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={() => setOpen(false)}>Close</Button>
+                </DialogActions>
+            </Dialog>
+        </>
     );
 }
 
@@ -64,7 +87,7 @@ export function Abilities({
                     return (
                         <Grid2 size={{ xs: 4, sm: 2 }}>
                             <Ability 
-                                name={stat.toUpperCase()}
+                                name={stat}
                                 modifier={`${sign}${character.abilities_bonuses[0].bonuses[stat]}`}
                                 value={character.abilities_bonuses[0].abilities[stat]}
                             />

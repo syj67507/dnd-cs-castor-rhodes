@@ -96,7 +96,7 @@ export function Skill({ name, statValue }: SkillProps) {
                 <DialogActions>
                     <Button onClick={() => setOpen(false)}>Close</Button>
                 </DialogActions>
-            </Dialog> 
+            </Dialog>
         </>
     );
 
