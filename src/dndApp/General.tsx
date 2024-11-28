@@ -249,7 +249,6 @@ export function General() {
                 padding: 1,
                 bgcolor: "#FFE8E1",
                 overflow: "auto",
-                height: "100%",
             }}
         >
             <Grid

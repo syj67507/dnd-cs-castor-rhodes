@@ -1,15 +1,31 @@
-import { Paper, Stack, Typography } from "@mui/material";
+import { OutlinedInput, Paper, Stack, Typography } from "@mui/material";
 import characterSheet from "./character-sheet.json";
+import { Notes } from "./Notes";
 
 export function Details() {
     const character = characterSheet.character[0];
+    const attacks = character.attacks as any;
+    const weaponKeys = Object.keys(attacks).filter(key =>
+        key.startsWith("weapon-name")
+    );
+    
+    // Extract indices from the weapon-name keys
+    const indices = weaponKeys.map(key => key.match(/(\d+)$/)[0]);
+    
+    // Build the resulting array
+    const result = indices.map(index => ({
+        name: attacks[`weapon-name-${index}`],
+        "attack-bonus": attacks[`weapon-attack-bonus-${index}`],
+        damage: attacks[`weapon-damage-${index}`],
+    }));
+    
 
     return (
         <Paper
             sx={{
                 bgcolor: "#FFE8E1",
                 padding: 1,
-                height: "100%",
+                overflow: "auto",
             }}>
             <Stack
                 direction="column"
@@ -19,6 +35,7 @@ export function Details() {
                 justifyContent="flex-start"
                 overflow="auto"
             >
+                <Notes />
                 <Typography variant="body1" sx={{ fontWeight: "bold" }}>Weapons</Typography>
                 <Stack
                     direction="column"
@@ -28,12 +45,21 @@ export function Details() {
                     width="100%"
                     bgcolor="#FFF8F6"
                 >
-                    {character.equipment[0].weapons.map(([weaponName]) => {
+                    {/* {character.equipment[0].weapons.map(([weaponName]) => {
                         return <Typography variant="body1">{(weaponName as string).slice(0,1).toUpperCase()}{(weaponName as string).slice(1)}</Typography>
+                    })} */}
+                    {result.map(r => {
+                        return (
+                            <Stack direction="row" justifyContent="space-between">
+                                <Typography flex={1} variant="body1">{r.name}</Typography>
+                                <Typography flex={1} variant="body1">{r["attack-bonus"]}</Typography>
+                                <Typography flex={1} variant="body1">{r.damage}</Typography>
+                            </Stack>
+                        );
                     })}
                     <Typography variant="body1">Harpoon</Typography>
                 </Stack>
-                <Typography variant="body1" sx={{ fontWeight: "bold" }}>Skills</Typography>
+                <Typography variant="body1" sx={{ fontWeight: "bold" }}>Feats & Traits</Typography>
                 <Stack
                     direction="column"
                     border="1px solid rgba(0, 0, 0, 0.26)"

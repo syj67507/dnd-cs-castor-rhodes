@@ -13,7 +13,6 @@ export function Skills() {
                 padding: 1,
                 overflow: "auto",
                 bgcolor: "#FFE8E1",
-                height: "100%",
             }}
         > 
             <Box sx={{
@@ -23,7 +22,7 @@ export function Skills() {
                 alignItems: "center",
                 gap: 1
             }}>
-                <Typography variant="body1" sx={{ fontWeight: "bold" }}>Feats and Traits</Typography>
+                <Typography variant="body1" sx={{ fontWeight: "bold" }}>Skills</Typography>
                 {Object.entries(character.skills)
                     .filter(([skillName]) => !skillName.includes("check"))
                     .sort((a, b) => {

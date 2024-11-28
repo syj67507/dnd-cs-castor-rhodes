@@ -23,13 +23,13 @@ export default function App() {
                 <Grid2 size={{ xs: 12, sm: 12, lg: 12 }}>
                     <Abilities />
                 </Grid2>
-                <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 6 }} order={{ lg: 4 }}>
                     <General />
                 </Grid2>
-                <Grid2 size={{ xs: 12, sm: 6, lg: 3 }}>
+                <Grid2 size={{ xs: 12, sm: 6, lg: 3 }} order={{ lg: 3 }}>
                     <Skills />
                 </Grid2>
-                <Grid2 size={{ xs: 12, sm: 6, lg: 3 }}>
+                <Grid2 size={{ xs: 12, sm: 6, lg: 3 }} order={{ lg: 5 }}>
                     <Details />
                 </Grid2>
             </Grid2>
