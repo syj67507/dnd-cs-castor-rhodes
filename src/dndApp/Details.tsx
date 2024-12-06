@@ -24,7 +24,6 @@ export function Details() {
                 justifyContent="flex-start"
                 overflow="auto"
             >
-                <Notes />
                 <Weapons />
                 <Typography variant="body1" sx={{ fontWeight: "bold" }}>Feats & Traits</Typography>
                 <Stack
