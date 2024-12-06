@@ -1,8 +1,5 @@
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Paper, Typography } from "@mui/material";
+import { Box, Paper, Typography } from "@mui/material";
 import characterSheet from "./formatted-sheet.json";
-import { useGetSkillsDescriptionQuery } from "./dndApiSlice";
-import { useState } from "react";
 
 export function SavingThrows() {
     const skills = characterSheet.saving_throws;
