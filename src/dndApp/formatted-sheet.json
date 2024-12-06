@@ -1,0 +1,188 @@
+{
+    "name": "Castor Rhodes",
+    "race": "Human",
+    "ability_scores": [
+        {
+            "name": "STR",
+            "modifier": "+4",
+            "score": "18"
+        },
+        {
+            "name": "DEX",
+            "modifier": "+2",
+            "score": "14"
+        },
+        {
+            "name": "CON",
+            "modifier": "+3",
+            "score": "16"
+        },
+        {
+            "name": "INT",
+            "modifier": "-1",
+            "score": "9"
+        },
+        {
+            "name": "WIS",
+            "modifier": "+1",
+            "score": "12"
+        },
+        {
+            "name": "CHA",
+            "modifier": "0",
+            "score": "10"
+        }
+    ],
+    "skills": [
+        { "name": "acrobatics", "value": "+2" },
+        { "name": "animal-handling", "value": "+4" },
+        { "name": "arcana", "value": "-1" },
+        { "name": "athletics", "value": "+4" },
+        { "name": "deception", "value": "0" },
+        { "name": "history", "value": "-1" },
+        { "name": "investigation", "value": "-1" },
+        { "name": "insight", "value": "+1" },
+        { "name": "intimidation", "value": "+3" },
+        { "name": "medicine", "value": "+1" },
+        { "name": "nature", "value": "-1" },
+        { "name": "perception", "value": "+1" },
+        { "name": "performance", "value": "0" },
+        { "name": "persuasion", "value": "0" },
+        { "name": "religion", "value": "-1" },
+        { "name": "sleight-of-hand", "value": "+2" },
+        { "name": "stealth", "value": "+2" },
+        { "name": "survival", "value": "+1" }
+    ],
+    "saving_throws": [
+        { "name": "Strength", "modifier": "7" },
+        { "name": "Dexterity", "modifier": "2" },
+        { "name": "Constitution", "modifier": "6" },
+        { "name": "Intelligence", "modifier": "-1" },
+        { "name": "Wisdom", "modifier": "1" },
+        { "name": "Charisma", "modifier": "0" }
+    ],
+    "armor_class": "15",
+    "initiative": "+2",
+    "speed": "40/30",
+    "proficiency_bonus": "+3",
+    "hp": {
+        "max": 64,
+        "current": 64
+    },
+    "classes": {
+        "barbarian": {
+            "level": 5,
+            "hit_die": "d12",
+            "rage_charges": 3
+        }
+    },
+    "gold": 10,
+    "bardic_inspiration": 0,
+    "inspiration": 0,
+    "death_saves": {
+        "success": 0,
+        "fail": 0
+    },
+    "notes": "",
+    "weapons": [
+        {
+            "name": "Moon-touched Greataxe",
+            "atk": "+7",
+            "roll": "1d12",
+            "modifier": "+4"
+        },
+        {
+            "name": "Javelin",
+            "atk": "+7",
+            "roll": "1d6",
+            "modifier": "+4"
+        },
+        {
+            "name": "Handaxe",
+            "atk": "7",
+            "roll": "1d6",
+            "modifier": "+4"
+        },
+        {
+            "name": "Handaxe",
+            "atk": "+7",
+            "roll": "1d6",
+            "modifier": "+4"
+        },
+        {
+            "name": "Harpoon",
+            "atk": "+7",
+            "roll": "1d6",
+            "modifier": "+4"
+        }
+    ],
+    "weapon_proficiency": ["Martial", "Simple"],
+    "armor_proficiency": ["Light", "Medium", "Shields"],
+    "language_proficiency": ["Common", "Grung"],
+    "feats_and_traits": [
+        {
+            "name": "Rage",
+            "description": ""
+        },
+        {
+            "name": "Danger Sense",
+            "description": ""
+        },
+        {
+            "name": "Extra Attack",
+            "description": ""
+        },
+        {
+            "name": "Fast Movement",
+            "description": ""
+        },
+        {
+            "name": "Great Weapon Master",
+            "description": ""
+        },
+        {
+            "name": "Reckless Attack",
+            "description": ""
+        },
+        {
+            "name": "Storm Aura: Sea",
+            "description": ""
+        },
+        {
+            "name": "Clothes, traveler's",
+            "description": ""
+        },
+        {
+            "name": "Explorer's Pack",
+            "description": ""
+        },
+        {
+            "name": "Fishing tackle",
+            "description": ""
+        },
+        {
+            "name": "Pouch",
+            "description": ""
+        },
+        {
+            "name": "Greater Healing Potion",
+            "description": ""
+        },
+        {
+            "name": "Soulgaze Monacle",
+            "description": ""
+        },
+        {
+            "name": "Bottle of Boundless Coffee",
+            "description": ""
+        },
+        {
+            "name": "Heward's Spice Pouch",
+            "description": ""
+        },
+        {
+            "name": "Pole of Angling",
+            "description": ""
+        }
+    ]
+}

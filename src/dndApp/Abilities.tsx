@@ -1,15 +1,15 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid2, Paper, Stack, Typography } from "@mui/material";
-import characterSheet from "./character-sheet.json";
+import characterSheet from "./formatted-sheet.json";
 import { useGetAbilityScoreDescriptionQuery } from "./dndApiSlice";
 import { useState } from "react";
 
 interface AbilityProps {
     name: string;
     modifier: string;
-    value: number;
+    score: string;
 }
 
-export function Ability({ name, modifier, value }: AbilityProps) {
+export function Ability({ name, modifier, score }: AbilityProps) {
     const [open, setOpen] = useState(false);
     const { data } = useGetAbilityScoreDescriptionQuery(name);
 
@@ -28,9 +28,9 @@ export function Ability({ name, modifier, value }: AbilityProps) {
                 flex={1}
                 alignItems="center"
             >
-                <Typography>{name.toUpperCase()}</Typography>
+                <Typography>{name}</Typography>
                 <Typography variant="h5">{modifier}</Typography>
-                <Typography>{value}</Typography>
+                <Typography>{score}</Typography>
             </Stack>
             <Dialog
                 open={open}
@@ -63,8 +63,7 @@ export function Abilities({
     gridRowStart,
     gridRowEnd,
 }: AbilitiesProps) {
-    const character = characterSheet.character[0];
-    const statNames = ["str", "dex", "con", "int", "wis", "cha"] as const;
+    const abilityScores = characterSheet.ability_scores;
 
     return (
         <Paper
@@ -78,21 +77,20 @@ export function Abilities({
             }}
         >
             <Grid2 container spacing={1}>
-                {statNames.map(stat => {
-                    let sign = "";
-                    if (character.abilities_bonuses[0].bonuses[stat] > 0) {
-                        sign = "+"
-                    }
-                    return (
-                        <Grid2 size={{ xs: 4, sm: 2 }}>
-                            <Ability 
-                                name={stat}
-                                modifier={`${sign}${character.abilities_bonuses[0].bonuses[stat]}`}
-                                value={character.abilities_bonuses[0].abilities[stat]}
-                            />
-                        </Grid2>
-                    );
-                })}
+                {
+                    abilityScores.map((abilityScore) => {
+                        return (
+                            <Grid2 size={{ xs: 4, sm: 2 }}>
+                                <Ability 
+                                    name={abilityScore.name}
+                                    modifier={abilityScore.modifier}
+                                    score={abilityScore.score}
+                                />
+                            </Grid2>
+                        );
+                    })
+                }
+                    
             </Grid2>
         </Paper>
     );

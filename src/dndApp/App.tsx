@@ -1,9 +1,10 @@
-import { Box, Grid2 } from "@mui/material";
+import { Box, Grid2, Stack } from "@mui/material";
 import { Abilities } from "./Abilities";
 import { Details } from "./Details";
 import { General } from "./General";
 import { Name } from "./Name";
 import { Skills } from "./Skills";
+import { SavingThrows } from "./SavingThrows";
 
 export default function App() {
     return (
@@ -27,9 +28,12 @@ export default function App() {
                     <General />
                 </Grid2>
                 <Grid2 size={{ xs: 12, sm: 6, lg: 3 }} order={{ lg: 3 }}>
-                    <Skills />
+                    <Stack spacing={1}>
+                        <SavingThrows />
+                        <Skills />
+                    </Stack>
                 </Grid2>
-                <Grid2 size={{ xs: 12, sm: 6, lg: 3 }} order={{ lg: 5 }}>
+                <Grid2 size={{ xs: 12, sm: 6, lg: 3 }} order={{ lg: 4 }}>
                     <Details />
                 </Grid2>
             </Grid2>

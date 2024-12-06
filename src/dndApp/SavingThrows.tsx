@@ -4,8 +4,8 @@ import characterSheet from "./formatted-sheet.json";
 import { useGetSkillsDescriptionQuery } from "./dndApiSlice";
 import { useState } from "react";
 
-export function Skills() {
-    const skills = characterSheet.skills;
+export function SavingThrows() {
+    const skills = characterSheet.saving_throws;
 
     return (
         <Paper
@@ -22,11 +22,11 @@ export function Skills() {
                 alignItems: "center",
                 gap: 1
             }}>
-                <Typography variant="body1" sx={{ fontWeight: "bold" }}>Skills</Typography>
+                <Typography variant="body1" sx={{ fontWeight: "bold" }}>Saving Throws</Typography>
                 {
-                    skills.map(({ name, value }) => {
+                    skills.map(({ name, modifier }) => {
                         return (
-                            <Skill name={name} statValue={value} />
+                            <Skill name={name} statValue={modifier} />
                         );
                     })
                 }
@@ -35,13 +35,11 @@ export function Skills() {
     );
 }
 
-interface SkillProps {
+interface SavingThrowsProps {
     name: string;
     statValue: string | boolean;
 }
-export function Skill({ name, statValue }: SkillProps) {
-    const [open, setOpen] = useState(false);
-    const { data } = useGetSkillsDescriptionQuery(name);
+export function Skill({ name, statValue }: SavingThrowsProps) {
     const skillName = `${name.slice(0,1).toUpperCase()}${name.slice(1)}`.replace(/-/g, " ")
 
     return (
@@ -61,7 +59,6 @@ export function Skill({ name, statValue }: SkillProps) {
                         border: "1px solid black",
                     }
                 }}
-                onClick={() => setOpen(true)}
             >
                 <Typography variant="body1">
                     {skillName}
@@ -70,20 +67,6 @@ export function Skill({ name, statValue }: SkillProps) {
                     {statValue}
                 </Typography>
             </Box>
-            <Dialog
-                open={open}
-                onClose={() => {
-                    setOpen(false)
-                }}
-            >
-                <DialogTitle>{skillName}</DialogTitle>
-                <DialogContent>
-                    <DialogContentText>{data?.desc}</DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={() => setOpen(false)}>Close</Button>
-                </DialogActions>
-            </Dialog>
         </>
     );
 
