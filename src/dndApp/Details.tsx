@@ -1,7 +1,8 @@
 import { Paper, Stack, Typography } from "@mui/material";
-import { Notes } from "./Notes";
 import { Weapons } from "./Weapons";
 import characterSheet from "./formatted-sheet.json";
+import { FeatOrTrait } from "./FeatOrTrait";
+import { ItemsAndEquipment } from "./ItemsAndEquipment";
 
 export function Details() {
     const featsAndTraits = characterSheet.feats_and_traits;
@@ -35,11 +36,11 @@ export function Details() {
                     bgcolor="#FFF8F6"
                 >
                     {featsAndTraits.map((featOrTrait) => {
-                        return (
-                            <Typography variant="body1">{featOrTrait.name}</Typography>
-                        )
+                        return <FeatOrTrait name={featOrTrait.name} description={featOrTrait.description} />
                     })}
                 </Stack>
+                <ItemsAndEquipment />
+                
                 <Typography variant="body1" sx={{ fontWeight: "bold" }}>Weapon Proficiencies</Typography>
                 <Stack
                     direction="column"

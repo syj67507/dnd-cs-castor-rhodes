@@ -11,7 +11,7 @@ interface AbilityProps {
 
 export function Ability({ name, modifier, score }: AbilityProps) {
     const [open, setOpen] = useState(false);
-    const { data } = useGetAbilityScoreDescriptionQuery(name);
+    const { data } = useGetAbilityScoreDescriptionQuery(name.toLowerCase());
 
     return (
         <>

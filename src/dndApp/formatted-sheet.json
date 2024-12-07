@@ -122,67 +122,94 @@
     "feats_and_traits": [
         {
             "name": "Rage",
-            "description": ""
+            "description": [
+                "In battle, you fight with primal ferocity. On your turn, you can enter a rage as a bonus action. While raging, you gain the following benefits if you aren't wearing heavy armor:",
+                "- You have advantage on Strength checks and Strength saving throws.",
+                "- When you make a melee weapon Attack using Strength, you gain a +2 bonus to the damage roll. This bonus increases as you level.",
+                "- You have Resistance to bludgeoning, piercing, and slashing damage.",
+                "If you are able to cast Spells, you can't cast them or concentrate on them while raging.",
+                "Your rage lasts for 1 minute. It ends early if you are knocked Unconscious or if Your Turn ends and you haven't attacked a hostile creature since your last turn or taken damage since then. You can also end your rage on Your Turn as a Bonus Action.",
+                "Once you have raged the maximum number of times for your barbarian level, you must finish a Long Rest before you can rage again. You may rage 2 times at 1st level, 3 at 3rd, 4 at 6th, 5 at 12th, and 6 at 17th."
+            ]
         },
         {
             "name": "Danger Sense",
-            "description": ""
+            "description": [
+                "At 2nd level, you gain an uncanny sense of when things nearby aren't as they should be, giving you an edge when you dodge away from danger. You have advantage on Dexterity saving throws against effects that you can see, such as traps and spells. To gain this benefit, you can't be blinded, deafened, or incapacitated."
+            ]
         },
         {
             "name": "Extra Attack",
-            "description": ""
+            "description": [
+                "Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn."
+            ]
         },
         {
             "name": "Fast Movement",
-            "description": ""
+            "description": [
+                "Starting at 5th level, your speed increases by 10 feet while you aren't wearing heavy armor."
+            ]
         },
         {
             "name": "Great Weapon Master",
-            "description": ""
+            "description": [
+                "You've learned to put the weight of a weapon to your advantage, letting its momentum empower your strikes. You gain the following benefits:",
+                "- On your turn, when you score a critical hit with a melee weapon or reduce a creature to 0 hit points with one, you can make one melee weapon attack as a bonus action.",
+                "- Before you make a melee attack with a heavy weapon that you are proficient with, you can choose to take a -5 penalty to the attack roll. If the attack hits, you add +10 to the attack's damage."
+            ]
         },
         {
             "name": "Reckless Attack",
-            "description": ""
+            "description": [
+                "Starting at 2nd level, you can throw aside all concern for defense to attack with fierce desperation. When you make your first attack on your turn, you can decide to attack recklessly. Doing so gives you advantage on melee weapon attack rolls using Strength during this turn, but attack rolls against you have advantage until your next turn."
+            ]
         },
         {
             "name": "Storm Aura: Sea",
-            "description": ""
-        },
+            "description": [
+                "When you select this path at 3rd level, you emanate a stormy, magical aura while you rage. The aura extends 10 feet from you in every direction, but not through total cover.",
+                "Your aura has an effect that activates when you enter your rage, and you can activate the effect again on each of your turns as a bonus action. Choose desert, sea, or tundra. Your aura's effect depends on that chosen environment, as detailed below. You can change your environment choice whenever you gain a level in this class.",
+                "If your aura's effects require a saving throw, the DC equals 8 + your proficiency bonus + your Constitution modifier.",
+                "Sea. When this effect is activated, you can choose one other creature you can see in your aura. The target must make a Dexterity saving throw. The target takes 1d6 lightning damage on a failed save, or half as much damage on a successful one. The damage increases when you reach certain levels in this class, increasing to 2d6 at 10th level, 3d6 at 15th level, and 4d6 at 20th level."
+            ]
+        }
+    ],
+    "items_and_equipment": [
         {
             "name": "Clothes, traveler's",
-            "description": ""
+            "description": []
         },
         {
             "name": "Explorer's Pack",
-            "description": ""
+            "description": []
         },
         {
             "name": "Fishing tackle",
-            "description": ""
+            "description": []
         },
         {
             "name": "Pouch",
-            "description": ""
+            "description": []
         },
         {
             "name": "Greater Healing Potion",
-            "description": ""
+            "description": []
         },
         {
             "name": "Soulgaze Monacle",
-            "description": ""
+            "description": []
         },
         {
             "name": "Bottle of Boundless Coffee",
-            "description": ""
+            "description": []
         },
         {
             "name": "Heward's Spice Pouch",
-            "description": ""
+            "description": []
         },
         {
             "name": "Pole of Angling",
-            "description": ""
+            "description": []
         }
     ]
 }
