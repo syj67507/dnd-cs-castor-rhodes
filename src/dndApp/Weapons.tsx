@@ -82,9 +82,6 @@ export function Weapons() {
                         />
                     );
                 })}
-                <StyledStack>
-                    <Typography variant="body1">Harpoon</Typography>
-                </StyledStack>
             </Stack>
         </Stack>
     );
