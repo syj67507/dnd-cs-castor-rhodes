@@ -1,19 +1,18 @@
 import { Typography } from "@mui/material";
-import characterSheet from "./character-sheet.json"
+import characterSheet from "./formatted-sheet.json"
 import { StyledPaper } from "./StyledPaper";
 
 export function Name() {
-    const character = characterSheet.character[0];
-
     return (
         <StyledPaper
             sx={{
                 display: "flex",
                 flexDirection: "row",
                 justifyContent: "center",
+                textAlign: "center",
             }}
         >
-            <Typography variant="h4">{character.character_name}</Typography>
+            <Typography variant="h4">Level {characterSheet.classes.barbarian.level}: {characterSheet.name}</Typography>
         </StyledPaper>
     );
 }
