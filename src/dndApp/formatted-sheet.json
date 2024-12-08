@@ -89,31 +89,36 @@
             "name": "Moon-touched Greataxe",
             "atk": "+7",
             "roll": "1d12",
-            "modifier": "+4"
+            "modifier": "+4",
+            "damage_type": "slashing/magical"
         },
         {
             "name": "Javelin",
             "atk": "+7",
             "roll": "1d6",
-            "modifier": "+4"
-        },
-        {
-            "name": "Handaxe",
-            "atk": "7",
-            "roll": "1d6",
-            "modifier": "+4"
+            "modifier": "+4",
+            "damage_type": "piercing"
         },
         {
             "name": "Handaxe",
             "atk": "+7",
             "roll": "1d6",
-            "modifier": "+4"
+            "modifier": "+4",
+            "damage_type": "slashing"
+        },
+        {
+            "name": "Handaxe",
+            "atk": "+7",
+            "roll": "1d6",
+            "modifier": "+4",
+            "damage_type": "slashing"
         },
         {
             "name": "Harpoon",
             "atk": "+7",
             "roll": "1d6",
-            "modifier": "+4"
+            "modifier": "+4",
+            "damage_type": "piercing"
         }
     ],
     "weapon_proficiency": ["Martial", "Simple"],

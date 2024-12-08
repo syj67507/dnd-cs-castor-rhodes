@@ -1,8 +1,9 @@
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Paper, Typography } from "@mui/material";
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Paper, Stack, Typography } from "@mui/material";
 import characterSheet from "./formatted-sheet.json";
 import { useGetSkillsDescriptionQuery } from "./dndApiSlice";
 import { useState } from "react";
+import { StyledStack } from "./StyledStack";
 
 export function Skills() {
     const skills = characterSheet.skills;
@@ -14,14 +15,8 @@ export function Skills() {
                 overflow: "auto",
                 bgcolor: "#FFE8E1",
             }}
-        > 
-            <Box sx={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
-                gap: 1
-            }}>
+        >
+            <Stack spacing={1} alignItems="center">
                 <Typography variant="body1" sx={{ fontWeight: "bold" }}>Skills</Typography>
                 {
                     skills.map(({ name, value }) => {
@@ -30,7 +25,7 @@ export function Skills() {
                         );
                     })
                 }
-            </Box>
+            </Stack>
         </Paper>
     );
 }
@@ -46,21 +41,10 @@ export function Skill({ name, statValue }: SkillProps) {
 
     return (
         <>
-            <Box
-                sx={{
-                    id: skillName,
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                    width: "100%",
-                    borderRadius: 1,
-                    padding: 1,
-                    bgcolor: "#FFF8F6",
-                    border: "1px solid rgba(0, 0, 0, 0.26)",
-                    "&:hover": {
-                        border: "1px solid black",
-                    }
-                }}
+            <StyledStack
+                direction="row"
+                width="100%"
+                justifyContent="space-between"
                 onClick={() => setOpen(true)}
             >
                 <Typography variant="body1">
@@ -69,7 +53,7 @@ export function Skill({ name, statValue }: SkillProps) {
                 <Typography variant="body1">
                     {statValue}
                 </Typography>
-            </Box>
+            </StyledStack>
             <Dialog
                 open={open}
                 onClose={() => {

@@ -1,7 +1,8 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid2, Paper, Stack, Typography } from "@mui/material";
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid2, Paper, Typography } from "@mui/material";
 import characterSheet from "./formatted-sheet.json";
 import { useGetAbilityScoreDescriptionQuery } from "./dndApiSlice";
 import { useState } from "react";
+import { StyledStack } from "./StyledStack";
 
 interface AbilityProps {
     name: string;
@@ -15,23 +16,15 @@ export function Ability({ name, modifier, score }: AbilityProps) {
 
     return (
         <>
-            <Stack
+            <StyledStack
                 onClick={() => setOpen(true)}
-                bgcolor="#FFF8F6"
-                borderRadius={1}
-                border="1px solid rgba(0, 0, 0, 0.26)"
-                sx={{
-                    "&:hover": {
-                        border: "1px solid black",
-                    }
-                }}
                 flex={1}
                 alignItems="center"
             >
                 <Typography>{name}</Typography>
                 <Typography variant="h5">{modifier}</Typography>
-                <Typography>{score}</Typography>
-            </Stack>
+            <Typography>{score}</Typography>
+            </StyledStack>
             <Dialog
                 open={open}
                 onClose={() => {

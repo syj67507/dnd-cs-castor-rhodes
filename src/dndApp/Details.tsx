@@ -1,11 +1,11 @@
 import { Paper, Stack, Typography } from "@mui/material";
 import { Weapons } from "./Weapons";
 import characterSheet from "./formatted-sheet.json";
-import { FeatOrTrait } from "./FeatOrTrait";
 import { ItemsAndEquipment } from "./ItemsAndEquipment";
+import { FeatsAndTraits } from "./FeatsAndTraits";
+import { StyledStack } from "./StyledStack";
 
 export function Details() {
-    const featsAndTraits = characterSheet.feats_and_traits;
     const weaponProficiencies = characterSheet.weapon_proficiency;
     const armorProficiencies = characterSheet.armor_proficiency;
     const languageProficiencies = characterSheet.language_proficiency;
@@ -26,66 +26,38 @@ export function Details() {
                 overflow="auto"
             >
                 <Weapons />
-                <Typography variant="body1" sx={{ fontWeight: "bold" }}>Feats & Traits</Typography>
-                <Stack
-                    direction="column"
-                    border="1px solid rgba(0, 0, 0, 0.26)"
-                    borderRadius={1}
-                    padding={1}
-                    width="100%"
-                    bgcolor="#FFF8F6"
-                >
-                    {featsAndTraits.map((featOrTrait) => {
-                        return <FeatOrTrait name={featOrTrait.name} description={featOrTrait.description} />
-                    })}
-                </Stack>
+                <FeatsAndTraits />
                 <ItemsAndEquipment />
-                
                 <Typography variant="body1" sx={{ fontWeight: "bold" }}>Weapon Proficiencies</Typography>
-                <Stack
-                    direction="column"
-                    border="1px solid rgba(0, 0, 0, 0.26)"
-                    borderRadius={1}
-                    padding={1}
+                <StyledStack
                     width="100%"
-                    bgcolor="#FFF8F6"
                 >
                     {weaponProficiencies.map((prof) => {
                         return (
                             <Typography variant="body1">{prof}</Typography>
                         );
                     })}
-                </Stack>
+                </StyledStack>
                 <Typography variant="body1" sx={{ fontWeight: "bold" }}>Armor Proficiencies</Typography>
-                <Stack
-                    direction="column"
-                    border="1px solid rgba(0, 0, 0, 0.26)"
-                    borderRadius={1}
-                    padding={1}
+                <StyledStack
                     width="100%"
-                    bgcolor="#FFF8F6"
                 >
                     {armorProficiencies.map((prof) => {
                         return (
                             <Typography variant="body1">{prof}</Typography>
                         );
                     })}
-                </Stack>
+                </StyledStack>
                 <Typography variant="body1" sx={{ fontWeight: "bold" }}>Language Proficiencies</Typography>
-                <Stack
-                    direction="column"
-                    border="1px solid rgba(0, 0, 0, 0.26)"
-                    borderRadius={1}
-                    padding={1}
+                <StyledStack
                     width="100%"
-                    bgcolor="#FFF8F6"
                 >
                     {languageProficiencies.map((prof) => {
                         return (
                             <Typography variant="body1">{prof}</Typography>
                         );
                     })}
-                </Stack>
+                </StyledStack>
             </Stack>
         </Paper>
     );

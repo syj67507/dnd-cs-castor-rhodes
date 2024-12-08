@@ -1,22 +1,9 @@
 import { Stack, Typography } from "@mui/material";
-import characterSheet from "./character-sheet.json";
+import characterSheet from "./formatted-sheet.json";
+import { StyledStack } from "./StyledStack";
 
 export function Weapons() {
-    const character = characterSheet.character[0];
-    const attacks = character.attacks as any;
-    const weaponKeys = Object.keys(attacks).filter(key =>
-        key.startsWith("weapon-name")
-    );
-    
-    // Extract indices from the weapon-name keys
-    const indices = weaponKeys.map(key => key.match(/(\d+)$/)[0]);
-    
-    // Build the resulting array
-    const result = indices.map(index => ({
-        name: attacks[`weapon-name-${index}`],
-        "attack-bonus": attacks[`weapon-attack-bonus-${index}`],
-        damage: attacks[`weapon-damage-${index}`],
-    }));
+    const { weapons } = characterSheet;
 
     return (
         <Stack
@@ -30,58 +17,37 @@ export function Weapons() {
                 width="100%"
                 spacing={1}
             >
-                {result.map(r => {
+                {weapons.map(({ name, atk, roll, modifier, damage_type }) => {
                     return (
                         <Stack direction="row" spacing={1}>
-                            <Stack
+                            <StyledStack
                                 direction="row"
-                                justifyContent="flex-start"
-                                border="1px solid rgba(0, 0, 0, 0.26)"
-                                borderRadius={1}
-                                bgcolor="#FFF8F6"
-                                padding={1}
-                                flex={1}
-                                alignItems="center"
-                            >
-                                <Typography variant="body1">{r.name}</Typography>
-                            </Stack>
-                            <Stack
-                                direction="row"
-                                justifyContent="center"
-                                border="1px solid rgba(0, 0, 0, 0.26)"
-                                borderRadius={1}
-                                bgcolor="#FFF8F6"
-                                padding={1}
-                                flex={1}
-                                alignItems="center"
-                            >
-                                <Typography variant="body1">{r["attack-bonus"]}</Typography>
-                            </Stack>
-                            <Stack
-                                direction="row"
-                                justifyContent="flex-start"
-                                border="1px solid rgba(0, 0, 0, 0.26)"
-                                borderRadius={1}
-                                bgcolor="#FFF8F6"
-                                padding={1}
                                 flex={2}
                                 alignItems="center"
                             >
-                                <Typography variant="body1">{r.damage}</Typography>
-                            </Stack>
+                                <Typography variant="body1">{name}</Typography>
+                            </StyledStack>
+                            <StyledStack
+                                direction="row"
+                                flex={1}
+                                justifyContent="center"
+                                alignItems="center"
+                            >
+                                <Typography variant="body1">{atk}</Typography>
+                            </StyledStack>
+                            <StyledStack
+                                direction="row"
+                                flex={3}
+                                alignItems="center"
+                            >
+                                <Typography variant="body1">{roll}{modifier} {damage_type}</Typography>
+                            </StyledStack>
                         </Stack>
                     );
                 })}
-                <Stack
-                    direction="row"
-                    justifyContent="space-between"
-                    border="1px solid rgba(0, 0, 0, 0.26)"
-                    borderRadius={1}
-                    bgcolor="#FFF8F6"
-                    padding={1}
-                >
+                <StyledStack>
                     <Typography variant="body1">Harpoon</Typography>
-                </Stack>
+                </StyledStack>
             </Stack>
         </Stack>
     );

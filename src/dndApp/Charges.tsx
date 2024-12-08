@@ -1,5 +1,6 @@
 import { Stack, Checkbox } from "@mui/material";
 import useLocalStorage from "./useLocalStorage";
+import { StyledStack } from "./StyledStack";
 
 interface CheckboxLocalStorageProps {
     id: string;
@@ -26,20 +27,11 @@ interface ChargesProps {
 export function Charges({ id, total }: ChargesProps) {
 
     return (
-        <Stack
+        <StyledStack
             flex={1}
-            direction="row"
-            border="1px solid rgba(0, 0, 0, 0.26)"
-            borderRadius={1}
             padding={1}
             justifyContent="center"
             alignItems="center"
-            sx={{
-                "&:hover": {
-                    border: "1px solid black"
-                },
-                bgcolor: "#FFF8F6",
-            }}
         >
             <Stack direction="row" overflow="auto">
                 {Array.from({length: total}, (_, i) => i + 1).map((index) => {
@@ -48,7 +40,7 @@ export function Charges({ id, total }: ChargesProps) {
                     )
                 })}
             </Stack>
-        </Stack>
+        </StyledStack>
     )
 }
 

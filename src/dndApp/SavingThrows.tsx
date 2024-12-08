@@ -1,5 +1,6 @@
 import { Box, Paper, Typography } from "@mui/material";
 import characterSheet from "./formatted-sheet.json";
+import { StyledStack } from "./StyledStack";
 
 export function SavingThrows() {
     const skills = characterSheet.saving_throws;
@@ -41,21 +42,10 @@ export function Skill({ name, statValue }: SavingThrowsProps) {
 
     return (
         <>
-            <Box
-                sx={{
-                    id: skillName,
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                    width: "100%",
-                    borderRadius: 1,
-                    padding: 1,
-                    bgcolor: "#FFF8F6",
-                    border: "1px solid rgba(0, 0, 0, 0.26)",
-                    "&:hover": {
-                        border: "1px solid black",
-                    }
-                }}
+            <StyledStack
+                direction="row"
+                width="100%"
+                justifyContent="space-between"
             >
                 <Typography variant="body1">
                     {skillName}
@@ -63,7 +53,7 @@ export function Skill({ name, statValue }: SavingThrowsProps) {
                 <Typography variant="body1">
                     {statValue}
                 </Typography>
-            </Box>
+            </StyledStack>
         </>
     );
 
