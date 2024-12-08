@@ -1,21 +1,16 @@
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Paper, Stack, Typography } from "@mui/material";
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Stack, Typography } from "@mui/material";
 import characterSheet from "./formatted-sheet.json";
 import { useGetSkillsDescriptionQuery } from "./dndApiSlice";
 import { useState } from "react";
 import { StyledStack } from "./StyledStack";
+import { StyledPaper } from "./StyledPaper";
 
 export function Skills() {
     const skills = characterSheet.skills;
 
     return (
-        <Paper
-            sx={{
-                padding: 1,
-                overflow: "auto",
-                bgcolor: "#FFE8E1",
-            }}
-        >
+        <StyledPaper>
             <Stack spacing={1} alignItems="center">
                 <Typography variant="body1" sx={{ fontWeight: "bold" }}>Skills</Typography>
                 {
@@ -26,7 +21,7 @@ export function Skills() {
                     })
                 }
             </Stack>
-        </Paper>
+        </StyledPaper>
     );
 }
 

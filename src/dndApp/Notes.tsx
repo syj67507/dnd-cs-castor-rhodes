@@ -1,17 +1,12 @@
-import { Typography, OutlinedInput, Stack, Paper } from "@mui/material";
+import { Typography, OutlinedInput, Stack } from "@mui/material";
 import useLocalStorage from "./useLocalStorage";
+import { StyledPaper } from "./StyledPaper";
 
 export function Notes() {
     const [notes, setNotes] = useLocalStorage("notes", "");
 
     return (
-        <Paper
-            sx={{
-                bgcolor: "#FFE8E1",
-                padding: 1,
-                overflow: "auto",
-            }}
-        >
+        <StyledPaper>
             <Stack
                 spacing={1}
                 width="100%"
@@ -32,7 +27,7 @@ export function Notes() {
                     }}
                 />
             </Stack>
-        </Paper>
+        </StyledPaper>
     );
     
 }

@@ -1,18 +1,13 @@
-import { Box, Paper, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import characterSheet from "./formatted-sheet.json";
 import { StyledStack } from "./StyledStack";
+import { StyledPaper } from "./StyledPaper";
 
 export function SavingThrows() {
     const skills = characterSheet.saving_throws;
 
     return (
-        <Paper
-            sx={{
-                padding: 1,
-                overflow: "auto",
-                bgcolor: "#FFE8E1",
-            }}
-        > 
+        <StyledPaper>
             <Box sx={{
                 display: "flex",
                 flexDirection: "column",
@@ -29,7 +24,7 @@ export function SavingThrows() {
                     })
                 }
             </Box>
-        </Paper>
+        </StyledPaper>
     );
 }
 

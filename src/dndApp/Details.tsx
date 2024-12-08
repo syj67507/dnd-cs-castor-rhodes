@@ -1,9 +1,10 @@
-import { Paper, Stack, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import { Weapons } from "./Weapons";
 import characterSheet from "./formatted-sheet.json";
 import { ItemsAndEquipment } from "./ItemsAndEquipment";
 import { FeatsAndTraits } from "./FeatsAndTraits";
 import { StyledStack } from "./StyledStack";
+import { StyledPaper } from "./StyledPaper";
 
 export function Details() {
     const weaponProficiencies = characterSheet.weapon_proficiency;
@@ -11,12 +12,7 @@ export function Details() {
     const languageProficiencies = characterSheet.language_proficiency;
 
     return (
-        <Paper
-            sx={{
-                bgcolor: "#FFE8E1",
-                padding: 1,
-                overflow: "auto",
-            }}>
+        <StyledPaper>
             <Stack
                 direction="column"
                 alignItems="center"
@@ -59,6 +55,6 @@ export function Details() {
                     })}
                 </StyledStack>
             </Stack>
-        </Paper>
+        </StyledPaper>
     );
 }

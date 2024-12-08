@@ -1,8 +1,9 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid2, Paper, Typography } from "@mui/material";
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid2, Typography } from "@mui/material";
 import characterSheet from "./formatted-sheet.json";
 import { useGetAbilityScoreDescriptionQuery } from "./dndApiSlice";
 import { useState } from "react";
 import { StyledStack } from "./StyledStack";
+import { StyledPaper } from "./StyledPaper";
 
 interface AbilityProps {
     name: string;
@@ -59,16 +60,7 @@ export function Abilities({
     const abilityScores = characterSheet.ability_scores;
 
     return (
-        <Paper
-            sx={{
-                bgcolor: "#FFE8E1",
-                padding: 1,
-                gridColumnStart: gridColumnStart,
-                gridColumnEnd: gridColumnEnd,
-                gridRowStart: gridRowStart,
-                gridRowEnd: gridRowEnd,
-            }}
-        >
+        <StyledPaper>
             <Grid2 container spacing={1}>
                 {
                     abilityScores.map((abilityScore) => {
@@ -85,6 +77,6 @@ export function Abilities({
                 }
                     
             </Grid2>
-        </Paper>
+        </StyledPaper>
     );
 }

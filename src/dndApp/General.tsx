@@ -1,7 +1,8 @@
-import { Grid2 as Grid, OutlinedInput, Paper, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Grid2 as Grid, OutlinedInput, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import characterSheet from "./character-sheet.json";
 import useLocalStorage from "./useLocalStorage";
 import { Charges } from "./Charges";
+import { StyledPaper } from "./StyledPaper";
 
 interface StatProps extends React.ComponentProps<typeof OutlinedInput> {
     value?: string | number;
@@ -244,13 +245,7 @@ function DeathFails() {
 }
 export function General() {
     return (
-        <Paper
-            sx={{
-                padding: 1,
-                bgcolor: "#FFE8E1",
-                overflow: "auto",
-            }}
-        >
+        <StyledPaper>
             <Grid
                 container
                 spacing={1}
@@ -301,6 +296,6 @@ export function General() {
                     <DeathFails />
                 </Grid>
             </Grid>
-        </Paper>
+        </StyledPaper>
     );
 }
