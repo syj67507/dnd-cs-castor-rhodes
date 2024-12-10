@@ -4,7 +4,7 @@ import { qrcode } from "vite-plugin-qrcode"
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "https://syj67507.github.io/dnd-cs-castor-rhodes/",
+  base: "/",
   plugins: [react(), qrcode()],
   server: {
     open: true,
