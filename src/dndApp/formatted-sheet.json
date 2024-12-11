@@ -86,32 +86,11 @@
     "notes": "",
     "weapons": [
         {
-            "name": "Moon-touched Greataxe",
-            "atk": "+7",
+            "name": "Bloodrage Greataxe",
+            "atk": "+7/+9",
             "roll": "1d12",
-            "modifier": "+4",
+            "modifier": "[+4/+6]",
             "damage_type": "slashing/magical"
-        },
-        {
-            "name": "Javelin",
-            "atk": "+7",
-            "roll": "1d6",
-            "modifier": "+4",
-            "damage_type": "piercing"
-        },
-        {
-            "name": "Handaxe",
-            "atk": "+7",
-            "roll": "1d6",
-            "modifier": "+4",
-            "damage_type": "slashing"
-        },
-        {
-            "name": "Handaxe",
-            "atk": "+7",
-            "roll": "1d6",
-            "modifier": "+4",
-            "damage_type": "slashing"
         },
         {
             "name": "Harpoon",
@@ -119,6 +98,20 @@
             "roll": "1d6",
             "modifier": "+4",
             "damage_type": "piercing"
+        },
+        {
+            "name": "Handaxe",
+            "atk": "+7",
+            "roll": "1d6",
+            "modifier": "+4",
+            "damage_type": "slashing"
+        },
+        {
+            "name": "Handaxe",
+            "atk": "+7",
+            "roll": "1d6",
+            "modifier": "+4",
+            "damage_type": "slashing"
         }
     ],
     "weapon_proficiency": ["Martial", "Simple"],
@@ -215,6 +208,12 @@
         {
             "name": "Pole of Angling",
             "description": []
+        },
+        {
+            "name": "Bloodrage Greataxe",
+            "description": [
+                "You gain a +2 bonus to attack and damage rolls made with this magic greataxe while you have half your hit points or fewer."
+            ]
         }
     ]
 }
