@@ -6,15 +6,17 @@ import { Name } from "./Name";
 import { Skills } from "./Skills";
 import { SavingThrows } from "./SavingThrows";
 import { Notes } from "./Notes";
+import { useTheme } from "@mui/material";
 
 export default function App() {
+    const theme = useTheme();
     return (
         <Box
             sx={{
                 paddingX: 1,
                 paddingY: 1,
                 gap: 1,
-                bgcolor: "#624A38",
+                bgcolor: theme.background,
                 color: "white"
             }}
         >

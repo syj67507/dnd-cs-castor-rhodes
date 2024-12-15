@@ -87,7 +87,7 @@
     "weapons": [
         {
             "name": "Bloodrage Greataxe",
-            "atk": "+7/+9",
+            "atk": "+7/9",
             "roll": "1d12",
             "modifier": "[+4/+6]",
             "damage_type": "slashing/magical"

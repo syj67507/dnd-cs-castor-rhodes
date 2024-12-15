@@ -1,5 +1,5 @@
 import type { StackProps } from "@mui/material";
-import { Stack } from "@mui/material";
+import { Stack, useTheme } from "@mui/material";
 
 /**
  * This Stack component is a wrapper around the Stack component
@@ -7,16 +7,17 @@ import { Stack } from "@mui/material";
  * style that can be reused throughout without having to repeat code
  */
 export function StyledStack(stackProps: StackProps) {
+    const theme = useTheme();
     return (
         <Stack
-            bgcolor="#FFF8F6"
-            borderRadius={1}
-            border="1px solid rgba(0, 0, 0, 0.26)"
+            bgcolor={theme.unitBackground}
+            borderRadius={theme.borderRadius}
+            border={theme.border ?? "1px solid rgba(0, 0, 0, 0.26)"}
             padding={1}
             {...stackProps} // placing it here allows the user to override the props
             sx={{
                 "&:hover": {
-                    border: "1px solid black",
+                    border: theme.borderHover ?? "1px solid rgba(0, 0, 0, 0.26)",
                 },
                 ...stackProps.sx // placing it here allows the user to override the styles
             }}

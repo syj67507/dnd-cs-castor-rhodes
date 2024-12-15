@@ -15,6 +15,11 @@ function CheckboxLocalStorage({ id }: CheckboxLocalStorageProps) {
                 console.log(e.target.checked);
                 setValue(e.target.checked);
             }}
+            sx={{
+                "&.Mui-checked": {
+                    color: "red",
+                }
+            }}
         />
     );
 }

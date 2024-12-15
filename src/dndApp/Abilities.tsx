@@ -44,19 +44,8 @@ export function Ability({ name, modifier, score }: AbilityProps) {
     );
 }
 
-interface AbilitiesProps {
-    gridColumnStart?: string;
-    gridColumnEnd?: string;
-    gridRowStart?: string;
-    gridRowEnd?: string;
-}
 
-export function Abilities({
-    gridColumnStart,
-    gridColumnEnd,
-    gridRowStart,
-    gridRowEnd,
-}: AbilitiesProps) {
+export function Abilities() {
     const abilityScores = characterSheet.ability_scores;
 
     return (

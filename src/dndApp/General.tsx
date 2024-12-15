@@ -20,10 +20,26 @@ function StatField({ value, interactive, onChange }: StatProps) {
             onChange={onChange}
             sx={{
                 height: "100%",
-                bgcolor: "#FFF8F6",
+                bgcolor: theme.unitBackground,
+                borderRadius: theme.borderRadius, // need this to match the border radius of the input element
                 input: {
                     textAlign: "center",
                     fontSize: matches ? "2rem" : "1rem",
+                },
+                '& .MuiOutlinedInput-notchedOutline': {
+                    border: theme.border,
+                },
+                '&:hover .MuiOutlinedInput-notchedOutline': {
+                    border: theme.borderHover,
+                },
+                '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                    border: theme.borderHover,
+                },
+                '&.Mui-disabled .MuiOutlinedInput-notchedOutline': {
+                    border: theme.border,
+                },
+                '&.Mui-disabled:hover .MuiOutlinedInput-notchedOutline': {
+                    border: theme.borderHover
                 },
             }}
         />
