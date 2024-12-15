@@ -9,6 +9,7 @@ declare module "@mui/material/styles" {
     unitBackground: string
     paperBackground: string
     disabledInputColor: string
+    checkboxColor: string
   }
 
   interface ThemeOptions {
@@ -19,6 +20,7 @@ declare module "@mui/material/styles" {
     unitBackground: string
     paperBackground: string
     disabledInputColor?: string
+    checkboxColor: string
   }
 }
 
@@ -29,6 +31,7 @@ export const regularTheme = createTheme({
   borderRadius: 1,
   unitBackground: "#FFF8F6",
   paperBackground: "#FFE8E1",
+  checkboxColor: "#624A38",
 })
 
 export const cozyTheme = createTheme({
@@ -41,6 +44,7 @@ export const cozyTheme = createTheme({
   typography: {
     fontFamily: "Varela Round",
   },
+  checkboxColor: "#624A38",
 })
 
 export const oceanTheme = createTheme({
@@ -53,6 +57,7 @@ export const oceanTheme = createTheme({
   typography: {
     fontFamily: "Varela Round",
   },
+  checkboxColor: "#35656F",
 })
 
 export const darkTheme = createTheme({
@@ -69,6 +74,7 @@ export const darkTheme = createTheme({
       color: "white",
     },
   },
+  checkboxColor: "#ffffff",
 })
 
 export const themes = [regularTheme, cozyTheme, oceanTheme, darkTheme]

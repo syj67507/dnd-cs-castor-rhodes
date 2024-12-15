@@ -19,6 +19,7 @@ export function Notes() {
                     multiline
                     sx={{
                         height: "100%",
+                        borderRadius: theme.borderRadius,
                         bgcolor: theme.unitBackground,
                         '& .MuiOutlinedInput-notchedOutline': {
                             borderRadius: theme.borderRadius,
