@@ -10,7 +10,6 @@ interface StatProps extends React.ComponentProps<typeof OutlinedInput> {
 }
 function StatField({ value, interactive, onChange }: StatProps) {
     const theme = useTheme();
-    const matches = useMediaQuery(theme.breakpoints.up('lg'));
 
     return (
         <OutlinedInput
@@ -24,13 +23,10 @@ function StatField({ value, interactive, onChange }: StatProps) {
                 borderRadius: theme.borderRadius, // need this to match the border radius of the input element
                 input: {
                     textAlign: "center",
-                    fontSize: matches ? "2rem" : "1rem",
+                    color: "white",
                 },
                 '& .MuiOutlinedInput-notchedOutline': {
                     border: theme.border,
-                },
-                '&:hover .MuiOutlinedInput-notchedOutline': {
-                    border: theme.borderHover,
                 },
                 '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
                     border: theme.borderHover,
@@ -38,9 +34,9 @@ function StatField({ value, interactive, onChange }: StatProps) {
                 '&.Mui-disabled .MuiOutlinedInput-notchedOutline': {
                     border: theme.border,
                 },
-                '&.Mui-disabled:hover .MuiOutlinedInput-notchedOutline': {
-                    border: theme.borderHover
-                },
+                '&.Mui-disabled .MuiInputBase-input': {
+                    WebkitTextFillColor: theme.disabledInputColor,
+                }
             }}
         />
     );

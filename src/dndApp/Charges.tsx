@@ -1,4 +1,4 @@
-import { Stack, Checkbox } from "@mui/material";
+import { Stack, Checkbox, useTheme } from "@mui/material";
 import useLocalStorage from "./useLocalStorage";
 import { StyledStack } from "./StyledStack";
 
@@ -6,6 +6,7 @@ interface CheckboxLocalStorageProps {
     id: string;
 }
 function CheckboxLocalStorage({ id }: CheckboxLocalStorageProps) {
+    const theme = useTheme();
     const [value, setValue] = useLocalStorage(id, false);
 
     return (
@@ -17,7 +18,7 @@ function CheckboxLocalStorage({ id }: CheckboxLocalStorageProps) {
             }}
             sx={{
                 "&.Mui-checked": {
-                    color: "red",
+                    color: theme.background,
                 }
             }}
         />

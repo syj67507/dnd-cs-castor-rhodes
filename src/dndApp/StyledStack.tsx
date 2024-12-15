@@ -16,9 +16,6 @@ export function StyledStack(stackProps: StackProps) {
             padding={1}
             {...stackProps} // placing it here allows the user to override the props
             sx={{
-                "&:hover": {
-                    border: theme.borderHover ?? "1px solid rgba(0, 0, 0, 0.26)",
-                },
                 ...stackProps.sx // placing it here allows the user to override the styles
             }}
         />
