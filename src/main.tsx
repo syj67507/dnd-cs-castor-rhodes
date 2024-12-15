@@ -4,7 +4,6 @@ import { Provider } from "react-redux"
 import App from "./dndApp/App"
 import { store } from "./app/store"
 import { CssBaseline } from "@mui/material"
-import { PhoneApp } from "./dndApp/PhoneApp"
 
 const container = document.getElementById("root")
 
