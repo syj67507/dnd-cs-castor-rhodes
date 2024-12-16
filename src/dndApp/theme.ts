@@ -75,6 +75,15 @@ export const darkTheme = createTheme({
     },
   },
   checkboxColor: "#ffffff",
+  components: {
+    MuiOutlinedInput: {
+      styleOverrides: {
+        input: {
+          color: "#ffffff"
+        }
+      }
+    }
+  }
 })
 
 export const themes = [regularTheme, cozyTheme, oceanTheme, darkTheme]

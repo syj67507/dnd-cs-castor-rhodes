@@ -1,6 +1,8 @@
 import { Stack, Checkbox, useTheme } from "@mui/material";
 import useLocalStorage from "./useLocalStorage";
 import { StyledStack } from "./StyledStack";
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 
 interface CheckboxLocalStorageProps {
     id: string;
@@ -21,6 +23,8 @@ function CheckboxLocalStorage({ id }: CheckboxLocalStorageProps) {
                     color: theme.checkboxColor,
                 }
             }}
+            icon={<RadioButtonUncheckedIcon />}
+            checkedIcon={<CheckCircleIcon />}
         />
     );
 }

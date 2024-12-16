@@ -1,4 +1,4 @@
-import { Grid2 as Grid, OutlinedInput, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Grid2 as Grid, OutlinedInput, Stack, Typography, useTheme } from "@mui/material";
 import characterSheet from "./character-sheet.json";
 import useLocalStorage from "./useLocalStorage";
 import { Charges } from "./Charges";
@@ -23,7 +23,6 @@ function StatField({ value, interactive, onChange }: StatProps) {
                 borderRadius: theme.borderRadius, // need this to match the border radius of the input element
                 input: {
                     textAlign: "center",
-                    color: "white",
                 },
                 '& .MuiOutlinedInput-notchedOutline': {
                     border: theme.border,
