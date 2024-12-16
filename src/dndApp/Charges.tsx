@@ -19,12 +19,16 @@ function CheckboxLocalStorage({ id }: CheckboxLocalStorageProps) {
                 setValue(e.target.checked);
             }}
             sx={{
+                color: theme.checkboxColor,
                 "&.Mui-checked": {
                     color: theme.checkboxColor,
+                },
+                '& .MuiSvgIcon-root': {
+                    fontSize: 28
                 }
             }}
-            icon={<RadioButtonUncheckedIcon />}
-            checkedIcon={<CheckCircleIcon />}
+            icon={theme.checkboxShape === "square" ? undefined : <RadioButtonUncheckedIcon />}
+            checkedIcon={theme.checkboxShape === "square" ? undefined : <CheckCircleIcon />}
         />
     );
 }
