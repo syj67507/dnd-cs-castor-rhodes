@@ -1,4 +1,4 @@
-import { Box, Grid2, Stack, ThemeProvider, useTheme } from "@mui/material";
+import { Box, Grid2, Stack, useTheme } from "@mui/material";
 import { Abilities } from "./Abilities";
 import { Details } from "./Details";
 import { General } from "./General";

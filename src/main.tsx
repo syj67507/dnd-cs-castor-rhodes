@@ -14,12 +14,12 @@ if (container) {
   
   root.render(
     <React.StrictMode>
-      <ThemeProvider theme={cozyTheme}>
         <Provider store={store}>
-          <CssBaseline />
-          <App />
+          <ThemeProvider theme={cozyTheme}>
+            <CssBaseline />
+            <App />
+          </ThemeProvider>
         </Provider>
-      </ThemeProvider>
     </React.StrictMode>,
   )
 } else {
