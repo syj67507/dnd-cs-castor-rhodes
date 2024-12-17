@@ -30,6 +30,7 @@ export function Weapon({ id, name, atk, roll, modifier, damage_type }: WeaponPro
                 direction="row"
                 flex={2}
                 sx={sx}
+                alignItems="center"
             >
                 <Typography variant="body1">{name}</Typography>
             </StyledStack>

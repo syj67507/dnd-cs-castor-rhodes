@@ -1,8 +1,9 @@
-import { Typography, OutlinedInput, Stack } from "@mui/material";
+import { Typography, OutlinedInput, Stack, useTheme } from "@mui/material";
 import useLocalStorage from "./useLocalStorage";
 import { StyledPaper } from "./StyledPaper";
 
 export function Notes() {
+    const theme = useTheme();
     const [notes, setNotes] = useLocalStorage("notes", "");
 
     return (
@@ -17,7 +18,21 @@ export function Notes() {
                     fullWidth
                     multiline
                     sx={{
-                        bgcolor: "#FFF8F6",
+                        height: "100%",
+                        borderRadius: theme.borderRadius,
+                        bgcolor: theme.unitBackground,
+                        '& .MuiOutlinedInput-notchedOutline': {
+                            borderRadius: theme.borderRadius,
+                            border: theme.border,
+                        },
+                        '&:hover .MuiOutlinedInput-notchedOutline': {
+                            borderRadius: theme.borderRadius,
+                            border: theme.borderHover,
+                        },
+                        '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                            borderRadius: theme.borderRadius,
+                            border: theme.borderHover,
+                        },
                     }}
                     minRows={10}
                     maxRows={10}

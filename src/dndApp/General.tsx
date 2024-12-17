@@ -1,4 +1,4 @@
-import { Grid2 as Grid, OutlinedInput, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Grid2 as Grid, OutlinedInput, Stack, Typography, useTheme } from "@mui/material";
 import characterSheet from "./character-sheet.json";
 import useLocalStorage from "./useLocalStorage";
 import { Charges } from "./Charges";
@@ -10,7 +10,6 @@ interface StatProps extends React.ComponentProps<typeof OutlinedInput> {
 }
 function StatField({ value, interactive, onChange }: StatProps) {
     const theme = useTheme();
-    const matches = useMediaQuery(theme.breakpoints.up('lg'));
 
     return (
         <OutlinedInput
@@ -20,11 +19,23 @@ function StatField({ value, interactive, onChange }: StatProps) {
             onChange={onChange}
             sx={{
                 height: "100%",
-                bgcolor: "#FFF8F6",
+                bgcolor: theme.unitBackground,
+                borderRadius: theme.borderRadius, // need this to match the border radius of the input element
                 input: {
                     textAlign: "center",
-                    fontSize: matches ? "2rem" : "1rem",
                 },
+                '& .MuiOutlinedInput-notchedOutline': {
+                    border: theme.border,
+                },
+                '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                    border: theme.borderHover,
+                },
+                '&.Mui-disabled .MuiOutlinedInput-notchedOutline': {
+                    border: theme.border,
+                },
+                '&.Mui-disabled .MuiInputBase-input': {
+                    WebkitTextFillColor: theme.disabledInputColor,
+                }
             }}
         />
     );

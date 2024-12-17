@@ -1,11 +1,14 @@
-import { Stack, Checkbox } from "@mui/material";
+import { Stack, Checkbox, useTheme } from "@mui/material";
 import useLocalStorage from "./useLocalStorage";
 import { StyledStack } from "./StyledStack";
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 
 interface CheckboxLocalStorageProps {
     id: string;
 }
 function CheckboxLocalStorage({ id }: CheckboxLocalStorageProps) {
+    const theme = useTheme();
     const [value, setValue] = useLocalStorage(id, false);
 
     return (
@@ -15,6 +18,17 @@ function CheckboxLocalStorage({ id }: CheckboxLocalStorageProps) {
                 console.log(e.target.checked);
                 setValue(e.target.checked);
             }}
+            sx={{
+                color: theme.checkboxColor,
+                "&.Mui-checked": {
+                    color: theme.checkboxColor,
+                },
+                '& .MuiSvgIcon-root': {
+                    fontSize: 28
+                }
+            }}
+            icon={theme.checkboxShape === "square" ? undefined : <RadioButtonUncheckedIcon />}
+            checkedIcon={theme.checkboxShape === "square" ? undefined : <CheckCircleIcon />}
         />
     );
 }

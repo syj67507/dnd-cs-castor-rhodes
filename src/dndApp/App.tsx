@@ -1,4 +1,4 @@
-import { Box, Grid2, Stack } from "@mui/material";
+import { Box, Grid2, Stack, useTheme } from "@mui/material";
 import { Abilities } from "./Abilities";
 import { Details } from "./Details";
 import { General } from "./General";
@@ -7,15 +7,15 @@ import { Skills } from "./Skills";
 import { SavingThrows } from "./SavingThrows";
 import { Notes } from "./Notes";
 
-export default function App() {
+export default function DndApp() {
+    const theme = useTheme();
     return (
         <Box
             sx={{
                 paddingX: 1,
                 paddingY: 1,
                 gap: 1,
-                bgcolor: "#624A38",
-                color: "white"
+                bgcolor: theme.background,
             }}
         >
             <Grid2 container spacing={1}>
