@@ -1,9 +1,10 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid2, Typography } from "@mui/material";
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid2, Typography, useTheme } from "@mui/material";
 import characterSheet from "./formatted-sheet.json";
 import { useGetAbilityScoreDescriptionQuery } from "./dndApiSlice";
 import { useState } from "react";
 import { StyledStack } from "./StyledStack";
 import { StyledPaper } from "./StyledPaper";
+import { Skill } from "./Skills";
 
 interface AbilityProps {
     name: string;
@@ -12,6 +13,7 @@ interface AbilityProps {
 }
 
 export function Ability({ name, modifier, score }: AbilityProps) {
+    const theme = useTheme();
     const [open, setOpen] = useState(false);
     const { data } = useGetAbilityScoreDescriptionQuery(name.toLowerCase());
 
@@ -24,17 +26,26 @@ export function Ability({ name, modifier, score }: AbilityProps) {
             >
                 <Typography>{name}</Typography>
                 <Typography variant="h5">{modifier}</Typography>
-            <Typography>{score}</Typography>
+                <Typography>{score}</Typography>
             </StyledStack>
             <Dialog
                 open={open}
                 onClose={() => {
                     setOpen(false)
                 }}
+                sx={{
+                    ".MuiDialog-paper": {
+                        bgcolor: theme.unitBackground,
+                        borderRadius: theme.borderRadius,
+                    },
+                    
+                }}
             >
                 <DialogTitle>{data?.full_name}</DialogTitle>
                 <DialogContent>
-                    <DialogContentText>{data?.desc.join("\n")}</DialogContentText>
+                    <DialogContentText>
+                        <Typography>{data?.desc.join("\n")}</Typography>
+                    </DialogContentText>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={() => setOpen(false)}>Close</Button>
@@ -64,7 +75,6 @@ export function Abilities() {
                         );
                     })
                 }
-                    
             </Grid2>
         </StyledPaper>
     );
