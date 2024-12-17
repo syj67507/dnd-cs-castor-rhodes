@@ -1,10 +1,11 @@
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Stack, Typography } from "@mui/material";
+import { Button, DialogActions, DialogContent, DialogContentText, DialogTitle, Stack, Typography, useTheme } from "@mui/material";
 import characterSheet from "./formatted-sheet.json";
 import { useGetSkillsDescriptionQuery } from "./dndApiSlice";
 import { useState } from "react";
 import { StyledStack } from "./StyledStack";
 import { StyledPaper } from "./StyledPaper";
+import { StyledDialog } from "./SimpleDialog";
 
 export function Skills() {
     const skills = characterSheet.skills;
@@ -33,6 +34,7 @@ export function Skill({ name, statValue }: SkillProps) {
     const [open, setOpen] = useState(false);
     const { data } = useGetSkillsDescriptionQuery(name);
     const skillName = `${name.slice(0,1).toUpperCase()}${name.slice(1)}`.replace(/-/g, " ")
+    const theme = useTheme();
 
     return (
         <>
@@ -49,7 +51,7 @@ export function Skill({ name, statValue }: SkillProps) {
                     {statValue}
                 </Typography>
             </StyledStack>
-            <Dialog
+            <StyledDialog
                 open={open}
                 onClose={() => {
                     setOpen(false)
@@ -57,12 +59,18 @@ export function Skill({ name, statValue }: SkillProps) {
             >
                 <DialogTitle>{skillName}</DialogTitle>
                 <DialogContent>
-                    <DialogContentText>{data?.desc}</DialogContentText>
+                    <DialogContentText>
+                        <Typography sx={{
+                            color: theme.dialogContentTextTypography,
+                        }}>
+                            {data?.desc}
+                        </Typography>
+                    </DialogContentText>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={() => setOpen(false)}>Close</Button>
                 </DialogActions>
-            </Dialog>
+            </StyledDialog>
         </>
     );
 
