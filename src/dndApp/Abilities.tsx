@@ -1,10 +1,11 @@
-import { Button, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid2, Typography, useTheme } from "@mui/material";
+import { Button, DialogActions, DialogContent, DialogTitle, Grid2, Typography } from "@mui/material";
 import characterSheet from "./formatted-sheet.json";
 import { useGetAbilityScoreDescriptionQuery } from "./dndApiSlice";
 import { useState } from "react";
 import { StyledStack } from "./StyledStack";
 import { StyledPaper } from "./StyledPaper";
 import { StyledDialog } from "./StyledDialog";
+import { StyledDialogContentText } from "./StyledDialogContentText";
 
 interface AbilityProps {
     name: string;
@@ -15,7 +16,6 @@ interface AbilityProps {
 export function Ability({ name, modifier, score }: AbilityProps) {
     const [open, setOpen] = useState(false);
     const { data } = useGetAbilityScoreDescriptionQuery(name.toLowerCase());
-    const theme = useTheme();
 
     return (
         <>
@@ -36,15 +36,7 @@ export function Ability({ name, modifier, score }: AbilityProps) {
             >
                 <DialogTitle>{data?.full_name}</DialogTitle>
                 <DialogContent>
-                    <DialogContentText>
-                        <Typography
-                            sx={{
-                                color: theme.dialogContentTextTypography,
-                            }}
-                        >
-                            {data?.desc.join("\n")}
-                        </Typography>
-                    </DialogContentText>
+                    <StyledDialogContentText text={data?.desc} />
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={() => setOpen(false)}>Close</Button>
