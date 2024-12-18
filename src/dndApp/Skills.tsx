@@ -1,10 +1,12 @@
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Stack, Typography } from "@mui/material";
+import { Button, DialogActions, DialogContent, DialogTitle, Stack, Typography } from "@mui/material";
 import characterSheet from "./formatted-sheet.json";
 import { useGetSkillsDescriptionQuery } from "./dndApiSlice";
 import { useState } from "react";
 import { StyledStack } from "./StyledStack";
 import { StyledPaper } from "./StyledPaper";
+import { StyledDialog } from "./StyledDialog";
+import { StyledDialogContentText } from "./StyledDialogContentText";
 
 export function Skills() {
     const skills = characterSheet.skills;
@@ -49,7 +51,7 @@ export function Skill({ name, statValue }: SkillProps) {
                     {statValue}
                 </Typography>
             </StyledStack>
-            <Dialog
+            <StyledDialog
                 open={open}
                 onClose={() => {
                     setOpen(false)
@@ -57,12 +59,12 @@ export function Skill({ name, statValue }: SkillProps) {
             >
                 <DialogTitle>{skillName}</DialogTitle>
                 <DialogContent>
-                    <DialogContentText>{data?.desc}</DialogContentText>
+                    <StyledDialogContentText text={data?.desc} />
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={() => setOpen(false)}>Close</Button>
                 </DialogActions>
-            </Dialog>
+            </StyledDialog>
         </>
     );
 

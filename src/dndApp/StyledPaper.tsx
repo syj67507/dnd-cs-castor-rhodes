@@ -10,7 +10,7 @@ export function StyledPaper(paperProps: PaperProps) {
     const theme = useTheme();
     return (
         <Paper
-            {...paperProps} // placing it here allows the user to override the props
+            {...paperProps} // placing it after any defined props allows us to override them
             sx={{
                 bgcolor: theme.paperBackground,
                 padding: 1,

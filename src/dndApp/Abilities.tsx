@@ -1,10 +1,11 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid2, Typography, useTheme } from "@mui/material";
+import { Button, DialogActions, DialogContent, DialogTitle, Grid2, Typography } from "@mui/material";
 import characterSheet from "./formatted-sheet.json";
 import { useGetAbilityScoreDescriptionQuery } from "./dndApiSlice";
 import { useState } from "react";
 import { StyledStack } from "./StyledStack";
 import { StyledPaper } from "./StyledPaper";
-import { Skill } from "./Skills";
+import { StyledDialog } from "./StyledDialog";
+import { StyledDialogContentText } from "./StyledDialogContentText";
 
 interface AbilityProps {
     name: string;
@@ -13,7 +14,6 @@ interface AbilityProps {
 }
 
 export function Ability({ name, modifier, score }: AbilityProps) {
-    const theme = useTheme();
     const [open, setOpen] = useState(false);
     const { data } = useGetAbilityScoreDescriptionQuery(name.toLowerCase());
 
@@ -27,30 +27,21 @@ export function Ability({ name, modifier, score }: AbilityProps) {
                 <Typography>{name}</Typography>
                 <Typography variant="h5">{modifier}</Typography>
                 <Typography>{score}</Typography>
-            </StyledStack>
-            <Dialog
+            </StyledStack> 
+            <StyledDialog
                 open={open}
                 onClose={() => {
                     setOpen(false)
                 }}
-                sx={{
-                    ".MuiDialog-paper": {
-                        bgcolor: theme.unitBackground,
-                        borderRadius: theme.borderRadius,
-                    },
-                    
-                }}
             >
                 <DialogTitle>{data?.full_name}</DialogTitle>
                 <DialogContent>
-                    <DialogContentText>
-                        <Typography>{data?.desc.join("\n")}</Typography>
-                    </DialogContentText>
+                    <StyledDialogContentText text={data?.desc} />
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={() => setOpen(false)}>Close</Button>
                 </DialogActions>
-            </Dialog>
+            </StyledDialog>
         </>
     );
 }

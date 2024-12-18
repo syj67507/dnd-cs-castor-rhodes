@@ -11,6 +11,7 @@ declare module "@mui/material/styles" {
     disabledInputColor: string
     checkboxColor: string
     checkboxShape?: string
+    dialogContentTextTypography?: string
   }
 
   interface ThemeOptions {
@@ -23,6 +24,7 @@ declare module "@mui/material/styles" {
     disabledInputColor?: string
     checkboxColor: string
     checkboxShape?: string
+    dialogContentTextTypography?: string
   }
 }
 
@@ -77,6 +79,7 @@ export const darkTheme = createTheme({
       color: "rgba(255, 255, 255, 0.87)",
     },
   },
+  dialogContentTextTypography: "rgba(255, 255, 255, 0.6)",
   checkboxColor: "rgba(255, 255, 255, 0.87)",
   components: {
     MuiOutlinedInput: {
@@ -87,6 +90,7 @@ export const darkTheme = createTheme({
       },
     },
   },
+
 })
 
 export const themes = [regularTheme, cozyTheme, oceanTheme, darkTheme]
