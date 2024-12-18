@@ -5,7 +5,7 @@ import { useGetSkillsDescriptionQuery } from "./dndApiSlice";
 import { useState } from "react";
 import { StyledStack } from "./StyledStack";
 import { StyledPaper } from "./StyledPaper";
-import { StyledDialog } from "./SimpleDialog";
+import { StyledDialog } from "./StyledDialog";
 
 export function Skills() {
     const skills = characterSheet.skills;

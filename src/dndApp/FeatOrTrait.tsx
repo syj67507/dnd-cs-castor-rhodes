@@ -1,6 +1,6 @@
 import { Typography, DialogTitle, DialogContent, DialogContentText, Stack, DialogActions, Button, useTheme } from "@mui/material";
 import { useState } from "react";
-import { StyledDialog } from "./SimpleDialog";
+import { StyledDialog } from "./StyledDialog";
 
 interface FeatOrTraitProps {
     name: string;
@@ -18,7 +18,6 @@ export function FeatOrTrait({ name, description }: FeatOrTraitProps) {
                     <DialogTitle>{name}</DialogTitle>
                     <DialogContent>
                         <DialogContentText>
-
                             <Stack spacing={1}>
                                 {description.map(d => {
                                     return (

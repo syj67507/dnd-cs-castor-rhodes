@@ -27,7 +27,7 @@ function StatField({ value, interactive, onChange }: StatProps) {
                 '& .MuiOutlinedInput-notchedOutline': {
                     border: theme.border,
                 },
-                '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                '&:hover .MuiOutlinedInput-notchedOutline': {
                     border: theme.borderHover,
                 },
                 '&.Mui-disabled .MuiOutlinedInput-notchedOutline': {

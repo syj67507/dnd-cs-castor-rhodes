@@ -4,7 +4,7 @@ import { useGetAbilityScoreDescriptionQuery } from "./dndApiSlice";
 import { useState } from "react";
 import { StyledStack } from "./StyledStack";
 import { StyledPaper } from "./StyledPaper";
-import { StyledDialog } from "./SimpleDialog";
+import { StyledDialog } from "./StyledDialog";
 
 interface AbilityProps {
     name: string;
