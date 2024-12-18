@@ -2,6 +2,7 @@ import { DialogContentText, DialogContentTextProps, Stack, Typography, useTheme 
 
 
 interface StyledDialogContentTextProps extends DialogContentTextProps {
+    /** The text to display, where each element of the array is going to appear on a new line**/
     text?: string[]
 }
 
@@ -9,9 +10,6 @@ interface StyledDialogContentTextProps extends DialogContentTextProps {
  * A styled wrapper around the DialogContentText component in the mui library
  * The idea with this component is that it will automatically style the components that are
  * inside and use a Typography component automatically without having to define it directly
- * 
- * The input for the text is spaced out  
- * 
  */
 export function StyledDialogContentText({ text }: StyledDialogContentTextProps) {
     const theme = useTheme();
