@@ -5,7 +5,7 @@ import { ThemeProvider } from "@emotion/react"
 import { CssBaseline } from "@mui/material"
 import { Provider } from "react-redux"
 import { store } from "./app/store"
-import { oceanTheme } from "./dndApp/theme"
+import { darkTheme } from "./dndApp/theme"
 
 const container = document.getElementById("root")
 
@@ -15,7 +15,7 @@ if (container) {
   root.render(
     <React.StrictMode>
         <Provider store={store}>
-          <ThemeProvider theme={oceanTheme}>
+          <ThemeProvider theme={darkTheme}>
             <CssBaseline />
             <App />
           </ThemeProvider>

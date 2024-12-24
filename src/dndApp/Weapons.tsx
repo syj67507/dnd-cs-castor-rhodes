@@ -1,5 +1,5 @@
 import type { SxProps} from "@mui/material";
-import { Stack, Typography } from "@mui/material";
+import { Stack, Typography, useTheme } from "@mui/material";
 import characterSheet from "./formatted-sheet.json";
 import { StyledStack } from "./StyledStack";
 import useLocalStorage from "./useLocalStorage";
@@ -13,6 +13,7 @@ interface WeaponProps {
     damage_type: string;
 }
 export function Weapon({ id, name, atk, roll, modifier, damage_type }: WeaponProps) {
+    const theme = useTheme();
     const [consumed, setConsumed] = useLocalStorage(id, false);
     
     // Visual changes, sx is being conditionally set so it can
@@ -21,7 +22,7 @@ export function Weapon({ id, name, atk, roll, modifier, damage_type }: WeaponPro
         cursor: "pointer",
     }
     if (consumed) {
-        sx.bgcolor = "#624A38";
+        sx.bgcolor = theme.consumedWeapon;
     }
 
     return (
