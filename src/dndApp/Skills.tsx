@@ -14,11 +14,11 @@ export function Skills() {
     return (
         <StyledPaper>
             <Stack spacing={1} alignItems="center">
-                <Typography variant="body1" sx={{ fontWeight: "bold" }}>Skills</Typography>
+                <Typography variant="body1" sx={{ fontWeight: "medium" }}>Skills</Typography>
                 {
-                    skills.map(({ name, value }) => {
+                    skills.map(({ name, value, proficient }) => {
                         return (
-                            <Skill name={name} statValue={value} />
+                            <Skill name={name} statValue={value} proficient={proficient} />
                         );
                     })
                 }
@@ -30,8 +30,9 @@ export function Skills() {
 interface SkillProps {
     name: string;
     statValue: string | boolean;
+    proficient: boolean;
 }
-export function Skill({ name, statValue }: SkillProps) {
+export function Skill({ name, statValue, proficient }: SkillProps) {
     const [open, setOpen] = useState(false);
     const { data } = useGetSkillsDescriptionQuery(name);
     const skillName = `${name.slice(0,1).toUpperCase()}${name.slice(1)}`.replace(/-/g, " ")
@@ -44,10 +45,18 @@ export function Skill({ name, statValue }: SkillProps) {
                 justifyContent="space-between"
                 onClick={() => setOpen(true)}
             >
-                <Typography variant="body1">
+                <Typography variant="body1"
+                    sx={{
+                        fontWeight: proficient ? "bold" : "normal",
+                    }}
+                >
                     {skillName}
                 </Typography>
-                <Typography variant="body1">
+                <Typography variant="body1"
+                    sx={{
+                        fontWeight: proficient ? "bold" : "normal",
+                    }}
+                >
                     {statValue}
                 </Typography>
             </StyledStack>
@@ -57,7 +66,7 @@ export function Skill({ name, statValue }: SkillProps) {
                     setOpen(false)
                 }}
             >
-                <DialogTitle>{skillName}</DialogTitle>
+                <DialogTitle>{skillName}{proficient ? ": Proficient" : ""}</DialogTitle>
                 <DialogContent>
                     <StyledDialogContentText text={data?.desc} />
                 </DialogContent>
