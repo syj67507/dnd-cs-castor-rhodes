@@ -19,7 +19,6 @@ function CheckboxLocalStorage({ id }: CheckboxLocalStorageProps) {
                 setValue(e.target.checked);
             }}
             sx={{
-                color: theme.checkboxColor,
                 "&.Mui-checked": {
                     color: theme.checkboxColor,
                 },

@@ -90,7 +90,6 @@ export const darkTheme = createTheme({
       },
     },
   },
-
 })
 
 export const themes = [regularTheme, cozyTheme, oceanTheme, darkTheme]

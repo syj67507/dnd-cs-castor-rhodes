@@ -285,7 +285,7 @@ export function General() {
                 <Grid size={{ xs: 4, md: 4}}>
                     <MaxHP />
                 </Grid>
-                <Grid size={{ xs: 12, sm: 6 }}>
+                <Grid size={{ xs: 12, md: 12 }}>
                     <HitDiceCharges />
                 </Grid>
                 <Grid size={{ xs: 6, md: 4}}>
