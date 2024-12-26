@@ -38,8 +38,15 @@ interface ChargesProps {
     total: number;
 }
 
+/**
+ * This component is an interactive input that uses checkboxes as a way to keep
+ * track of the amount of charges that has been used for something like an ability
+ * or spell.
+ * 
+ * Each checkbox is tracked using local storage so that the state is kept during
+ * different sessions or upon refreshing. 
+ */
 export function Charges({ id, total }: ChargesProps) {
-
     return (
         <StyledStack
             flex={1}
@@ -47,7 +54,12 @@ export function Charges({ id, total }: ChargesProps) {
             justifyContent="center"
             alignItems="center"
         >
-            <Stack direction="row" overflow="auto">
+            <Stack
+                direction="row"
+                overflow="auto"
+                flexWrap="wrap"
+                justifyContent="center"
+            >
                 {Array.from({length: total}, (_, i) => i + 1).map((index) => {
                     return (
                         <CheckboxLocalStorage id={`${id}-${index}`} />
