@@ -1,5 +1,8 @@
 import { createTheme } from "@mui/material"
 
+// Module augmentation is used in order to access custom
+// variable themes throughout the application, as suggested by the
+// mui official documentation
 declare module "@mui/material/styles" {
   interface Theme {
     background: string
@@ -28,7 +31,7 @@ declare module "@mui/material/styles" {
   }
 }
 
-export const regularTheme = createTheme({
+const regularTheme = createTheme({
   background: "#624A38",
   border: "1px solid rgba(0, 0, 0, 0.26)",
   borderHover: "1px solid rgba(0, 0, 0, 1)",
@@ -39,7 +42,7 @@ export const regularTheme = createTheme({
   checkboxShape: "square",
 })
 
-export const cozyTheme = createTheme({
+const cozyTheme = createTheme({
   background: "#624A38",
   border: "2.5px solid rgba(0, 0, 0, 0.6)",
   borderHover: "2.5px solid rgba(0, 0, 0, 0.75)",
@@ -52,7 +55,7 @@ export const cozyTheme = createTheme({
   checkboxColor: "#624A38",
 })
 
-export const oceanTheme = createTheme({
+const oceanTheme = createTheme({
   background: "#35656F",
   border: "2.5px solid rgba(0, 0, 0, 0.45)",
   borderHover: "2.5px solid rgba(0, 0, 0, 0.75)",
@@ -65,7 +68,7 @@ export const oceanTheme = createTheme({
   checkboxColor: "#35656F",
 })
 
-export const darkTheme = createTheme({
+const darkTheme = createTheme({
   background: "#111",
   border: "2.5px solid rgba(255, 255, 255, 0.2)",
   borderHover: "2.5px solid rgba(255, 255, 255, 0.75)",
@@ -90,7 +93,6 @@ export const darkTheme = createTheme({
       },
     },
   },
-
 })
 
 export const themes = [regularTheme, cozyTheme, oceanTheme, darkTheme]

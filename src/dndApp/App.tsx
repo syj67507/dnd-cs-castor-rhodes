@@ -9,6 +9,7 @@ import { Notes } from "./Notes";
 
 export default function DndApp() {
     const theme = useTheme();
+
     return (
         <Box
             sx={{
