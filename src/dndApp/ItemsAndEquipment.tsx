@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import { FeatOrTrait } from "./FeatOrTrait";
+import { ThingWithDescription } from "./ThingWithDescription";
 import characterSheet from "./formatted-sheet.json";
 import { StyledStack } from "./StyledStack";
 
@@ -12,7 +12,7 @@ export function ItemsAndEquipment() {
                 width="100%"
             >
                 {items_and_equipment.map((itemOrEquipment) => {
-                    return <FeatOrTrait name={itemOrEquipment.name} description={itemOrEquipment.description} />
+                    return <ThingWithDescription name={itemOrEquipment.name} description={itemOrEquipment.description} />
                 })}
             </StyledStack>
         </>
