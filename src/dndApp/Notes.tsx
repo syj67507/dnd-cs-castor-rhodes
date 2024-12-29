@@ -34,8 +34,8 @@ export function Notes() {
                             border: theme.borderHover,
                         },
                     }}
-                    minRows={10}
-                    maxRows={10}
+                    minRows={20}
+                    maxRows={20}
                     value={notes}
                     onChange={(e) => {
                         setNotes(e.target.value);

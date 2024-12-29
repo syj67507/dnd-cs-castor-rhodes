@@ -26,10 +26,10 @@ export default function DndApp() {
                     <Abilities />
                 </Grid2>
                 <Grid2 size={{ xs: 12, sm: 12, lg: 6 }} order={{ lg: 4 }}>
-                    <General />
-                </Grid2>
-                <Grid2 size={{ xs: 12 }} order={{ lg: 6 }}>
-                    <Notes />
+                    <Stack spacing={1}>
+                        <General />
+                        <Notes />
+                    </Stack>
                 </Grid2>
                 <Grid2 size={{ xs: 12, sm: 6, lg: 3 }} order={{ lg: 3 }}>
                     <Stack spacing={1}>
