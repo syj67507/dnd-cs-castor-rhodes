@@ -14,7 +14,7 @@ export function Skills() {
     return (
         <StyledPaper>
             <Stack spacing={1} alignItems="center">
-                <Typography variant="body1" sx={{ fontWeight: "medium" }}>Skills</Typography>
+                <Typography variant="body1" sx={{ fontWeight: "bold" }}>Skills</Typography>
                 {
                     skills.map(({ name, value, proficient }) => {
                         return (
