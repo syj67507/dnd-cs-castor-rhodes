@@ -13,6 +13,7 @@ declare module "@mui/material/styles" {
     checkboxShape?: string
     dialogContentTextTypography?: string
     consumedWeapon: string
+    thingWithDescriptionHover: string
   }
 
   interface ThemeOptions {
@@ -27,6 +28,7 @@ declare module "@mui/material/styles" {
     checkboxShape?: string
     dialogContentTextTypography?: string
     consumedWeapon: string
+    thingWithDescriptionHover: string
   }
 }
 
@@ -40,6 +42,7 @@ export const regularTheme = createTheme({
   checkboxColor: "#624A38",
   checkboxShape: "square",
   consumedWeapon: "#624A38",
+  thingWithDescriptionHover: "rgba(0, 0, 0, 0.5)",
 })
 
 export const cozyTheme = createTheme({
@@ -54,6 +57,7 @@ export const cozyTheme = createTheme({
   },
   checkboxColor: "#624A38",
   consumedWeapon: "#624A38",
+  thingWithDescriptionHover: "rgba(0, 0, 0, 0.5)",
 })
 
 export const oceanTheme = createTheme({
@@ -68,6 +72,7 @@ export const oceanTheme = createTheme({
   },
   checkboxColor: "#35656F",
   consumedWeapon: "#35656F",
+  thingWithDescriptionHover: "rgba(0, 0, 0, 0.5)",
 })
 
 export const darkTheme = createTheme({
@@ -86,6 +91,7 @@ export const darkTheme = createTheme({
   },
   dialogContentTextTypography: "rgba(255, 255, 255, 0.6)",
   checkboxColor: "rgba(255, 255, 255, 0.87)",
+  thingWithDescriptionHover: "rgba(255, 255, 255, 0.5)",
   components: {
     MuiOutlinedInput: {
       styleOverrides: {
