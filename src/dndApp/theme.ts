@@ -12,6 +12,7 @@ declare module "@mui/material/styles" {
     checkboxColor: string
     checkboxShape?: string
     dialogContentTextTypography?: string
+    consumedWeapon: string
     thingWithDescriptionHover: string
   }
 
@@ -26,6 +27,7 @@ declare module "@mui/material/styles" {
     checkboxColor: string
     checkboxShape?: string
     dialogContentTextTypography?: string
+    consumedWeapon: string
     thingWithDescriptionHover: string
   }
 }
@@ -39,6 +41,7 @@ export const regularTheme = createTheme({
   paperBackground: "#FFE8E1",
   checkboxColor: "#624A38",
   checkboxShape: "square",
+  consumedWeapon: "#624A38",
   thingWithDescriptionHover: "rgba(0, 0, 0, 0.5)",
 })
 
@@ -53,6 +56,7 @@ export const cozyTheme = createTheme({
     fontFamily: "Varela Round",
   },
   checkboxColor: "#624A38",
+  consumedWeapon: "#624A38",
   thingWithDescriptionHover: "rgba(0, 0, 0, 0.5)",
 })
 
@@ -67,6 +71,7 @@ export const oceanTheme = createTheme({
     fontFamily: "Varela Round",
   },
   checkboxColor: "#35656F",
+  consumedWeapon: "#35656F",
   thingWithDescriptionHover: "rgba(0, 0, 0, 0.5)",
 })
 
@@ -96,7 +101,7 @@ export const darkTheme = createTheme({
       },
     },
   },
-
+  consumedWeapon: "#111",
 })
 
 export const themes = [regularTheme, cozyTheme, oceanTheme, darkTheme]
