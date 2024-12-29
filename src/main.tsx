@@ -1,11 +1,9 @@
 import React from "react"
 import { createRoot } from "react-dom/client"
-import App from "./dndApp/App"
-import { ThemeProvider } from "@emotion/react"
 import { CssBaseline } from "@mui/material"
 import { Provider } from "react-redux"
 import { store } from "./app/store"
-import { darkTheme } from "./dndApp/theme"
+import { ThemedApp } from "./theme/ThemedApp"
 
 const container = document.getElementById("root")
 
@@ -15,10 +13,8 @@ if (container) {
   root.render(
     <React.StrictMode>
         <Provider store={store}>
-          <ThemeProvider theme={darkTheme}>
-            <CssBaseline />
-            <App />
-          </ThemeProvider>
+          <CssBaseline />
+          <ThemedApp />
         </Provider>
     </React.StrictMode>,
   )
