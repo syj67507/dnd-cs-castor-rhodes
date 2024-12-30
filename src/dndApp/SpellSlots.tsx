@@ -1,5 +1,8 @@
-import { Grid2 as Grid, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Button, DialogActions, DialogContent, DialogTitle, Grid2 as Grid, Stack, TextField, Typography } from "@mui/material";
 import { StyledPaper } from "./StyledPaper";
+import useLocalStorage from "./useLocalStorage";
+import { StyledDialog } from "./StyledDialog";
+import { useState } from "react";
 import { Charges } from "./Charges";
 
 interface SpellSlotCharges {
@@ -11,16 +14,73 @@ interface SpellSlotCharges {
     title: string;
 }
 function SpellSlotCharges({ title, id, total }: SpellSlotCharges) {
-    const theme = useTheme();
-    const isAtLeastMedium = useMediaQuery(theme.breakpoints.up('md'));
+    const [totalCharges, setTotalCharges] = useLocalStorage(`${id}TotalCharges`, total);
+    const [open, setOpen] = useState(false);
+    const [input, setInput] = useState(totalCharges);
+    const [error, setError] = useState("");
 
     return (
-        <Stack
-            height="100%"
-        >
-            <Typography variant="body1" textAlign="center">{title}</Typography>
-            <Charges id={id} total={total} vertical={isAtLeastMedium} />
-        </Stack>
+        <>
+            <Stack
+                height="100%"
+            >
+                <Typography
+                    variant="body1"
+                    textAlign="center"
+                    onDoubleClick={() => {
+                        setOpen(true);
+                    }}
+                >
+                    {title}
+                </Typography>
+                <Charges id={id} total={totalCharges || 1} />
+            </Stack>
+            <StyledDialog open={open} onClose={() => setOpen(false)}>
+                <DialogTitle>Number of {title} level spell slots</DialogTitle>
+                <DialogContent>
+                    <TextField
+                        label="Number of spell slots"
+                        fullWidth
+                        margin="normal"
+                        value={input}
+                        error={error.length > 0}
+                        helperText={error}
+                        slotProps={{
+                            htmlInput: {
+                                inputMode: "numeric"
+                            }
+                        }}
+                        onChange={(e) => {
+                            // Check for error for the input
+                            const value = parseInt(e.target.value);
+                            
+                            const isInteger = Number.isInteger(value);
+                            const isInBounds = value < 5 && value > -1;
+
+                            if (!isInteger || !isInBounds) {
+                                setError("You must input an integer between 1 and 4");
+                            } else {
+                                setError("");
+                            }
+
+                            // Set the value anyways, purpose being that it doesn't feel restrictive to the user
+                            setInput(e.target.value);
+                        }}
+                    />
+                </DialogContent>
+                <DialogActions>
+                    <Button
+                        disabled={error.length > 0}
+                        onClick={() => {
+                            setTotalCharges(input);
+                            setOpen(false);
+                        }}
+                    >
+                        Save
+                    </Button>
+                </DialogActions>
+            </StyledDialog>
+        </>
     );
 }
 

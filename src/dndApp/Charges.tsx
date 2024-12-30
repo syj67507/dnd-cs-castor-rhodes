@@ -35,7 +35,6 @@ function CheckboxLocalStorage({ id }: CheckboxLocalStorageProps) {
 interface ChargesProps {
     id: string;
     total: number;
-    vertical?: boolean;
 }
 
 /**
@@ -46,7 +45,7 @@ interface ChargesProps {
  * Each checkbox is tracked using local storage so that the state is kept during
  * different sessions or upon refreshing. 
  */
-export function Charges({ id, total, vertical = false }: ChargesProps) {
+export function Charges({ id, total }: ChargesProps) {
     return (
         <StyledStack
             flex={1}
@@ -55,7 +54,7 @@ export function Charges({ id, total, vertical = false }: ChargesProps) {
             alignItems="center" // used to center horizontally
         >
             <Stack
-                direction={vertical ? "column" : "row"}
+                direction="row"
                 overflow="auto"
                 flexWrap="wrap"
                 justifyContent="center"
