@@ -6,6 +6,8 @@ import { Name } from "./Name";
 import { Skills } from "./Skills";
 import { SavingThrows } from "./SavingThrows";
 import { Notes } from "./Notes";
+import { Spells } from "./Spells";
+import character from "./formatted-sheet.json";
 
 export default function DndApp() {
     const theme = useTheme();
@@ -39,7 +41,10 @@ export default function DndApp() {
                     </Stack>
                 </Grid2>
                 <Grid2 size={{ xs: 12, sm: 6, lg: 3 }} order={{ lg: 4 }}>
-                    <Details />
+                    <Stack spacing={1}>
+                        {character.spells.length > 0 && <Spells />}
+                        <Details />
+                    </Stack>
                 </Grid2>
             </Grid2>
         </Box>
