@@ -143,16 +143,6 @@ export function Spells() {
                     })}
                     
                 </Stack>
-
-                {/* <StyledStack width="100%">
-
-                    {spells.map(spell => {
-                        return (
-                            <ThingWithDescription name={spell.name} description={spell.description} />
-                        );
-                    })}
-                    
-                </StyledStack> */}
             </Stack>
         </StyledPaper>
     );
