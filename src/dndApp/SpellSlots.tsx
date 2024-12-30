@@ -1,4 +1,4 @@
-import { Grid2 as Grid, Stack, Typography } from "@mui/material";
+import { Grid2 as Grid, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { StyledPaper } from "./StyledPaper";
 import { Charges } from "./Charges";
 
@@ -11,12 +11,15 @@ interface SpellSlotCharges {
     title: string;
 }
 function SpellSlotCharges({ title, id, total }: SpellSlotCharges) {
+    const theme = useTheme();
+    const isAtLeastMedium = useMediaQuery(theme.breakpoints.up('md'));
+
     return (
         <Stack
             height="100%"
         >
             <Typography variant="body1" textAlign="center">{title}</Typography>
-            <Charges id={id} total={total} />
+            <Charges id={id} total={total} vertical={isAtLeastMedium} />
         </Stack>
     );
 }
@@ -24,40 +27,40 @@ function SpellSlotCharges({ title, id, total }: SpellSlotCharges) {
 export function SpellSlots() {
     return (
         <StyledPaper>
-            <Typography variant="body1" sx={{ fontWeight: "bold" }}>Spell Slots</Typography>
+            <Typography variant="body1" textAlign="center" sx={{ fontWeight: "bold" }}>Spell Slots</Typography>
             <Grid
                 container
                 spacing={1}
                 sx={{
                     height: "100%",
-                    justifyContent: "center",
+                    justifyContent: "space-evenly",
                 }}
             >
-                <Grid size={{ xs: 12, sm: 6, md: 4 }}>
+                <Grid size={{ xs: 12, sm: 6, md: 1 }}>
                     <SpellSlotCharges title="1st" id="firstLevelSpellSlots" total={4} />
                 </Grid>
-                <Grid size={{ xs: 12, sm: 6, md: 4 }}>
+                <Grid size={{ xs: 12, sm: 6, md: 1 }}>
                     <SpellSlotCharges title="2nd" id="secondLevelSpellSlots" total={4} />
                 </Grid>
-                <Grid size={{ xs: 12, sm: 6, md: 4 }}>
+                <Grid size={{ xs: 12, sm: 6, md: 1 }}>
                     <SpellSlotCharges title="3rd" id="thirdLevelSpellSlots" total={3} />
                 </Grid>
-                <Grid size={{ xs: 12, sm: 6, md: 4 }}>
+                <Grid size={{ xs: 12, sm: 6, md: 1 }}>
                     <SpellSlotCharges title="4th" id="fourthLevelSpellSlots" total={3} />
                 </Grid>
-                <Grid size={{ xs: 12, sm: 6, md: 4 }}>
+                <Grid size={{ xs: 12, sm: 6, md: 1 }}>
                     <SpellSlotCharges title="5th" id="fifthLevelSpellSlots" total={3} />
                 </Grid>
-                <Grid size={{ xs: 12, sm: 6, md: 4 }}>
+                <Grid size={{ xs: 12, sm: 6, md: 1 }}>
                     <SpellSlotCharges title="6th" id="sixthLevelSpellSlots" total={3} />
                 </Grid>
-                <Grid size={{ xs: 12, sm: 6, md: 4 }}>
+                <Grid size={{ xs: 12, sm: 6, md: 1 }}>
                     <SpellSlotCharges title="7th" id="seventhLevelSpellSlots" total={3} />
                 </Grid>
-                <Grid size={{ xs: 12, sm: 6, md: 4 }}>
+                <Grid size={{ xs: 12, sm: 6, md: 1 }}>
                     <SpellSlotCharges title="8th" id="eighthLevelSpellSlots" total={3} />
                 </Grid>
-                <Grid size={{ xs: 12, sm: 6, md: 4 }}>
+                <Grid size={{ xs: 12, sm: 6, md: 1 }}>
                     <SpellSlotCharges title="9th" id="ninthLevelSpellSlots" total={3} />
                 </Grid>
             </Grid>
