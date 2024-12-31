@@ -1,6 +1,17 @@
 import type { Action, ThunkAction } from "@reduxjs/toolkit"
 import { combineSlices, configureStore } from "@reduxjs/toolkit"
 import { setupListeners } from "@reduxjs/toolkit/query"
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist"
+import storage from "redux-persist/lib/storage"
 import { counterSlice } from "../features/counter/counterSlice"
 import { quotesApiSlice } from "../features/quotes/quotesApiSlice"
 import { dndApiSlice } from "../dndApp/dndApiSlice"
@@ -14,24 +25,36 @@ const rootReducer = combineSlices(
   dndApiSlice,
   themeSlice,
 )
+
+// Add persisting functionality to reducer
+const persistConfig = {
+  key: "root",
+  version: 1,
+  storage,
+}
+const persistedReducer = persistReducer(persistConfig, rootReducer)
+
 // Infer the `RootState` type from the root reducer
-export type RootState = ReturnType<typeof rootReducer>
+export type RootState = ReturnType<typeof persistedReducer>
 
 // The store setup is wrapped in `makeStore` to allow reuse
 // when setting up tests that need the same store config
-export const makeStore = (preloadedState?: Partial<RootState>) => {
+export const makeStore = (preloadedState?: RootState) => {
   const store = configureStore({
-    reducer: rootReducer,
+    reducer: persistedReducer,
     // Adding the api middleware enables caching, invalidation, polling,
     // and other useful features of `rtk-query`.
     middleware: getDefaultMiddleware => {
-      return getDefaultMiddleware().concat(
-        quotesApiSlice.middleware,
-        dndApiSlice.middleware,
-      )
+      return getDefaultMiddleware({
+        serializableCheck: {
+          // ignoring redux persist actions
+          ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        },
+      }).concat(quotesApiSlice.middleware, dndApiSlice.middleware)
     },
     preloadedState,
   })
+
   // configure listeners using the provided defaults
   // optional, but required for `refetchOnFocus`/`refetchOnReconnect` behaviors
   setupListeners(store.dispatch)
@@ -39,6 +62,7 @@ export const makeStore = (preloadedState?: Partial<RootState>) => {
 }
 
 export const store = makeStore()
+export const persistor = persistStore(store)
 
 // Infer the type of `store`
 export type AppStore = typeof store
