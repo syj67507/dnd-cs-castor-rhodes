@@ -2,8 +2,10 @@ import React from "react"
 import { createRoot } from "react-dom/client"
 import { CssBaseline } from "@mui/material"
 import { Provider } from "react-redux"
-import { store } from "./app/store"
+import { persistor, store } from "./app/store"
 import { ThemedApp } from "./theme/ThemedApp"
+import { PersistGate } from 'redux-persist/integration/react'
+
 
 const container = document.getElementById("root")
 
@@ -13,8 +15,10 @@ if (container) {
   root.render(
     <React.StrictMode>
         <Provider store={store}>
-          <CssBaseline />
-          <ThemedApp />
+          <PersistGate loading={null} persistor={persistor}>
+            <CssBaseline />
+            <ThemedApp />
+          </PersistGate>
         </Provider>
     </React.StrictMode>,
   )
