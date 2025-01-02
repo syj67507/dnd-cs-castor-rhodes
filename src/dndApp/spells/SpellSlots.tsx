@@ -6,6 +6,8 @@ import { StyledDialog } from "../StyledDialog";
 import { StyledPaper } from "../StyledPaper";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { saveSlots, setSlotInput, setSlotInputError, SpellSlotsInput } from "./spellsSlice";
+import { SpellSlotsEditDialog } from "./SpellSlotsEditDialog";
+import { FormProvider, useForm } from "react-hook-form";
 
 interface SpellSlotCharges {
     /** The id to uniquely identify these set of slots / charges */
@@ -83,12 +85,23 @@ function SpellSlotTextField({ level }: SpellSlotTextFieldProps) {
 
 }
 
+
+export interface SpellSlotsForm {
+    firstLevel: number;
+    secondLevel: number;
+}
+
 export function SpellSlots() {
     const [open, setOpen] = useState(false);
-    const spellSlotInputs = useAppSelector(state => state.spells.input);
     const spellSlotsSaved = useAppSelector(state => state.spells.saved);
-    const error = useAppSelector(state => state.spells.error);
-    const dispatch = useAppDispatch();
+
+    const methods = useForm<SpellSlotsForm>({
+        mode: "onChange",
+        defaultValues: {
+            firstLevel: spellSlotsSaved.first,
+            secondLevel: spellSlotsSaved.second,
+        }
+    });
 
     return (
         <>
@@ -101,6 +114,7 @@ export function SpellSlots() {
                     <IconButton onClick={() => setOpen(true)}>
                         <EditIcon fontSize="small" />
                     </IconButton>
+                    
                 </Stack>
                 <Grid
                     container
@@ -124,130 +138,11 @@ export function SpellSlots() {
                             total={spellSlotsSaved.second}
                         />
                     </Grid>}
-                    {spellSlotsSaved.third > 0 && <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-                        <SpellSlotCharges
-                            title="3rd"
-                            id="thirdLevelSpellSlots"
-                            total={spellSlotsSaved.third}
-                        />
-                    </Grid>}
-                    {spellSlotsSaved.fourth > 0 && <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-                        <SpellSlotCharges
-                            title="4th"
-                            id="fourthLevelSpellSlots"
-                            total={spellSlotsSaved.fourth}
-                        />
-                    </Grid>}
-                    {spellSlotsSaved.fifth > 0 && <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-                        <SpellSlotCharges
-                            title="5th"
-                            id="fifthLevelSpellSlots"
-                            total={spellSlotsSaved.fifth}
-                        />
-                    </Grid>}
-                    {spellSlotsSaved.sixth > 0 && <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-                        <SpellSlotCharges
-                            title="6th"
-                            id="sixthLevelSpellSlots"
-                            total={spellSlotsSaved.sixth}
-                        />
-                    </Grid>}
-                    {spellSlotsSaved.seventh > 0 && <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-                        <SpellSlotCharges
-                            title="7th"
-                            id="seventhLevelSpellSlots"
-                            total={spellSlotsSaved.seventh}
-                        />
-                    </Grid>}
-                    {spellSlotsSaved.eighth > 0 && <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-                        <SpellSlotCharges
-                            title="8th"
-                            id="eighthLevelSpellSlots"
-                            total={spellSlotsSaved.eighth}
-                        />
-                    </Grid>}
-                    {spellSlotsSaved.ninth > 0 && <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-                        <SpellSlotCharges
-                            title="9th"
-                            id="ninthLevelSpellSlots"
-                            total={spellSlotsSaved.ninth}
-                        />
-                    </Grid>}
                 </Grid>
             </StyledPaper>
-            <StyledDialog open={open} onClose={() => {
-                setOpen(false)
-                dispatch(setSlotInput({
-                    level: "first",
-                    input: spellSlotsSaved.first.toString(),
-                }));
-                dispatch(setSlotInput({
-                    level: "second",
-                    input: spellSlotsSaved.second.toString(),
-                }));
-                dispatch(setSlotInput({
-                    level: "third",
-                    input: spellSlotsSaved.third.toString(),
-                }));
-                dispatch(setSlotInput({
-                    level: "fourth",
-                    input: spellSlotsSaved.fourth.toString(),
-                }));
-                dispatch(setSlotInput({
-                    level: "fifth",
-                    input: spellSlotsSaved.fifth.toString(),
-                }));
-                dispatch(setSlotInput({
-                    level: "sixth",
-                    input: spellSlotsSaved.sixth.toString(),
-                }));
-                dispatch(setSlotInput({
-                    level: "seventh",
-                    input: spellSlotsSaved.seventh.toString(),
-                }));
-                dispatch(setSlotInput({
-                    level: "eighth",
-                    input: spellSlotsSaved.eighth.toString(),
-                }));
-                dispatch(setSlotInput({
-                    level: "ninth",
-                    input: spellSlotsSaved.ninth.toString(),
-                }));
-            }}>
-                <DialogTitle>Number of spell slots</DialogTitle>
-                <DialogContent>
-                    <SpellSlotTextField level="first" />
-                    <SpellSlotTextField level="second" />
-                    <SpellSlotTextField level="third" />
-                    <SpellSlotTextField level="fourth" />
-                    <SpellSlotTextField level="fifth" />
-                    <SpellSlotTextField level="sixth" />
-                    <SpellSlotTextField level="seventh" />
-                    <SpellSlotTextField level="eighth" />
-                    <SpellSlotTextField level="ninth" />
-                </DialogContent>
-                <DialogActions>
-                    <Button
-                        disabled={error}
-                        onClick={() => {
-                            dispatch(saveSlots({
-                                first: parseInt(spellSlotInputs.first),
-                                second: parseInt(spellSlotInputs.second),
-                                third: parseInt(spellSlotInputs.third),
-                                fourth: parseInt(spellSlotInputs.fourth),
-                                fifth: parseInt(spellSlotInputs.fifth),
-                                sixth: parseInt(spellSlotInputs.sixth),
-                                seventh: parseInt(spellSlotInputs.seventh),
-                                eighth: parseInt(spellSlotInputs.eighth),
-                                ninth: parseInt(spellSlotInputs.ninth),
-                            }));
-                            setOpen(false);
-                        }}
-                    >
-                        Save
-                    </Button>
-                </DialogActions>
-            </StyledDialog>
+            <FormProvider {...methods}>
+                <SpellSlotsEditDialog open={open} onClose={() => setOpen(false)} onSave={() => setOpen(false)}/>
+            </FormProvider>
         </>
     );
 }

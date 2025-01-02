@@ -1,8 +1,8 @@
 import { Dialog, useTheme, DialogProps } from "@mui/material"
 
-interface SimpleDialogProps extends DialogProps {}
+export interface StyledDialogProps extends DialogProps {}
 
-export function StyledDialog({ open, onClose, children, ...rest }: SimpleDialogProps) {
+export function StyledDialog({ open, onClose, children, ...rest }: StyledDialogProps) {
     const theme = useTheme();
 
     return (
