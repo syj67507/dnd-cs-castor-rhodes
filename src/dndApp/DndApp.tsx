@@ -6,9 +6,9 @@ import { Name } from "./Name";
 import { Skills } from "./Skills";
 import { SavingThrows } from "./SavingThrows";
 import { Notes } from "./Notes";
-import { Spells } from "./Spells";
+import { Spells } from "./spells/Spells";
 import character from "./formatted-sheet.json";
-import { SpellSlots } from "./SpellSlots";
+import { SpellSlots } from "./spells/SpellSlots";
 
 export default function DndApp() {
     const theme = useTheme();

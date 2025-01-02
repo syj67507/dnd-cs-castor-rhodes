@@ -16,6 +16,7 @@ import { counterSlice } from "../features/counter/counterSlice"
 import { quotesApiSlice } from "../features/quotes/quotesApiSlice"
 import { dndApiSlice } from "../dndApp/dndApiSlice"
 import { themeSlice } from "../theme/themeSlice"
+import { spellsSlice } from "../dndApp/spells/spellsSlice"
 
 // `combineSlices` automatically combines the reducers using
 // their `reducerPath`s, therefore we no longer need to call `combineReducers`.
@@ -24,6 +25,7 @@ const rootReducer = combineSlices(
   quotesApiSlice,
   dndApiSlice,
   themeSlice,
+  spellsSlice,
 )
 
 // Add persisting functionality to reducer
