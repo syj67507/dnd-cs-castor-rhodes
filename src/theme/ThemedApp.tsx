@@ -1,5 +1,5 @@
 import { ThemeProvider } from "@emotion/react";
-import DndApp from "../dndApp/App";
+import DndApp from "../dndApp/DndApp";
 import { useAppSelector } from "../app/hooks";
 import { themes } from "./theme";
 

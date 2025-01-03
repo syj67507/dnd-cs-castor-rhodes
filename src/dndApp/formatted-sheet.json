@@ -114,6 +114,59 @@
             "damage_type": "slashing"
         }
     ],
+    "spells": [
+        {
+            "name": "Create Bonfire",
+            "cost": "1 Action",
+            "roll": "DC 15 DEX",
+            "damage": [
+                { "level": "1", "damage": "1d8 fire" },
+                { "level": "5", "damage": "2d8 fire" },
+                { "level": "11", "damage": "3d8 fire" },
+                { "level": "17", "damage": "4d8 fire" }
+            ],
+            "description": [
+                "You create a bonfire on ground that you cansee within range. Until the spell ends, themagic bonfire fills a 5-foot cube. Any creaturein the bonfire’s space when you cast the spellmust succeed on a Dexterity saving throw ortake 1d8 fire damage. A creature must alsomake the saving throw when it moves into thebonfire’s space for the first time on a turn orends its turn there. The bonfire ignitesflammable objects in its area that aren’t beingworn or carried. The spell’s damage increasesby 1d8 when you reach 5th level (2d8), 11thlevel (3d8), and 17th level (4d8)."
+            ],
+            "casting_time": "1 Action.",
+            "range": "60ft",
+            "components": "Verbal, Somatic",
+            "duration": "Concentration, 1 min"
+        },
+        {
+            "name": "Mending",
+            "cost": "1 min",
+            "roll": "DC 15 DEX",
+            "damage": [
+                { "level": "1", "damage": "N / A" }
+            ],
+            "description": [
+                "This spell repairs a single break or tear in an object you touch, such as a broken chain link, two halves of a broken key, a torn cloak, or a leaking wineskin. As long as the break or tear is no larger than 1 foot in any dimension, you mend it, leaving no trace of the former damage. This spell can physically repair a magic item or construct, but the spell can't restore magic to such an object."
+            ],
+            "casting_time": "1 Action.",
+            "range": "Touch",
+            "components": "Verbal, Somatic, Material",
+            "duration": "Instantaneous"
+        },
+        {
+            "name": "Absorb Elements",
+            "cost": "1 Reaction",
+            "roll": "DC 15 DEX",
+            "damage": [
+                { "level": "1", "damage": "1d6 extra" },
+                { "level": "2", "damage": "2d6 extra" },
+                { "level": "3", "damage": "3d6 extra" },
+                { "level": "4", "damage": "4d6 extra" }
+            ],
+            "description": [
+                "The spell captures some of the incoming energy, lessening its effect on you and storing it for your next melee attack. You have resistance to the triggering damage type until the start of your next turn. Also, the first time you hit with a melee attack on your next turn, the target takes an extra 1d6 damage of the triggering type, and the spell ends. At Higher Levels. When you cast this spell using a spell slot of 2nd level or higher, the extra damage increases by 1d6 for each slot level above 1st."
+            ],
+            "casting_time": "1 Action.",
+            "range": "Self",
+            "components": "Somatic",
+            "duration": "1 Round"
+        }
+    ],
     "weapon_proficiency": ["Martial", "Simple"],
     "armor_proficiency": ["Light", "Medium", "Shields"],
     "language_proficiency": ["Common", "Grung"],
