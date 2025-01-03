@@ -50,8 +50,8 @@ export function Charges({ id, total }: ChargesProps) {
         <StyledStack
             flex={1}
             padding={1}
-            justifyContent="flex-start" // used for pushing up vertically (vertical prop related)
-            alignItems="center" // used to center horizontally
+            justifyContent="center"
+            alignItems="center"
         >
             <Stack
                 direction="row"

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function useLocalStorage(key: string, initialValue: string | number | boolean | number[]) {
+function useLocalStorage(key: string, initialValue: string | number | boolean) {
   // Get the initial value from localStorage or use the default
   const [storedValue, setStoredValue] = useState(() => {
     try {
