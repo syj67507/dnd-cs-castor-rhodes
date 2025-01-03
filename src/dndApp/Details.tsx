@@ -1,15 +1,13 @@
 import { Stack, Typography } from "@mui/material";
 import { Weapons } from "./Weapons";
-import characterSheet from "./formatted-sheet.json";
 import { ItemsAndEquipment } from "./ItemsAndEquipment";
 import { FeatsAndTraits } from "./FeatsAndTraits";
 import { StyledStack } from "./StyledStack";
 import { StyledPaper } from "./StyledPaper";
+import { useGetCharacterSheetQuery } from "../characterSheet/characterSheetApiSlice";
 
 export function Details() {
-    const weaponProficiencies = characterSheet.weapon_proficiency;
-    const armorProficiencies = characterSheet.armor_proficiency;
-    const languageProficiencies = characterSheet.language_proficiency;
+    const { data: characterSheet } = useGetCharacterSheetQuery();
 
     return (
         <StyledPaper>
@@ -28,7 +26,7 @@ export function Details() {
                 <StyledStack
                     width="100%"
                 >
-                    {weaponProficiencies.map((prof) => {
+                    {characterSheet?.weapon_proficiency.map((prof) => {
                         return (
                             <Typography variant="body1">{prof}</Typography>
                         );
@@ -38,7 +36,7 @@ export function Details() {
                 <StyledStack
                     width="100%"
                 >
-                    {armorProficiencies.map((prof) => {
+                    {characterSheet?.armor_proficiency.map((prof) => {
                         return (
                             <Typography variant="body1">{prof}</Typography>
                         );
@@ -48,7 +46,7 @@ export function Details() {
                 <StyledStack
                     width="100%"
                 >
-                    {languageProficiencies.map((prof) => {
+                    {characterSheet?.language_proficiency.map((prof) => {
                         return (
                             <Typography variant="body1">{prof}</Typography>
                         );

@@ -4,7 +4,7 @@ import { StyledStack } from "../StyledStack";
 import { useState } from "react";
 import { StyledDialog } from "../StyledDialog";
 import { StyledDialogContentText } from "../StyledDialogContentText";
-import character from "../formatted-sheet.json";
+import { useGetCharacterSheetQuery } from "../../characterSheet/characterSheetApiSlice";
 
 interface SpellProps {
     name: string;
@@ -105,7 +105,8 @@ export function Spell({
 }
 
 export function Spells() {
-    const spells = character.spells;
+    const { data: characterSheet } = useGetCharacterSheetQuery();
+
     return (
         <StyledPaper>
             <Stack spacing={1} alignItems="center" width="100%">
@@ -115,7 +116,7 @@ export function Spells() {
                 width="100%"
                 spacing={1}
                 >
-                    {spells.map(spell => {
+                    {characterSheet?.spells.map(spell => {
                         return (
                             <Spell
                                 name={spell.name}

@@ -1,22 +1,22 @@
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { Button, DialogActions, DialogContent, DialogTitle, Stack, Typography } from "@mui/material";
-import characterSheet from "./formatted-sheet.json";
 import { useGetSkillsDescriptionQuery } from "./dndApiSlice";
 import { useState } from "react";
 import { StyledStack } from "./StyledStack";
 import { StyledPaper } from "./StyledPaper";
 import { StyledDialog } from "./StyledDialog";
 import { StyledDialogContentText } from "./StyledDialogContentText";
+import { useGetCharacterSheetQuery } from "../characterSheet/characterSheetApiSlice";
 
 export function Skills() {
-    const skills = characterSheet.skills;
+    const { data: characterSheet } = useGetCharacterSheetQuery();
 
     return (
         <StyledPaper>
             <Stack spacing={1} alignItems="center">
                 <Typography variant="body1" sx={{ fontWeight: "bold" }}>Skills</Typography>
                 {
-                    skills.map(({ name, value, proficient }) => {
+                    characterSheet?.skills.map(({ name, value, proficient }) => {
                         return (
                             <Skill name={name} statValue={value} proficient={proficient} />
                         );

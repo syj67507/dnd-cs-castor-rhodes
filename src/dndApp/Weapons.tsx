@@ -1,8 +1,8 @@
 import type { SxProps} from "@mui/material";
 import { Stack, Typography, useTheme } from "@mui/material";
-import characterSheet from "./formatted-sheet.json";
 import { StyledStack } from "./StyledStack";
 import useLocalStorage from "./useLocalStorage";
+import { useGetCharacterSheetQuery } from "../characterSheet/characterSheetApiSlice";
 
 interface WeaponProps {
     id: string;
@@ -58,7 +58,7 @@ export function Weapon({ id, name, atk, roll, modifier, damage_type }: WeaponPro
 
 
 export function Weapons() {
-    const { weapons } = characterSheet;
+    const { data: characterSheet } = useGetCharacterSheetQuery();
 
     return (
         <Stack
@@ -72,7 +72,7 @@ export function Weapons() {
                 width="100%"
                 spacing={1}
             >
-                {weapons.map(({ name, atk, roll, modifier, damage_type }, index) => {
+                {characterSheet?.weapons.map(({ name, atk, roll, modifier, damage_type }, index) => {
                     return (
                         <Weapon
                             id={`${name}-${index}`}
