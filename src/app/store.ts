@@ -17,6 +17,7 @@ import { quotesApiSlice } from "../features/quotes/quotesApiSlice"
 import { dndApiSlice } from "../dndApp/dndApiSlice"
 import { themeSlice } from "../theme/themeSlice"
 import { spellsSlice } from "../dndApp/spells/spellsSlice"
+import { characterSheetApiSlice } from "../characterSheet/characterSheetApiSlice"
 
 // `combineSlices` automatically combines the reducers using
 // their `reducerPath`s, therefore we no longer need to call `combineReducers`.
@@ -26,6 +27,7 @@ const rootReducer = combineSlices(
   dndApiSlice,
   themeSlice,
   spellsSlice,
+  characterSheetApiSlice,
 )
 
 // Add persisting functionality to reducer
@@ -33,6 +35,7 @@ const persistConfig = {
   key: "root",
   version: 1,
   storage,
+  blacklist: ["api"],
 }
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
@@ -52,7 +55,11 @@ export const makeStore = (preloadedState?: RootState) => {
           // ignoring redux persist actions
           ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
         },
-      }).concat(quotesApiSlice.middleware, dndApiSlice.middleware)
+      }).concat(
+        quotesApiSlice.middleware,
+        dndApiSlice.middleware,
+        characterSheetApiSlice.middleware,
+      )
     },
     preloadedState,
   })

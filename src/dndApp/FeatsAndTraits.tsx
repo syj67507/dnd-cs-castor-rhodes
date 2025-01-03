@@ -1,10 +1,10 @@
 import { Stack, Typography } from "@mui/material";
 import { ThingWithDescription } from "./ThingWithDescription";
 import { StyledStack } from "./StyledStack";
-import characterSheet from "./formatted-sheet.json";
+import { useGetCharacterSheetQuery } from "../characterSheet/characterSheetApiSlice";
 
 export function FeatsAndTraits() {
-    const featsAndTraits = characterSheet.feats_and_traits;
+    const { data: characterSheet } = useGetCharacterSheetQuery();
 
     return (
         <Stack
@@ -13,7 +13,7 @@ export function FeatsAndTraits() {
         >
             <Typography variant="body1" sx={{ fontWeight: "bold" }}>Feats & Traits</Typography>
             <StyledStack width="100%">
-                {featsAndTraits.map((featOrTrait) => {
+                {characterSheet?.feats_and_traits.map((featOrTrait) => {
                     return <ThingWithDescription name={featOrTrait.name} description={featOrTrait.description} />
                 })}
             </StyledStack>

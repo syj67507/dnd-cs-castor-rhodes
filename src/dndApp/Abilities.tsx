@@ -1,11 +1,11 @@
 import { Button, DialogActions, DialogContent, DialogTitle, Grid2, Typography } from "@mui/material";
-import characterSheet from "./formatted-sheet.json";
 import { useGetAbilityScoreDescriptionQuery } from "./dndApiSlice";
 import { useState } from "react";
 import { StyledStack } from "./StyledStack";
 import { StyledPaper } from "./StyledPaper";
 import { StyledDialog } from "./StyledDialog";
 import { StyledDialogContentText } from "./StyledDialogContentText";
+import { useGetCharacterSheetQuery } from "../characterSheet/characterSheetApiSlice";
 
 interface AbilityProps {
     name: string;
@@ -48,13 +48,13 @@ export function Ability({ name, modifier, score }: AbilityProps) {
 
 
 export function Abilities() {
-    const abilityScores = characterSheet.ability_scores;
+    const { data: characterSheet } = useGetCharacterSheetQuery();
 
     return (
         <StyledPaper>
             <Grid2 container spacing={1}>
                 {
-                    abilityScores.map((abilityScore) => {
+                    characterSheet?.ability_scores.map((abilityScore) => {
                         return (
                             <Grid2 size={{ xs: 4, sm: 2 }}>
                                 <Ability 

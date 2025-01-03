@@ -1,10 +1,10 @@
 import { Box, Typography } from "@mui/material";
-import characterSheet from "./formatted-sheet.json";
 import { StyledStack } from "./StyledStack";
 import { StyledPaper } from "./StyledPaper";
+import { useGetCharacterSheetQuery } from "../characterSheet/characterSheetApiSlice";
 
 export function SavingThrows() {
-    const skills = characterSheet.saving_throws;
+    const { data: characterSheet } = useGetCharacterSheetQuery();
 
     return (
         <StyledPaper>
@@ -17,9 +17,9 @@ export function SavingThrows() {
             }}>
                 <Typography variant="body1" sx={{ fontWeight: "bold" }}>Saving Throws</Typography>
                 {
-                    skills.map(({ name, modifier, proficient }) => {
+                    characterSheet?.saving_throws.map(({ name, modifier, proficient }) => {
                         return (
-                            <Skill name={name} statValue={modifier} proficient={proficient} />
+                            <SavingThrow name={name} statValue={modifier} proficient={proficient} />
                         );
                     })
                 }
@@ -28,12 +28,12 @@ export function SavingThrows() {
     );
 }
 
-interface SavingThrowsProps {
+interface SavingThrowProps {
     name: string;
     statValue: string | boolean;
     proficient: boolean;
 }
-export function Skill({ name, statValue, proficient }: SavingThrowsProps) {
+export function SavingThrow({ name, statValue, proficient }: SavingThrowProps) {
     const skillName = `${name.slice(0,1).toUpperCase()}${name.slice(1)}`.replace(/-/g, " ")
 
     return (

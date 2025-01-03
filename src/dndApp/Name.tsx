@@ -1,11 +1,13 @@
 import { Typography } from "@mui/material";
-import characterSheet from "./formatted-sheet.json"
 import { StyledPaper } from "./StyledPaper";
 import { useAppDispatch } from "../app/hooks";
 import { cycleTheme } from "../theme/themeSlice";
+import { useGetCharacterSheetQuery } from "../characterSheet/characterSheetApiSlice";
 
 export function Name() {
     const dispatch = useAppDispatch();
+    const { data: characterSheet } = useGetCharacterSheetQuery();
+
     return (
         <StyledPaper
             sx={{
@@ -18,7 +20,7 @@ export function Name() {
                 dispatch(cycleTheme())
             }}
         >
-            <Typography variant="h4">Level {characterSheet.classes.barbarian.level}: {characterSheet.name}</Typography>
+            <Typography variant="h4">Level {characterSheet?.classes.barbarian.level}: {characterSheet?.name}</Typography>
         </StyledPaper>
     );
 }
