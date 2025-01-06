@@ -1,7 +1,8 @@
 import { ThemeProvider } from "@emotion/react";
-import DndApp from "../dndApp/DndApp";
 import { useAppSelector } from "../app/hooks";
 import { themes } from "./theme";
+import { RoutedApp } from "../routing/RoutedApp";
+
 
 /**
  * A component wrapper around the actual application. The purpose of this wrapper
@@ -18,7 +19,7 @@ export function ThemedApp() {
 
     return (
         <ThemeProvider theme={themes[selectedTheme.value]}>
-            <DndApp />
+            <RoutedApp />
         </ThemeProvider>
     );
 }
