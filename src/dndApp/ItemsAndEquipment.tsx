@@ -26,11 +26,19 @@ export function ItemsAndEquipment() {
                 alignItems="center"
                 justifyContent="space-between"
             >
-                <Typography variant="body1" sx={{ fontWeight: "bold" }}>Items & Equipment</Typography>
                 <Stack
                     direction="row"
                     alignItems="center"
+                    width="100%"
                 >
+                    <Stack flex={1} bgcolor="red" />
+                    <Typography variant="body1" sx={{ fontWeight: "bold" }}>Items & Equipment</Typography>
+                    <Stack
+                        direction="row"
+                        flex={1}
+                        alignItems="center"
+                        justifyContent="flex-end"
+                    >
                     {loading && (
                         <Tooltip
                             title="Your changes are being saved..."
@@ -56,6 +64,7 @@ export function ItemsAndEquipment() {
                         </Tooltip>
                     )}
                     <IconButton size="small" onClick={() => setOpen(true)}><AddIcon /></IconButton>
+                    </Stack>
                 </Stack>
             </Stack>
             <StyledStack
