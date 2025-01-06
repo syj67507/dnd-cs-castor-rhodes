@@ -1,4 +1,8 @@
-import { Box, CircularProgress, Grid2, Stack, useTheme } from "@mui/material";
+import Box from "@mui/material/Box";
+import CircularProgress from "@mui/material/CircularProgress";
+import Grid2 from "@mui/material/Grid2";
+import Stack from "@mui/material/Stack";
+import { useTheme } from "@mui/material";
 import { Abilities } from "./Abilities";
 import { Details } from "./Details";
 import { General } from "./General";
@@ -9,6 +13,7 @@ import { Notes } from "./Notes";
 import { Spells } from "./spells/Spells";
 import { SpellSlots } from "./spells/SpellSlots";
 import { useGetCharacterSheetQuery } from "../characterSheet/characterSheetApiSlice";
+import { Drawer } from "../routing/Drawer";
 
 export default function DndApp() {
     const theme = useTheme();
@@ -21,6 +26,7 @@ export default function DndApp() {
 
     return (
         <>
+            <Drawer />
             {isFetching && (
                 <Stack
                     height="100vh"

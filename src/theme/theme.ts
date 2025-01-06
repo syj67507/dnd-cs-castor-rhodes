@@ -17,6 +17,7 @@ declare module "@mui/material/styles" {
     dialogContentTextTypography?: string
     consumedWeapon: string
     thingWithDescriptionHover: string
+    navigationIconColor: string
   }
 
   interface ThemeOptions {
@@ -32,6 +33,7 @@ declare module "@mui/material/styles" {
     dialogContentTextTypography?: string
     consumedWeapon: string
     thingWithDescriptionHover: string
+    navigationIconColor: string
   }
 }
 
@@ -46,6 +48,7 @@ const regularTheme = createTheme({
   checkboxShape: "square",
   consumedWeapon: "#624A38",
   thingWithDescriptionHover: "rgba(0, 0, 0, 0.5)",
+  navigationIconColor: "rgba(0, 0, 0, 0.54)",
 })
 
 const cozyTheme = createTheme({
@@ -61,6 +64,7 @@ const cozyTheme = createTheme({
   checkboxColor: "#624A38",
   consumedWeapon: "#624A38",
   thingWithDescriptionHover: "rgba(0, 0, 0, 0.5)",
+  navigationIconColor: "rgba(0, 0, 0, 0.54)",
 })
 
 const oceanTheme = createTheme({
@@ -76,6 +80,7 @@ const oceanTheme = createTheme({
   checkboxColor: "#35656F",
   consumedWeapon: "#35656F",
   thingWithDescriptionHover: "rgba(0, 0, 0, 0.5)",
+  navigationIconColor: "rgba(0, 0, 0, 0.54)",
 })
 
 const darkTheme = createTheme({
@@ -105,6 +110,7 @@ const darkTheme = createTheme({
     },
   },
   consumedWeapon: "#111",
+  navigationIconColor: "rgba(255, 255, 255, 0.54)",
 })
 
 export const themes = [regularTheme, cozyTheme, oceanTheme, darkTheme]

@@ -1,16 +1,13 @@
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
-import { StyledPaper } from "./StyledPaper";
-import { useAppDispatch } from "../app/hooks";
-import { cycleTheme } from "../theme/themeSlice";
-import { useGetCharacterSheetQuery } from "../characterSheet/characterSheetApiSlice";
-import MenuIcon from '@mui/icons-material/Menu';
+import { StyledPaper } from "../dndApp/StyledPaper";
 import { setDrawerOpen } from "../routing/drawerSlice";
+import { cycleTheme } from "../theme/themeSlice";
+import { useAppDispatch } from "../app/hooks";
+import MenuIcon from '@mui/icons-material/Menu';
 
-
-export function Name() {
-    const theme = useTheme();
+export function CharacterSelectHeader() {
     const dispatch = useAppDispatch();
-    const { data: characterSheet } = useGetCharacterSheetQuery();
+    const theme = useTheme();
 
     return (
         <StyledPaper
@@ -35,9 +32,9 @@ export function Name() {
                 variant="h4"
                 onClick={() => dispatch(cycleTheme())}
             >
-                Level {characterSheet?.classes.barbarian.level}: {characterSheet?.name}
+                Character Select
             </Typography>
             <Box flex={1} /> {/* This box is used to help center the name while having the menu icon on the left */}
         </StyledPaper>
-    );
+    )
 }
