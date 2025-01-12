@@ -3,6 +3,7 @@ import { Stack, Typography, useTheme } from "@mui/material";
 import { StyledStack } from "./StyledStack";
 import useLocalStorage from "./useLocalStorage";
 import { useGetCharacterSheetQuery } from "../characterSheet/characterSheetApiSlice";
+import { useParams } from "react-router";
 
 interface WeaponProps {
     id: string;
@@ -58,7 +59,8 @@ export function Weapon({ id, name, atk, roll, modifier, damage_type }: WeaponPro
 
 
 export function Weapons() {
-    const { data: characterSheet } = useGetCharacterSheetQuery();
+    const params = useParams()
+    const { data: characterSheet } = useGetCharacterSheetQuery(params.id ?? "");
 
     return (
         <Stack

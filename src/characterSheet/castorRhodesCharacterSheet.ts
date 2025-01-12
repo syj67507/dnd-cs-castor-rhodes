@@ -1,4 +1,4 @@
-import { CharacterSheet } from "./characterSheetApiSlice"
+import { CharacterSheet } from "./CharacterSheet.interface"
 
 export const castorRhodesCharacterSheet: CharacterSheet = {
   name: "Castor Rhodes",

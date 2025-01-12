@@ -2,9 +2,11 @@ import { Stack, Typography } from "@mui/material";
 import { ThingWithDescription } from "./ThingWithDescription";
 import { StyledStack } from "./StyledStack";
 import { useGetCharacterSheetQuery } from "../characterSheet/characterSheetApiSlice";
+import { useParams } from "react-router";
 
 export function FeatsAndTraits() {
-    const { data: characterSheet } = useGetCharacterSheetQuery();
+    const params = useParams()
+    const { data: characterSheet } = useGetCharacterSheetQuery(params.id || "");
 
     return (
         <Stack

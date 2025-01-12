@@ -5,12 +5,14 @@ import { cycleTheme } from "../theme/themeSlice";
 import { useGetCharacterSheetQuery } from "../characterSheet/characterSheetApiSlice";
 import MenuIcon from '@mui/icons-material/Menu';
 import { setDrawerOpen } from "../routing/drawerSlice";
+import { useParams } from "react-router";
 
 
 export function Name() {
     const theme = useTheme();
     const dispatch = useAppDispatch();
-    const { data: characterSheet } = useGetCharacterSheetQuery();
+    const params = useParams();
+    const { data: characterSheet } = useGetCharacterSheetQuery(params.id ?? "");
 
     return (
         <StyledPaper
@@ -35,7 +37,7 @@ export function Name() {
                 variant="h4"
                 onClick={() => dispatch(cycleTheme())}
             >
-                Level {characterSheet?.classes.barbarian.level}: {characterSheet?.name}
+                {characterSheet?.name}
             </Typography>
             <Box flex={1} /> {/* This box is used to help center the name while having the menu icon on the left */}
         </StyledPaper>

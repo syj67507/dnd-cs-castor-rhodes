@@ -2,9 +2,11 @@ import { Box, Typography } from "@mui/material";
 import { StyledStack } from "./StyledStack";
 import { StyledPaper } from "./StyledPaper";
 import { useGetCharacterSheetQuery } from "../characterSheet/characterSheetApiSlice";
+import { useParams } from "react-router";
 
 export function SavingThrows() {
-    const { data: characterSheet } = useGetCharacterSheetQuery();
+    const params = useParams()
+    const { data: characterSheet } = useGetCharacterSheetQuery(params.id ?? "");
 
     return (
         <StyledPaper>

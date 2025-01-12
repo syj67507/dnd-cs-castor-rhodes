@@ -32,7 +32,7 @@ export function CharacterSelectHeader() {
                 variant="h4"
                 onClick={() => dispatch(cycleTheme())}
             >
-                Character Select
+                Characters
             </Typography>
             <Box flex={1} /> {/* This box is used to help center the name while having the menu icon on the left */}
         </StyledPaper>

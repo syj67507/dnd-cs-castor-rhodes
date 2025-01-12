@@ -1,11 +1,12 @@
-import { BrowserRouter, Routes, Route, Outlet } from "react-router";
+import { BrowserRouter, Outlet, Routes, Route } from "react-router";
 import DndApp from "../dndApp/DndApp";
 import { Drawer } from "./Drawer";
 import { CharacterSelect } from "../character-select/CharacterSelect";
 
+// TODO need to update redux to return different characters under different id's
+// Have the id's be passed into the route and loaded
+
 export function RoutedApp() {
-    // TODO need to update redux to return different characters under different id's
-    // Have the id's be passed into the route and loaded
     return (
         <BrowserRouter>
             <Routes>
@@ -20,7 +21,7 @@ export function RoutedApp() {
                     }
                 >
                     <Route index element={<CharacterSelect />} />
-                    <Route path="sheet" element={<DndApp />} />
+                    <Route path="sheet/:id" element={<DndApp />} />
                 </Route>
             </Routes>
         </BrowserRouter>

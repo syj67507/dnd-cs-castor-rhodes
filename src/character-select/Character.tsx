@@ -19,7 +19,7 @@ export function Character({ name, level }: CharacterProps) {
                 }
             }}
         >
-            <Link to="/dnd-cs-castor-rhodes/sheet" style={{ width: "100%", color: "inherit", textDecoration: "none" }}>
+            <Link to={`/dnd-cs-castor-rhodes/sheet/${name.toLowerCase()}`} style={{ width: "100%", color: "inherit", textDecoration: "none" }}>
                 <Typography>{name}</Typography>
                 <Typography>Level {level}</Typography>
             </Link>

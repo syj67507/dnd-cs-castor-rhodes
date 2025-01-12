@@ -5,6 +5,7 @@ import { useState } from "react";
 import { StyledDialog } from "../StyledDialog";
 import { StyledDialogContentText } from "../StyledDialogContentText";
 import { useGetCharacterSheetQuery } from "../../characterSheet/characterSheetApiSlice";
+import { useParams } from "react-router";
 
 interface SpellProps {
     name: string;
@@ -105,7 +106,8 @@ export function Spell({
 }
 
 export function Spells() {
-    const { data: characterSheet } = useGetCharacterSheetQuery();
+    const params = useParams()
+    const { data: characterSheet } = useGetCharacterSheetQuery(params.id ?? "");
 
     return (
         <StyledPaper>

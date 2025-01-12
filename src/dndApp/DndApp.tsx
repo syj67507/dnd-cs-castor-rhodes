@@ -14,6 +14,7 @@ import { Spells } from "./spells/Spells";
 import { SpellSlots } from "./spells/SpellSlots";
 import { useGetCharacterSheetQuery } from "../characterSheet/characterSheetApiSlice";
 import { Drawer } from "../routing/Drawer";
+import { useParams } from "react-router";
 
 export default function DndApp() {
     const theme = useTheme();
@@ -22,7 +23,8 @@ export default function DndApp() {
     // I didn't want to go through each component that uses the character sheet and add a loading
     // circle
     // As such, all inner components are going under the assumption that the data has been loaded
-    const { data, isFetching } = useGetCharacterSheetQuery();
+    const params = useParams()
+    const { data, isFetching } = useGetCharacterSheetQuery(params.id || "");
 
     return (
         <>
