@@ -1,8 +1,10 @@
 import { Grid2 as Grid, OutlinedInput, Stack, Typography, useTheme } from "@mui/material";
-import characterSheet from "./character-sheet.json";
-import useLocalStorage from "./useLocalStorage";
-import { Charges } from "./Charges";
-import { StyledPaper } from "./StyledPaper";
+import { Charges } from "../Charges";
+import { StyledPaper } from "../StyledPaper";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { setBardicInspiration, setCurrentHP, setGold, setInspiration, setTempHP } from "./generalSlice";
+import { useGetCharacterSheetQuery } from "../../characterSheet/characterSheetApiSlice";
+import { useParams } from "react-router";
 
 interface StatProps extends React.ComponentProps<typeof OutlinedInput> {
     value?: string | number;
@@ -42,24 +44,20 @@ function StatField({ value, interactive, onChange }: StatProps) {
 }
 
 function Gold() {
-    const character = characterSheet.character[0];
-    const [gold, setGold] = useLocalStorage("gold", character.treasure.gp);
+    const gold = useAppSelector(state => state.general.gold);
+    const dispatch = useAppDispatch();
 
     return (
         <Stack
             alignItems="center"
             height="100%"
-            onContextMenu={(e) => {
-                e.preventDefault()
-                setGold(character.treasure.gp);
-            }}
         >
             <Typography>Gold</Typography>
             <StatField
                 value={gold}
                 interactive
                 onChange={(e) => {
-                    setGold(e.target.value);
+                    dispatch(setGold(e.target.value));
                 }}
             />
         </Stack>
@@ -67,8 +65,8 @@ function Gold() {
 }
 
 function CurrentHP() {
-    const character = characterSheet.character[0];
-    const [currentHP, setCurrentHP] = useLocalStorage("currentHP", character.treasure.gp);
+    const currentHP = useAppSelector(state => state.general.currentHP);
+    const dispatch = useAppDispatch();
 
     return (
         <Stack
@@ -80,7 +78,7 @@ function CurrentHP() {
                 value={currentHP}
                 interactive
                 onChange={(e) => {
-                    setCurrentHP(e.target.value);
+                    dispatch(setCurrentHP(e.target.value));
                 }}
             />
         </Stack>
@@ -88,7 +86,8 @@ function CurrentHP() {
 }
 
 function TempHP() {
-    const [tempHP, setTempHP] = useLocalStorage("tempHP", 0);
+    const tempHP = useAppSelector(state => state.general.tempHP);
+    const dispatch = useAppDispatch();
 
     return (
         <Stack
@@ -100,7 +99,7 @@ function TempHP() {
                 value={tempHP}
                 interactive
                 onChange={(e) => {
-                    setTempHP(e.target.value);
+                    dispatch(setTempHP(e.target.value));
                 }}
             />
         </Stack>
@@ -108,7 +107,8 @@ function TempHP() {
 }
 
 function MaxHP() {
-    const character = characterSheet.character[0];
+    const params = useParams()
+    const { data: character } = useGetCharacterSheetQuery(params.id ?? "");
 
     return (
         <Stack
@@ -116,13 +116,15 @@ function MaxHP() {
             height="100%"
         >
             <Typography>Max HP</Typography>
-            <StatField value={character.hp[0].hp_max} />
+            <StatField value={character?.hp.max} />
         </Stack>
     );
 }
 
 function ProficiencyBonus() {
-    const character = characterSheet.character[0];
+    const params = useParams()
+    const { data: character } = useGetCharacterSheetQuery(params.id ?? "");
+
 
     return (
         <Stack
@@ -130,13 +132,15 @@ function ProficiencyBonus() {
             height="100%"
         >
             <Typography>Prof Bonus</Typography>
-            <StatField value={`+${character.proficiency_bonus}`} />
+            <StatField value={`+${character?.proficiency_bonus}`} />
         </Stack>
     );
 }
 
 function BardicInspiration() {
-    const [value, setValue] = useLocalStorage("bardicInspiration", 0);
+    const bardicInspiration = useAppSelector(state => state.general.bardicInspiration);
+    const dispatch = useAppDispatch();
+
 
     return (
         <Stack
@@ -145,10 +149,10 @@ function BardicInspiration() {
         >
             <Typography>Bardic Inspiration</Typography>
             <StatField
-                value={value}
+                value={bardicInspiration}
                 interactive
                 onChange={(e) => {
-                    setValue(e.target.value);
+                    dispatch(setBardicInspiration(e.target.value));
                 }}
             />
         </Stack>
@@ -156,7 +160,8 @@ function BardicInspiration() {
 }
 
 function ArmorClass() {
-    const character = characterSheet.character[0];
+    const params = useParams()
+    const { data: character } = useGetCharacterSheetQuery(params.id ?? "");
 
     return (
         <Stack
@@ -164,13 +169,14 @@ function ArmorClass() {
             height="100%"
         >
             <Typography>Armor Class</Typography>
-            <StatField value={character.ac} />
+            <StatField value={character?.armor_class} />
         </Stack>
     );
 }
 
 function Initiative() {
-    const character = characterSheet.character[0];
+    const params = useParams()
+    const { data: character } = useGetCharacterSheetQuery(params.id ?? "");
 
     return (
         <Stack
@@ -178,13 +184,14 @@ function Initiative() {
             height="100%"
         >
             <Typography>Initiative</Typography>
-            <StatField value={character.initiative_bonus} />
+            <StatField value={character?.initiative} />
         </Stack>
     );
 }
 
 function Speed() {
-    const character = characterSheet.character[0];
+    const params = useParams()
+    const { data: character } = useGetCharacterSheetQuery(params.id ?? "");
 
     return (
         <Stack
@@ -192,13 +199,14 @@ function Speed() {
             height="100%"
         >
             <Typography>Speed</Typography>
-            <StatField value={character.characteristics[0].speed} />
+            <StatField value={character?.speed} />
         </Stack>
     );
 }
 
 function Inspiration() {
-    const [value, setValue] = useLocalStorage("inspiration", 0);
+    const inspiration = useAppSelector(state => state.general.inspiration);
+    const dispatch = useAppDispatch();
 
     return (
         <Stack
@@ -207,10 +215,10 @@ function Inspiration() {
         >
             <Typography>Inspiration</Typography>
             <StatField
-                value={value}
+                value={inspiration}
                 interactive
                 onChange={(e) => {
-                    setValue(e.target.value);
+                    dispatch(setInspiration(e.target.value));
                 }}
             />
         </Stack>
@@ -218,12 +226,15 @@ function Inspiration() {
 }
 
 function HitDiceCharges() {
-    const character = characterSheet.character[0];
-
+    const params = useParams()
+    const { data: character } = useGetCharacterSheetQuery(params.id ?? "");
+    
     return (
         <Stack height="100%">
-            <Typography textAlign="center">{`Hit Dice [d${character.classes.barbarian["hit-die"]} + ${character.abilities_bonuses[0].bonuses.con}]`}</Typography>  
-            <Charges id="hitdice" total={5} />
+            {/* <Typography textAlign="center">{`Hit Dice [d${character.classes.barbarian["hit-die"]} + ${character.abilities_bonuses[0].bonuses.con}]`}</Typography>   */}
+            <Typography textAlign="center">Hit Dice</Typography>  
+            <Charges id="hitdice" total={5} /> 
+            {/* hard coding for now since i don't feel like do it now */}
         </Stack>
     );
 }
@@ -241,7 +252,7 @@ function DeathSaves() {
     return (
         <Stack height="100%">
             <Typography textAlign="center">Death Saves</Typography>  
-            <Charges id="deathsaves" total={3} />
+            <Charges id="deathSaves" total={3} />
         </Stack>
     );
 }
@@ -250,10 +261,11 @@ function DeathFails() {
     return (
         <Stack height="100%">
             <Typography textAlign="center">Death Fails</Typography>  
-            <Charges id="deathfails" total={3} />
+            <Charges id="deathFails" total={3} />
         </Stack>
     );
 }
+
 export function General() {
     return (
         <StyledPaper>

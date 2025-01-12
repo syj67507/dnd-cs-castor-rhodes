@@ -22,7 +22,7 @@ export function Drawer() {
         >
             <Box width="250px">
                 <List>
-                    <ListItem disablePadding>
+                    {/* <ListItem disablePadding>
                         <Link
                             to="/dnd-cs-castor-rhodes/sheet"
                             style={{ width: "100%", color: "inherit", textDecoration: "none" }}
@@ -40,7 +40,7 @@ export function Drawer() {
                                 </ListItemText>
                             </ListItemButton>
                         </Link>
-                    </ListItem>
+                    </ListItem> */}
                     <ListItem disablePadding>
                         <Link
                             to="/dnd-cs-castor-rhodes"

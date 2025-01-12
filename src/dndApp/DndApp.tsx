@@ -5,7 +5,7 @@ import Stack from "@mui/material/Stack";
 import { useTheme } from "@mui/material";
 import { Abilities } from "./Abilities";
 import { Details } from "./Details";
-import { General } from "./General";
+import { General } from "./general/General";
 import { Name } from "./Name";
 import { Skills } from "./Skills";
 import { SavingThrows } from "./SavingThrows";

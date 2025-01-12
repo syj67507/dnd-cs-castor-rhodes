@@ -21,7 +21,7 @@ function SpellSlotCharges({ title, id, total }: SpellSlotCharges) {
             <Typography variant="body1" textAlign="center">
                 {title}
             </Typography>
-            <Charges id={id} total={total} />
+            {/* <Charges id={id} total={total} /> */}
         </Stack>
     );
 }

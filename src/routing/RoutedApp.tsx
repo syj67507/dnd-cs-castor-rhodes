@@ -21,7 +21,7 @@ export function RoutedApp() {
                     }
                 >
                     <Route index element={<CharacterSelect />} />
-                    <Route path="sheet/:id" element={<DndApp />} />
+                    <Route path="characters/:id" element={<DndApp />} />
                 </Route>
             </Routes>
         </BrowserRouter>
