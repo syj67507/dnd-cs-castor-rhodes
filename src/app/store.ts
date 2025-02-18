@@ -35,7 +35,7 @@ const persistConfig = {
   key: "root",
   version: 1,
   storage,
-  blacklist: ["api"],
+  blacklist: ["api", "dndApi"],
 }
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 

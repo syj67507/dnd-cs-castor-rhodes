@@ -1,51 +1,31 @@
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { Button, DialogActions, DialogContent, DialogTitle, Stack, Typography } from "@mui/material";
-import { useGetSkillsDescriptionQuery } from "./dndApiSlice";
+import { Typography, DialogTitle, DialogContent, DialogActions, Button } from "@mui/material";
 import { useState } from "react";
-import { StyledStack } from "./StyledStack";
-import { StyledPaper } from "./StyledPaper";
-import { StyledDialog } from "./StyledDialog";
-import { StyledDialogContentText } from "./StyledDialogContentText";
-import { useGetCharacterSheetQuery } from "../characterSheet/characterSheetApiSlice";
-
-export function Skills() {
-    const { data: characterSheet } = useGetCharacterSheetQuery();
-
-    return (
-        <StyledPaper>
-            <Stack spacing={1} alignItems="center">
-                <Typography variant="body1" sx={{ fontWeight: "bold" }}>Skills</Typography>
-                {
-                    characterSheet?.skills.map(({ name, value, proficient }) => {
-                        return (
-                            <Skill name={name} statValue={value} proficient={proficient} />
-                        );
-                    })
-                }
-            </Stack>
-        </StyledPaper>
-    );
-}
+import { useGetSkillsDescriptionQuery } from "../dndApiSlice";
+import { StyledDialog } from "../StyledDialog";
+import { StyledDialogContentText } from "../StyledDialogContentText";
+import { StyledStack } from "../StyledStack";
 
 interface SkillProps {
     name: string;
-    statValue: string | boolean;
+    statValue: string;
     proficient: boolean;
 }
 export function Skill({ name, statValue, proficient }: SkillProps) {
     const [open, setOpen] = useState(false);
     const { data } = useGetSkillsDescriptionQuery(name);
     const skillName = `${name.slice(0,1).toUpperCase()}${name.slice(1)}`.replace(/-/g, " ")
-
+    console.log("SHAMS", data);
     return (
         <>
             <StyledStack
+                data-testid="skill"
                 direction="row"
                 width="100%"
                 justifyContent="space-between"
                 onClick={() => setOpen(true)}
             >
                 <Typography variant="body1"
+                    data-testid="skill-name"
                     sx={{
                         fontWeight: proficient ? "bold" : "normal",
                     }}
@@ -53,6 +33,7 @@ export function Skill({ name, statValue, proficient }: SkillProps) {
                     {skillName}
                 </Typography>
                 <Typography variant="body1"
+                    data-testid="skill-stat-value"
                     sx={{
                         fontWeight: proficient ? "bold" : "normal",
                     }}
@@ -60,7 +41,10 @@ export function Skill({ name, statValue, proficient }: SkillProps) {
                     {statValue}
                 </Typography>
             </StyledStack>
-            <StyledDialog
+
+            {/* Only render the dialog if data was loaded successfully */}
+            {data && <StyledDialog
+                data-testid="skill-dialog"
                 open={open}
                 onClose={() => {
                     setOpen(false)
@@ -73,7 +57,7 @@ export function Skill({ name, statValue, proficient }: SkillProps) {
                 <DialogActions>
                     <Button onClick={() => setOpen(false)}>Close</Button>
                 </DialogActions>
-            </StyledDialog>
+            </StyledDialog>}
         </>
     );
 
