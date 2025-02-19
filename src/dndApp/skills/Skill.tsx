@@ -14,7 +14,7 @@ export function Skill({ name, statValue, proficient }: SkillProps) {
     const [open, setOpen] = useState(false);
     const { data } = useGetSkillsDescriptionQuery(name);
     const skillName = `${name.slice(0,1).toUpperCase()}${name.slice(1)}`.replace(/-/g, " ")
-    console.log("SHAMS", data);
+
     return (
         <>
             <StyledStack
@@ -50,12 +50,12 @@ export function Skill({ name, statValue, proficient }: SkillProps) {
                     setOpen(false)
                 }}
             >
-                <DialogTitle>{skillName}{proficient ? ": Proficient" : ""}</DialogTitle>
+                <DialogTitle data-testid="skill-dialog-title">{skillName}{proficient ? ": Proficient" : ""}</DialogTitle>
                 <DialogContent>
                     <StyledDialogContentText text={data?.desc} />
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={() => setOpen(false)}>Close</Button>
+                    <Button data-testid="skill-dialog-close-action" onClick={() => setOpen(false)}>Close</Button>
                 </DialogActions>
             </StyledDialog>}
         </>

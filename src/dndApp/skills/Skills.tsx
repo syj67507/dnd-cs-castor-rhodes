@@ -1,5 +1,5 @@
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { Stack, Typography } from "@mui/material";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 import { StyledPaper } from "../StyledPaper";
 import { useGetCharacterSheetQuery } from "../../characterSheet/characterSheetApiSlice";
 import { Skill } from "./Skill";

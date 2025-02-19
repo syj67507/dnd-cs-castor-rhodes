@@ -1,13 +1,13 @@
 import { expect, test } from 'vitest'
-import { screen } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 import { renderWithProviders } from "../../utils/test-utils"
 import { Skill } from "./Skill";
 import userEvent from '@testing-library/user-event';
 
-test("App should have correct initial render", () => {
+test("Skill component should have no issues on initial render", () => {
     renderWithProviders(
         <Skill
-            name="test name"
+            name="testname"
             statValue="1"
             proficient={false}
         />
@@ -16,11 +16,11 @@ test("App should have correct initial render", () => {
     expect(screen.getByTestId("skill-name")).toBeInTheDocument();
 })
 
-test("App should have correct initial render 2", async () => {
+test("Skill component should render with dialog if it loads data from api", async () => {
     const user = userEvent.setup();
     renderWithProviders(
         <Skill
-            name="test name"
+            name="testname"
             statValue="1"
             proficient={false}
         />
@@ -30,6 +30,28 @@ test("App should have correct initial render 2", async () => {
     
     await user.click(screen.getByTestId("skill"));
     
-    expect(screen.getByTestId("skill-dialog")).toBeInTheDocument();
-    expect(screen.getByTestId("skill-dialog")).toHaveTextContent("test description");
+    // Waiting for element to be shown since it needs to wait for an API call
+    await waitFor(() => {
+        expect(screen.getByTestId("skill-dialog")).toBeInTheDocument();
+        expect(screen.getByTestId("skill-dialog")).toHaveTextContent("test description");
+    })
+})
+
+test("Skill component should be able to show if the character is proficient", async () => {
+    const user = userEvent.setup();
+    renderWithProviders(
+        <Skill
+            name="testname"
+            statValue="1"
+            proficient={true}
+        />
+    );
+    
+    await user.click(screen.getByTestId("skill"));
+    
+    // Waiting for element to be shown since it needs to wait for an API call
+    await waitFor(() => {
+        expect(screen.getByTestId("skill-dialog")).toBeInTheDocument();
+        expect(screen.getByTestId("skill-dialog-title")).toHaveTextContent('Proficient');
+    })
 })
