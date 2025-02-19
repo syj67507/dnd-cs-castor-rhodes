@@ -3,7 +3,7 @@ import { Abilities } from "./Abilities";
 import { Details } from "./Details";
 import { General } from "./General";
 import { Name } from "./Name";
-import { Skills } from "./Skills";
+import { Skills } from "./skills/Skills";
 import { SavingThrows } from "./SavingThrows";
 import { Notes } from "./Notes";
 import { Spells } from "./spells/Spells";
