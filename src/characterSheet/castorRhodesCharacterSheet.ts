@@ -224,6 +224,13 @@ export const castorRhodesCharacterSheet: CharacterSheet = {
         "Sea. When this effect is activated, you can choose one other creature you can see in your aura. The target must make a Dexterity saving throw. The target takes 1d6 lightning damage on a failed save, or half as much damage on a successful one. The damage increases when you reach certain levels in this class, increasing to 2d6 at 10th level, 3d6 at 15th level, and 4d6 at 20th level.",
       ],
     },
+    {
+      name: "Storm Sould: Sea",
+      description: [
+        "At 6th level, the storm grants you benefits even when your aura isn't active. The benefits are based on the environment you chose for your Storm Aura.",
+        "You gain resistance to lightning damage, and you can breathe underwater. You also gain a swimming speed of 30 feet.",
+      ],
+    }
   ],
   items_and_equipment: [
     {
