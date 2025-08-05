@@ -6,8 +6,8 @@ export const castorRhodesCharacterSheet: CharacterSheet = {
   ability_scores: [
     {
       name: "STR",
-      modifier: "+4",
-      score: "18",
+      modifier: "+5",
+      score: "21",
     },
     {
       name: "DEX",
@@ -63,17 +63,17 @@ export const castorRhodesCharacterSheet: CharacterSheet = {
     { name: "Wisdom", proficient: false, modifier: "+1" },
     { name: "Charisma", proficient: false, modifier: "0" },
   ],
-  armor_class: "15",
+  armor_class: "17",
   initiative: "+2",
   speed: "40/30",
   proficiency_bonus: "+3",
   hp: {
-    max: 64,
-    current: 64,
+    max: 81,
+    current: 81,
   },
   classes: {
     barbarian: {
-      level: 5,
+      level: 7,
       hit_die: "d12",
       rage_charges: 3,
     },
@@ -274,6 +274,19 @@ export const castorRhodesCharacterSheet: CharacterSheet = {
       description: [
         "You gain a +2 bonus to attack and damage rolls made with this magic greataxe while you have half your hit points or fewer.",
       ],
+    },
+    {
+      name: "Bracers of Defense",
+      description: [
+        "While wearing these bracers, you gain a +2 bonus to AC if you are wearing no armor and using no shield."
+      ]
+    },
+    {
+      name: "Belt of Giant Strength",
+      description: [
+        "While wearing this belt, your Strength score changes to a score granted by the belt. If your Strength is already equal to or greater than the belt's score, the item has no effect on you.",
+        "Six varieties of this belt exist, corresponding with and having rarity according to the six kinds of true giants. The belt of stone giant strength and the belt of frost giant strength look different, but they have the same effect.",
+      ]
     },
   ],
 }
